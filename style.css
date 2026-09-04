@@ -52,6 +52,15 @@
   --color-slate-400: #A2B599;
   --color-slate-200: #E4ECE0;
 
+  /* Forest Charcoal & Contrast Bases */
+  --navy-dark: #172312;
+  --navy-deep: #1F2E19;
+  --navy-surface: #24351D;
+  --navy-glass: rgba(23, 35, 18, 0.94);
+  --color-primary-dark: #2A3B21;
+  --shadow-glow-blue: 0 10px 30px -5px rgba(107, 142, 78, 0.35);
+  --shadow-glow-sage: 0 10px 30px -5px rgba(107, 142, 78, 0.35);
+
   /* Backgrounds & Surfaces */
   --bg-main: #F6F8F3;
   --bg-alt: #EDF3E8;
