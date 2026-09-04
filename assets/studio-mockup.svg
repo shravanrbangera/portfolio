@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" width="100%" height="100%">
+  <defs>
+    <linearGradient id="studioBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F7FBFC" />
+      <stop offset="50%" stop-color="#EBF5FA" />
+      <stop offset="100%" stop-color="#D5ECF7" />
+    </linearGradient>
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1264A3" />
+      <stop offset="100%" stop-color="#28A9E8" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1000" height="650" rx="24" fill="url(#studioBg)" />
+
+  <!-- Sidebar Glass Panel -->
+  <rect x="40" y="40" width="220" height="570" rx="16" fill="#FFFFFF" fill-opacity="0.8" stroke="#1264A3" stroke-opacity="0.12" stroke-width="1.5" />
+  <text x="70" y="90" font-family="Inter, sans-serif" font-size="18" font-weight="800" fill="#0B1726">STUDIO PRO</text>
+  <text x="70" y="110" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#1264A3">MANAGEMENT SYSTEM</text>
+
+  <!-- Sidebar Menu Pills -->
+  <rect x="60" y="145" width="180" height="42" rx="10" fill="url(#primaryGrad)" />
+  <text x="95" y="171" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF">Appointments</text>
+
+  <rect x="60" y="200" width="180" height="42" rx="10" fill="#FFFFFF" fill-opacity="0.6" />
+  <text x="95" y="226" font-family="Inter, sans-serif" font-size="14" font-weight="500" fill="#122033">Client Records</text>
+
+  <rect x="60" y="255" width="180" height="42" rx="10" fill="#FFFFFF" fill-opacity="0.6" />
+  <text x="95" y="281" font-family="Inter, sans-serif" font-size="14" font-weight="500" fill="#122033">Billing &amp; Invoice</text>
+
+  <rect x="60" y="310" width="180" height="42" rx="10" fill="#FFFFFF" fill-opacity="0.6" />
+  <text x="95" y="336" font-family="Inter, sans-serif" font-size="14" font-weight="500" fill="#122033">Asset Vault</text>
+
+  <!-- Main Content Dashboard View -->
+  <!-- Top Stats Bar -->
+  <g transform="translate(290, 40)">
+    <rect width="200" height="100" rx="14" fill="#FFFFFF" fill-opacity="0.9" stroke="#1264A3" stroke-opacity="0.1" />
+    <text x="24" y="40" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#1264A3">TODAY'S BOOKINGS</text>
+    <text x="24" y="75" font-family="Inter, sans-serif" font-size="28" font-weight="800" fill="#0B1726">12 Sessions</text>
+
+    <rect x="220" y="0" width="200" height="100" rx="14" fill="#FFFFFF" fill-opacity="0.9" stroke="#1264A3" stroke-opacity="0.1" />
+    <text x="244" y="40" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#18AFA0">DOUBLE BOOKINGS</text>
+    <text x="244" y="75" font-family="Inter, sans-serif" font-size="28" font-weight="800" fill="#36B37E">0 Conflicts</text>
+
+    <rect x="440" y="0" width="230" height="100" rx="14" fill="#FFFFFF" fill-opacity="0.9" stroke="#1264A3" stroke-opacity="0.1" />
+    <text x="464" y="40" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#28A9E8">ASSETS MANAGED</text>
+    <text x="464" y="75" font-family="Inter, sans-serif" font-size="28" font-weight="800" fill="#0B1726">2,450 Files</text>
+  </g>
+
+  <!-- Schedule & Client Table Card -->
+  <rect x="290" y="165" width="670" height="445" rx="16" fill="#FFFFFF" fill-opacity="0.9" stroke="#1264A3" stroke-opacity="0.1" />
+  <text x="320" y="210" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#0B1726">Live Studio Schedule &amp; Client Registry</text>
+
+  <!-- Table Row 1 -->
+  <rect x="320" y="240" width="610" height="60" rx="10" fill="#F7FBFC" stroke="#1264A3" stroke-opacity="0.08" />
+  <circle cx="350" cy="270" r="14" fill="#1264A3" opacity="0.15" />
+  <text x="380" y="275" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#0B1726">Portrait Shoot — Client #8402</text>
+  <rect x="680" y="254" width="100" height="32" rx="16" fill="#36B37E" opacity="0.2" />
+  <text x="730" y="275" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#36B37E" text-anchor="middle">CONFIRMED</text>
+  <text x="810" y="275" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1264A3">10:00 AM</text>
+
+  <!-- Table Row 2 -->
+  <rect x="320" y="315" width="610" height="60" rx="10" fill="#F7FBFC" stroke="#1264A3" stroke-opacity="0.08" />
+  <circle cx="350" cy="345" r="14" fill="#18AFA0" opacity="0.15" />
+  <text x="380" y="350" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#0B1726">Product Portfolio — Brand Alpha</text>
+  <rect x="680" y="329" width="100" height="32" rx="16" fill="#28A9E8" opacity="0.2" />
+  <text x="730" y="350" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#1264A3" text-anchor="middle">IN PROGRESS</text>
+  <text x="810" y="350" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1264A3">02:30 PM</text>
+
+  <!-- Table Row 3 -->
+  <rect x="320" y="390" width="610" height="60" rx="10" fill="#F7FBFC" stroke="#1264A3" stroke-opacity="0.08" />
+  <circle cx="350" cy="420" r="14" fill="#28A9E8" opacity="0.15" />
+  <text x="380" y="425" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#0B1726">Event Retouching &amp; Invoice Clearance</text>
+  <rect x="680" y="404" width="100" height="32" rx="16" fill="#36B37E" opacity="0.2" />
+  <text x="730" y="425" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#36B37E" text-anchor="middle">BILLED</text>
+  <text x="810" y="425" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1264A3">05:00 PM</text>
+
+  <!-- Highlight badge -->
+  <text x="320" y="520" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#1264A3">Eliminates double bookings &amp; automates client record management</text>
+</svg>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creative Work &amp; Photography | Shravan R Bangera</title>
+  <meta name="description" content="Award-winning photography, visual framing, and creative storytelling portfolio of Shravan R Bangera.">
+  <meta name="theme-color" content="#F8FBFC">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230878C9'/><text x='16' y='22' font-family='sans-serif' font-size='18' font-weight='bold' fill='white' text-anchor='middle'>S</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="work">
+
+  <!-- Custom Magnetic Cursor -->
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true">
+    <span class="cursor-label" id="cursorLabel"></span>
+  </div>
+
+  <!-- Ambient Background -->
+  <div class="ambient-canvas" aria-hidden="true">
+    <div class="ambient-orb orb-primary"></div>
+    <div class="ambient-orb orb-secondary"></div>
+    <div class="ambient-orb orb-accent"></div>
+    <div class="ambient-grid-pattern"></div>
+    <div class="ambient-noise-layer"></div>
+  </div>
+
+  <!-- Page Transition Curtain -->
+  <div class="page-transition-curtain" id="pageTransitionCurtain" aria-hidden="true">
+    <div class="curtain-brand-mark">
+      <span class="curtain-mono">SB</span>
+      <span class="curtain-title">SHRAVAN R BANGERA</span>
+    </div>
+  </div>
+
+  <!-- Floating Glass Header -->
+  <header class="studio-header" id="studioHeader">
+    <nav class="nav-island glass-panel" aria-label="Main Navigation">
+      <a href="index.html" class="nav-brand" data-nav-link aria-label="Shravan R Bangera Home">
+        <span class="brand-monogram">SB</span>
+        <span class="brand-name">SHRAVAN R BANGERA</span>
+        <span class="brand-dot"></span>
+      </a>
+
+      <div class="nav-menu-wrapper" id="navMenuWrapper">
+        <ul class="nav-links-list">
+          <li><a href="index.html" class="nav-item" data-nav-link>Home</a></li>
+          <li><a href="story.html" class="nav-item" data-nav-link>Story</a></li>
+          <li><a href="about.html" class="nav-item" data-nav-link>About</a></li>
+          <li><a href="journey.html" class="nav-item" data-nav-link>Journey</a></li>
+          <li><a href="work.html" class="nav-item active" data-nav-link>Work</a></li>
+          <li><a href="projects.html" class="nav-item" data-nav-link>Projects</a></li>
+          <li><a href="contact.html" class="nav-item" data-nav-link>Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-cta-actions">
+        <button class="btn btn-recruiter-toggle" id="recruiterModalTrigger" data-magnetic aria-label="Open Recruiter Executive View">
+          <span class="recruiter-zap">⚡</span>
+          <span>Recruiter View</span>
+        </button>
+
+        <a href="assets/shravan-bangera-resume.html" target="_blank" rel="noopener" class="btn btn-pill-nav" data-magnetic>
+          <span>CV</span>
+          <svg class="btn-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        </a>
+
+        <button class="menu-toggle-btn" id="menuToggleBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span class="menu-line line-1"></span>
+          <span class="menu-line line-2"></span>
+          <span class="menu-line line-3"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page-content-wrapper" id="mainContent">
+
+    <section class="section inner-page-hero">
+      <div class="container">
+        
+        <div class="section-editorial-header">
+          <div class="header-tag-pill reveal-item">
+            <span class="tag-number">05</span>
+            <span class="tag-title">VISUAL STORYTELLING</span>
+          </div>
+          <h1 class="section-giant-title reveal-item" data-delay="100">Where Technology Meets Creativity.</h1>
+          <p class="section-lead-paragraph reveal-item" data-delay="200">
+            Photography teaches perspective, patience, and how to compose meaningful frames. A curated visual museum of award-winning and creative captures.
+          </p>
+        </div>
+
+        <!-- Filter Tabs Bar -->
+        <div class="creative-filter-bar reveal-item" data-delay="250" role="tablist" aria-label="Photography Categories">
+          <button class="filter-tab active" data-filter="all" role="tab">All Showcase</button>
+          <button class="filter-tab" data-filter="awards" role="tab">Award Winners</button>
+          <button class="filter-tab" data-filter="architecture" role="tab">Architecture &amp; Light</button>
+          <button class="filter-tab" data-filter="nature" role="tab">Nature &amp; Reflections</button>
+          <button class="filter-tab" data-filter="motion" role="tab">Motion &amp; Events</button>
+        </div>
+
+        <!-- Asymmetrical Editorial Showcase Grid -->
+        <div class="editorial-gallery-grid" id="editorialGallery">
+          
+          <!-- Photo Item 1 (Feature Large - ETTIN 2025 1st Place) -->
+          <div class="gallery-item feature-large glass-panel reveal-item" data-delay="300" data-category="awards architecture" data-img="assets/gallery/photo-1.svg" data-title="Golden Hour Perspective" data-award="🥇 1st Place • ETTIN 2025 National-Level Fest" data-desc="Architectural geometry, vanishing lines, and golden hour specular reflection.">
+            <div class="gallery-image-frame">
+              <img src="assets/gallery/photo-1.svg" alt="ETTIN 2025 1st Place Photography Winner" loading="lazy" class="gallery-img">
+              <div class="gallery-award-pill">
+                <span class="trophy-emoji">🥇</span> 1st Place &bull; ETTIN 2025
+              </div>
+              <div class="gallery-hover-overlay">
+                <span class="overlay-kicker">Architecture &amp; Light</span>
+                <h3 class="overlay-heading">Golden Hour Perspective</h3>
+                <span class="overlay-cta-link">View Full Photo &rarr;</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Photo Item 2 (Aqua Lens 1st Place) -->
+          <div class="gallery-item card-medium glass-panel reveal-item" data-delay="350" data-category="awards nature" data-img="assets/gallery/photo-2.svg" data-title="Liquid Dynamics &amp; Macro Reflection" data-award="🥇 1st Place • Nitte Aqua Lens 2024" data-desc="Macro capture of surface tension and pristine water drop dynamics.">
+            <div class="gallery-image-frame">
+              <img src="assets/gallery/photo-2.svg" alt="Nitte Aqua Lens 2024 1st Place Winner" loading="lazy" class="gallery-img">
+              <div class="gallery-award-pill">
+                <span class="trophy-emoji">🥇</span> 1st Place &bull; Aqua Lens
+              </div>
+              <div class="gallery-hover-overlay">
+                <span class="overlay-kicker">Nature &amp; Reflections</span>
+                <h3 class="overlay-heading">Liquid Dynamics</h3>
+                <span class="overlay-cta-link">View Full Photo &rarr;</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Photo Item 3 (AGON 2024 2nd Place) -->
+          <div class="gallery-item card-medium glass-panel reveal-item" data-delay="400" data-category="awards motion" data-img="assets/gallery/photo-3.svg" data-title="Stage Lighting &amp; Reel Dynamics" data-award="🥈 2nd Place • AGON 2024 Fest" data-desc="High-energy concert stage lighting and cinematic reel motion narrative.">
+            <div class="gallery-image-frame">
+              <img src="assets/gallery/photo-3.svg" alt="AGON 2024 2nd Place Winner" loading="lazy" class="gallery-img">
+              <div class="gallery-award-pill">
+                <span class="trophy-emoji">🥈</span> 2nd Place &bull; AGON 2024
+              </div>
+              <div class="gallery-hover-overlay">
+                <span class="overlay-kicker">Motion &amp; Events</span>
+                <h3 class="overlay-heading">Stage Dynamics</h3>
+                <span class="overlay-cta-link">View Full Photo &rarr;</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Photo Item 4 (Architecture) -->
+          <div class="gallery-item card-medium glass-panel reveal-item" data-delay="450" data-category="architecture" data-img="assets/gallery/photo-4.svg" data-title="Campus Geometry &amp; Light" data-award="Selected Architectural Work" data-desc="Clean symmetry and vanishing point perspective of modern campus architecture.">
+            <div class="gallery-image-frame">
+              <img src="assets/gallery/photo-4.svg" alt="Campus Geometry and Light" loading="lazy" class="gallery-img">
+              <div class="gallery-hover-overlay">
+                <span class="overlay-kicker">Architecture</span>
+                <h3 class="overlay-heading">Campus Geometry</h3>
+                <span class="overlay-cta-link">View Full Photo &rarr;</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Photo Item 5 (Nature) -->
+          <div class="gallery-item card-medium glass-panel reveal-item" data-delay="500" data-category="nature" data-img="assets/gallery/photo-5.svg" data-title="Natural Prisms &amp; Light Leaks" data-award="Selected Macro Work" data-desc="Organic foliage textures bathed in prismatic light dispersion.">
+            <div class="gallery-image-frame">
+              <img src="assets/gallery/photo-5.svg" alt="Natural Prisms and Light" loading="lazy" class="gallery-img">
+              <div class="gallery-hover-overlay">
+                <span class="overlay-kicker">Nature &amp; Light</span>
+                <h3 class="overlay-heading">Natural Prisms</h3>
+                <span class="overlay-cta-link">View Full Photo &rarr;</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Next Room Navigation Banner -->
+    <section class="section room-footer-nav-section">
+      <div class="container">
+        <div class="room-nav-banner glass-panel reveal-item">
+          <div class="banner-left">
+            <span class="banner-kicker">NEXT EXPERIENCE</span>
+            <h3 class="banner-heading">Selected Projects &amp; AI Lab</h3>
+            <p class="banner-text">Experience the interactive FoodIQ neural scanner simulator and software platforms.</p>
+          </div>
+          <a href="projects.html" class="btn btn-primary-glow" data-nav-link data-magnetic>
+            <span>Enter Projects Room</span>
+            <svg class="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- LIGHTBOX MODAL FOR PHOTOGRAPHY GALLERY -->
+  <div class="modal-scrim" id="lightboxModal" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
+    <div class="lightbox-dialog glass-panel">
+      <button class="modal-close-trigger" id="lightboxCloseBtn" aria-label="Close Lightbox" data-magnetic>&times;</button>
+      <div class="lightbox-stage">
+        <img src="" alt="" id="lightboxImg" class="lightbox-img">
+      </div>
+      <div class="lightbox-info-bar">
+        <div class="lightbox-meta">
+          <span class="lightbox-award-tag" id="lightboxAward"></span>
+          <h3 class="lightbox-photo-title" id="lightboxTitle"></h3>
+          <p class="lightbox-photo-desc" id="lightboxDesc"></p>
+        </div>
+        <div class="lightbox-nav-controls">
+          <button class="lightbox-nav-btn" id="lightboxPrevBtn" aria-label="Previous photograph" data-magnetic>‹</button>
+          <button class="lightbox-nav-btn" id="lightboxNextBtn" aria-label="Next photograph" data-magnetic>›</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECRUITER EXECUTIVE BRIEFING MODAL -->
+  <div class="modal-scrim" id="recruiterModal" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
+    <div class="recruiter-dialog glass-panel">
+      <button class="modal-close-trigger" id="recruiterCloseBtn" aria-label="Close Recruiter View" data-magnetic>&times;</button>
+      
+      <div class="recruiter-header-bar">
+        <div>
+          <span class="recruiter-kicker">⚡ 1-MINUTE EXECUTIVE BRIEFING</span>
+          <h2 class="recruiter-name">SHRAVAN R BANGERA</h2>
+          <p class="recruiter-title">MCA Student &bull; Creative Technologist &bull; Media &amp; Marketing Operations</p>
+        </div>
+        <a href="assets/shravan-bangera-resume.html" target="_blank" rel="noopener" class="btn btn-primary-glow" data-magnetic>
+          <span>Download CV (PDF)</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        </a>
+      </div>
+
+      <div class="recruiter-body-grid">
+        
+        <!-- Column 1: Core Value Proposition -->
+        <div class="recruiter-col">
+          <h3 class="recruiter-section-title">Candidate Profile</h3>
+          <p class="recruiter-summary-text">
+            MCA student at N.M.A.M. Institute of Technology with hands-on experience spanning software development, AI computer vision applications, and large-scale media operations.
+          </p>
+
+          <h3 class="recruiter-section-title" style="margin-top: 18px;">Education</h3>
+          <ul class="recruiter-quick-list">
+            <li><strong>MCA (2025–2027)</strong> — NMAMIT Nitte (Autonomous)</li>
+            <li><strong>BCA (2022–2025)</strong> — Dr. NSAM FGC (Distinction)</li>
+          </ul>
+
+          <h3 class="recruiter-section-title" style="margin-top: 18px;">Core Competencies</h3>
+          <div class="recruiter-chips">
+            <span>Java</span>
+            <span>Python</span>
+            <span>AI / Computer Vision</span>
+            <span>Web Architectures</span>
+            <span>Media Operations</span>
+            <span>180+ Volunteer Logistics</span>
+            <span>Visual Storytelling</span>
+          </div>
+        </div>
+
+        <!-- Column 2: Key Milestones & Direct Actions -->
+        <div class="recruiter-col">
+          <h3 class="recruiter-section-title">Verified Key Milestones</h3>
+          <ul class="recruiter-milestones-list">
+            <li><strong>Media Head (MCA Dept):</strong> Coordinated 180+ volunteers &amp; organized major webinar with 42+ registrations.</li>
+            <li><strong>Best Service Award (2024–2025):</strong> Conferred for excellence as Digital Committee Head at Dr. NSAM FGC.</li>
+            <li><strong>1st Place Photography:</strong> ETTIN 2025 National Fest &amp; Nitte Aqua Lens 2024.</li>
+            <li><strong>Top Project (FoodIQ):</strong> AI nutrition recognition scanner trained on 148,000+ real food images.</li>
+          </ul>
+
+          <h3 class="recruiter-section-title" style="margin-top: 18px;">Direct Placement Contacts</h3>
+          <div class="recruiter-contact-strip">
+            <a href="mailto:shravanrbangera@gmail.com" class="rec-contact-item">📧 shravanrbangera@gmail.com</a>
+            <a href="tel:+919964429300" class="rec-contact-item">📱 +91 9964429300</a>
+            <a href="https://linkedin.com/in/shravanrbangera" target="_blank" rel="noopener" class="rec-contact-item">🔗 linkedin.com/in/shravanrbangera</a>
+            <a href="https://github.com/shravanrbangera" target="_blank" rel="noopener" class="rec-contact-item">💻 github.com/shravanrbangera</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="studio-footer">
+    <div class="container footer-content-wrap">
+      <div class="footer-left-brand">
+        <a href="index.html" class="footer-logo" data-nav-link>SHRAVAN R BANGERA</a>
+        <p class="footer-identity-tag">MCA Student &bull; Creative Technologist &bull; Media &amp; Marketing Enthusiast</p>
+      </div>
+
+      <div class="footer-right-cluster">
+        <div class="footer-nav-links">
+          <a href="index.html" data-nav-link>Home</a>
+          <a href="story.html" data-nav-link>Story</a>
+          <a href="about.html" data-nav-link>About</a>
+          <a href="journey.html" data-nav-link>Journey</a>
+          <a href="work.html" data-nav-link>Creative</a>
+          <a href="projects.html" data-nav-link>Projects</a>
+          <a href="achievements.html" data-nav-link>Milestones</a>
+          <a href="certifications.html" data-nav-link>Credentials</a>
+          <a href="contact.html" data-nav-link>Contact</a>
+        </div>
+        <p class="footer-copyright">&copy; 2026 Shravan R Bangera. Built with craft, curiosity &amp; code.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive Floating Mascot Companion -->
+  <aside class="cloud-mascot-companion" id="cloudMascot" aria-label="Digital Studio Mascot">
+    <div class="mascot-speech-bubble" id="mascotBubble">
+      <span class="bubble-text">Hi! I'm Shravan's creative companion 🍀</span>
+    </div>
+    <button class="mascot-avatar-btn" id="mascotAvatarBtn" aria-label="Interact with Creative Sprout Mascot">
+      <img src="assets/sprout-mascot.jpg" alt="Creative Sprout Mascot" class="mascot-img">
+      <span class="mascot-sparkle">🍀</span>
+    </button>
+  </aside>
+
+  <script src="script.js"></script>
+</body>
+</html>

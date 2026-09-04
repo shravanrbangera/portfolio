@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <linearGradient id="aquaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#071927" />
+      <stop offset="35%" stop-color="#0B3C5D" />
+      <stop offset="70%" stop-color="#18AFA0" />
+      <stop offset="100%" stop-color="#36B37E" />
+    </linearGradient>
+    <radialGradient id="waterDrop" cx="50%" cy="40%" r="40%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95" />
+      <stop offset="25%" stop-color="#28A9E8" stop-opacity="0.6" />
+      <stop offset="70%" stop-color="#1264A3" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#071927" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#aquaGrad)" />
+
+  <!-- Water Ripple Rings -->
+  <g stroke="#FFFFFF" stroke-opacity="0.25" fill="none" stroke-width="2">
+    <ellipse cx="600" cy="460" rx="140" ry="45" stroke-width="3" stroke-opacity="0.5" />
+    <ellipse cx="600" cy="460" rx="260" ry="85" stroke-width="2.5" stroke-opacity="0.35" />
+    <ellipse cx="600" cy="460" rx="420" ry="140" stroke-width="2" stroke-opacity="0.2" />
+    <ellipse cx="600" cy="460" rx="580" ry="195" stroke-width="1.5" stroke-opacity="0.1" />
+  </g>
+
+  <!-- Central Water Crystal Drop -->
+  <circle cx="600" cy="380" r="80" fill="url(#waterDrop)" />
+  <path d="M600 240 Q630 330 600 380 Q570 330 600 240 Z" fill="#FFFFFF" opacity="0.75" />
+
+  <!-- Refraction Highlights -->
+  <path d="M570 370 Q600 350 625 375 Q600 400 570 370 Z" fill="#28A9E8" opacity="0.6" />
+  <circle cx="585" cy="360" r="10" fill="#FFFFFF" opacity="0.9" />
+
+  <!-- Frame Overlay -->
+  <rect x="40" y="40" width="1120" height="720" fill="none" stroke="#FFFFFF" stroke-opacity="0.15" stroke-width="2" rx="16" />
+
+  <g transform="translate(70, 710)">
+    <text font-family="Inter, sans-serif" font-size="18" font-weight="600" fill="#FFFFFF" letter-spacing="3" opacity="0.95">NITTE AQUA LENS 2024 • 1ST PLACE WINNER</text>
+    <text font-family="Inter, sans-serif" font-size="14" font-weight="400" fill="#36B37E" y="24" letter-spacing="1.5">Liquid Dynamics &amp; Macro Reflection</text>
+  </g>
+</svg>

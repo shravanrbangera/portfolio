@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me | Shravan R Bangera — Creative Technologist</title>
+  <meta name="description" content="Learn more about Shravan R Bangera — MCA student at NMAMIT Nitte combining technology, visual storytelling, and media leadership.">
+  <meta name="theme-color" content="#F8FBFC">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230878C9'/><text x='16' y='22' font-family='sans-serif' font-size='18' font-weight='bold' fill='white' text-anchor='middle'>S</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="about">
+
+  <!-- Custom Magnetic Cursor -->
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true">
+    <span class="cursor-label" id="cursorLabel"></span>
+  </div>
+
+  <!-- Ambient Glowing Background Canvas -->
+  <div class="ambient-canvas" aria-hidden="true">
+    <div class="ambient-orb orb-primary"></div>
+    <div class="ambient-orb orb-secondary"></div>
+    <div class="ambient-orb orb-accent"></div>
+    <div class="ambient-grid-pattern"></div>
+    <div class="ambient-noise-layer"></div>
+  </div>
+
+  <!-- Page Transition Curtain -->
+  <div class="page-transition-curtain" id="pageTransitionCurtain" aria-hidden="true">
+    <div class="curtain-brand-mark">
+      <span class="curtain-mono">SB</span>
+      <span class="curtain-title">SHRAVAN R BANGERA</span>
+    </div>
+  </div>
+
+  <!-- Floating Glass Navigation Island -->
+  <header class="studio-header" id="studioHeader">
+    <nav class="nav-island glass-panel" aria-label="Main Navigation">
+      <a href="index.html" class="nav-brand" data-nav-link aria-label="Shravan R Bangera Home">
+        <span class="brand-monogram">SB</span>
+        <span class="brand-name">SHRAVAN R BANGERA</span>
+        <span class="brand-dot"></span>
+      </a>
+
+      <div class="nav-menu-wrapper" id="navMenuWrapper">
+        <ul class="nav-links-list">
+          <li><a href="index.html" class="nav-item" data-nav-link>Home</a></li>
+          <li><a href="story.html" class="nav-item" data-nav-link>Story</a></li>
+          <li><a href="about.html" class="nav-item active" data-nav-link>About</a></li>
+          <li><a href="journey.html" class="nav-item" data-nav-link>Journey</a></li>
+          <li><a href="work.html" class="nav-item" data-nav-link>Work</a></li>
+          <li><a href="projects.html" class="nav-item" data-nav-link>Projects</a></li>
+          <li><a href="contact.html" class="nav-item" data-nav-link>Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-cta-actions">
+        <button class="btn btn-recruiter-toggle" id="recruiterModalTrigger" data-magnetic aria-label="Open Recruiter Executive View">
+          <span class="recruiter-zap">⚡</span>
+          <span>Recruiter View</span>
+        </button>
+
+        <a href="assets/shravan-bangera-resume.html" target="_blank" rel="noopener" class="btn btn-pill-nav" data-magnetic>
+          <span>CV</span>
+          <svg class="btn-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        </a>
+
+        <button class="menu-toggle-btn" id="menuToggleBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span class="menu-line line-1"></span>
+          <span class="menu-line line-2"></span>
+          <span class="menu-line line-3"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page-content-wrapper" id="mainContent">
+
+    <section class="section inner-page-hero">
+      <div class="container">
+        
+        <div class="section-editorial-header">
+          <div class="header-tag-pill reveal-item">
+            <span class="tag-number">03</span>
+            <span class="tag-title">IDENTITY &amp; ESSENCE</span>
+          </div>
+          <h1 class="section-giant-title reveal-item" data-delay="100">More Than Just Technology.</h1>
+          <p class="section-lead-paragraph reveal-item" data-delay="200">
+            Technology is the foundation; human connection, aesthetics, and purposeful execution are the destination.
+          </p>
+        </div>
+
+        <!-- Editorial Split Layout -->
+        <div class="about-editorial-layout">
+          
+          <!-- Narrative Manifesto Card -->
+          <div class="about-manifesto-card glass-panel reveal-item" data-delay="250" data-cursor-text="STORY">
+            <div class="watermark-symbol" aria-hidden="true">MCA</div>
+            <div class="mascot-badge-pill">
+              <img src="assets/sprout-mascot.jpg" alt="Creative Sprout Companion" class="mascot-badge-img">
+              <span>Creative Digital Identity</span>
+            </div>
+            <h2 class="manifesto-lead">
+              I am an <strong>MCA student</strong> at N.M.A.M. Institute of Technology with a strong foundation in computer applications and a keen drive for technology, creative communication, media, marketing, and emerging digital tools.
+            </h2>
+            
+            <div class="manifesto-paragraphs">
+              <p>
+                My journey combines academic rigor in software development with hands-on leadership in media coordination, photography, event promotion, and team management. I believe the most impactful solutions live at the intersection of technical architecture and compelling visual storytelling.
+              </p>
+              <p>
+                Whether coordinating departmental operations with over 180 volunteers, creating visual brand campaigns, or engineering computer vision tools, I bring clarity, structure, and high aesthetic standards to everything I touch.
+              </p>
+            </div>
+
+            <div class="manifesto-tags-row">
+              <span class="pill-chip">N.M.A.M.I.T. Nitte</span>
+              <span class="pill-chip">Media Operations</span>
+              <span class="pill-chip">Creative Direction</span>
+              <span class="pill-chip">AI &amp; Applications</span>
+            </div>
+          </div>
+
+          <!-- 4 Floating Concept Pillars with Interactive Hover Dynamics -->
+          <div class="about-pillars-grid">
+            
+            <div class="pillar-card glass-panel reveal-item" data-delay="300" data-pillar-theme="tech" data-cursor-text="TECH">
+              <div class="pillar-top">
+                <span class="pillar-index">01</span>
+                <div class="pillar-icon-box cyan-glow">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                </div>
+              </div>
+              <h3 class="pillar-name">TECHNOLOGY</h3>
+              <p class="pillar-desc">
+                Building intuitive web applications, exploring deep learning models, and mastering modern software development workflows.
+              </p>
+            </div>
+
+            <div class="pillar-card glass-panel reveal-item" data-delay="350" data-pillar-theme="creative" data-cursor-text="PHOTO">
+              <div class="pillar-top">
+                <span class="pillar-index">02</span>
+                <div class="pillar-icon-box emerald-glow">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83M16.62 12l-5.74 9.94"/></svg>
+                </div>
+              </div>
+              <h3 class="pillar-name">CREATIVITY</h3>
+              <p class="pillar-desc">
+                Award-winning photography, visual framing, light composition, video reel production, and brand asset design.
+              </p>
+            </div>
+
+            <div class="pillar-card glass-panel reveal-item" data-delay="400" data-pillar-theme="lead" data-cursor-text="LEAD">
+              <div class="pillar-top">
+                <span class="pillar-index">03</span>
+                <div class="pillar-icon-box blue-glow">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+              </div>
+              <h3 class="pillar-name">LEADERSHIP</h3>
+              <p class="pillar-desc">
+                Departmental Media Head directing 180+ student volunteers, bridging faculty and coordinators, and managing campus PR.
+              </p>
+            </div>
+
+            <div class="pillar-card glass-panel reveal-item" data-delay="450" data-pillar-theme="media" data-cursor-text="MEDIA">
+              <div class="pillar-top">
+                <span class="pillar-index">04</span>
+                <div class="pillar-icon-box teal-glow">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                </div>
+              </div>
+              <h3 class="pillar-name">MEDIA</h3>
+              <p class="pillar-desc">
+                Event promotions, digital campaigns, webinar marketing (42+ registrations), and audience engagement strategies.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CORE VALUES SECTION -->
+    <section class="section values-section">
+      <div class="container">
+        
+        <div class="section-editorial-header text-center">
+          <div class="header-tag-pill reveal-item">
+            <span class="tag-number">02.1</span>
+            <span class="tag-title">PRINCIPLES</span>
+          </div>
+          <h2 class="section-giant-title reveal-item" data-delay="100">What Drives Me</h2>
+          <p class="section-lead-paragraph reveal-item" data-delay="200">
+            Four guiding principles behind every project, collaborative effort, and creative pursuit.
+          </p>
+        </div>
+
+        <div class="values-interactive-grid">
+          
+          <div class="value-feature-card glass-panel reveal-item" data-delay="150" data-cursor-text="VALUE">
+            <div class="value-glow-backdrop"></div>
+            <div class="value-icon-circle">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+            </div>
+            <span class="value-index-tag">01</span>
+            <h3 class="value-title">CURIOUS</h3>
+            <p class="value-description">
+              Always learning, exploring emerging tools, and digging into how things work beneath the surface.
+            </p>
+            <div class="value-pill-badge">Eager to Learn</div>
+          </div>
+
+          <div class="value-feature-card glass-panel reveal-item" data-delay="250" data-cursor-text="VALUE">
+            <div class="value-glow-backdrop"></div>
+            <div class="value-icon-circle">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+            </div>
+            <span class="value-index-tag">02</span>
+            <h3 class="value-title">CREATIVE</h3>
+            <p class="value-description">
+              Finding better ways to communicate ideas through visuals, storytelling, and thoughtful design.
+            </p>
+            <div class="value-pill-badge">Visual Mindset</div>
+          </div>
+
+          <div class="value-feature-card glass-panel reveal-item" data-delay="350" data-cursor-text="VALUE">
+            <div class="value-glow-backdrop"></div>
+            <div class="value-icon-circle">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <span class="value-index-tag">03</span>
+            <h3 class="value-title">CONSISTENT</h3>
+            <p class="value-description">
+              Taking ownership, maintaining quality, and following through on commitments from inception to delivery.
+            </p>
+            <div class="value-pill-badge">High Standards</div>
+          </div>
+
+          <div class="value-feature-card glass-panel reveal-item" data-delay="450" data-cursor-text="VALUE">
+            <div class="value-glow-backdrop"></div>
+            <div class="value-icon-circle">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <span class="value-index-tag">04</span>
+            <h3 class="value-title">COLLABORATIVE</h3>
+            <p class="value-description">
+              Working with diverse teams, communicating clearly, and contributing toward shared departmental goals.
+            </p>
+            <div class="value-pill-badge">Team First</div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Next Room Navigation Banner -->
+    <section class="section room-footer-nav-section">
+      <div class="container">
+        <div class="room-nav-banner glass-panel reveal-item">
+          <div class="banner-left">
+            <span class="banner-kicker">NEXT EXPERIENCE</span>
+            <h3 class="banner-heading">Journey &amp; Experience</h3>
+            <p class="banner-text">Discover my academic progression, leadership roles, and 180+ volunteer coordination.</p>
+          </div>
+          <a href="journey.html" class="btn btn-primary-glow" data-nav-link data-magnetic>
+            <span>Enter Journey Room</span>
+            <svg class="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- RECRUITER EXECUTIVE BRIEFING MODAL -->
+  <div class="modal-scrim" id="recruiterModal" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
+    <div class="recruiter-dialog glass-panel">
+      <button class="modal-close-trigger" id="recruiterCloseBtn" aria-label="Close Recruiter View" data-magnetic>&times;</button>
+      
+      <div class="recruiter-header-bar">
+        <div>
+          <span class="recruiter-kicker">⚡ 1-MINUTE EXECUTIVE BRIEFING</span>
+          <h2 class="recruiter-name">SHRAVAN R BANGERA</h2>
+          <p class="recruiter-title">MCA Student &bull; Creative Technologist &bull; Media &amp; Marketing Operations</p>
+        </div>
+        <a href="assets/shravan-bangera-resume.html" target="_blank" rel="noopener" class="btn btn-primary-glow" data-magnetic>
+          <span>Download CV (PDF)</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        </a>
+      </div>
+
+      <div class="recruiter-body-grid">
+        
+        <!-- Column 1: Core Value Proposition -->
+        <div class="recruiter-col">
+          <h3 class="recruiter-section-title">Candidate Profile</h3>
+          <p class="recruiter-summary-text">
+            MCA student at N.M.A.M. Institute of Technology with hands-on experience spanning software development, AI computer vision applications, and large-scale media operations.
+          </p>
+
+          <h3 class="recruiter-section-title" style="margin-top: 18px;">Education</h3>
+          <ul class="recruiter-quick-list">
+            <li><strong>MCA (2025–2027)</strong> — NMAMIT Nitte (Autonomous)</li>
+            <li><strong>BCA (2022–2025)</strong> — Dr. NSAM FGC (Distinction)</li>
+          </ul>
+
+          <h3 class="recruiter-section-title" style="margin-top: 18px;">Core Competencies</h3>
+          <div class="recruiter-chips">
+            <span>Java</span>
+            <span>Python</span>
+            <span>AI / Computer Vision</span>
+            <span>Web Architectures</span>
+            <span>Media Operations</span>
+            <span>180+ Volunteer Logistics</span>
+            <span>Visual Storytelling</span>
+          </div>
+        </div>
+
+        <!-- Column 2: Key Milestones & Direct Actions -->
+        <div class="recruiter-col">
+          <h3 class="recruiter-section-title">Verified Key Milestones</h3>
+          <ul class="recruiter-milestones-list">
+            <li><strong>Media Head (MCA Dept):</strong> Coordinated 180+ volunteers &amp; organized major webinar with 42+ registrations.</li>
+            <li><strong>Best Service Award (2024–2025):</strong> Conferred for excellence as Digital Committee Head at Dr. NSAM FGC.</li>
+            <li><strong>1st Place Photography:</strong> ETTIN 2025 National Fest &amp; Nitte Aqua Lens 2024.</li>
+            <li><strong>Top Project (FoodIQ):</strong> AI nutrition recognition scanner trained on 148,000+ real food images.</li>
+          </ul>
+
+          <h3 class="recruiter-section-title" style="margin-top: 18px;">Direct Placement Contacts</h3>
+          <div class="recruiter-contact-strip">
+            <a href="mailto:shravanrbangera@gmail.com" class="rec-contact-item">📧 shravanrbangera@gmail.com</a>
+            <a href="tel:+919964429300" class="rec-contact-item">📱 +91 9964429300</a>
+            <a href="https://linkedin.com/in/shravanrbangera" target="_blank" rel="noopener" class="rec-contact-item">🔗 linkedin.com/in/shravanrbangera</a>
+            <a href="https://github.com/shravanrbangera" target="_blank" rel="noopener" class="rec-contact-item">💻 github.com/shravanrbangera</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="studio-footer">
+    <div class="container footer-content-wrap">
+      <div class="footer-left-brand">
+        <a href="index.html" class="footer-logo" data-nav-link>SHRAVAN R BANGERA</a>
+        <p class="footer-identity-tag">MCA Student &bull; Creative Technologist &bull; Media &amp; Marketing Enthusiast</p>
+      </div>
+
+      <div class="footer-right-cluster">
+        <div class="footer-nav-links">
+          <a href="index.html" data-nav-link>Home</a>
+          <a href="story.html" data-nav-link>Story</a>
+          <a href="about.html" data-nav-link>About</a>
+          <a href="journey.html" data-nav-link>Journey</a>
+          <a href="work.html" data-nav-link>Creative</a>
+          <a href="projects.html" data-nav-link>Projects</a>
+          <a href="achievements.html" data-nav-link>Milestones</a>
+          <a href="certifications.html" data-nav-link>Credentials</a>
+          <a href="contact.html" data-nav-link>Contact</a>
+        </div>
+        <p class="footer-copyright">&copy; 2026 Shravan R Bangera. Built with craft, curiosity &amp; code.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive Floating Mascot Companion -->
+  <aside class="cloud-mascot-companion" id="cloudMascot" aria-label="Digital Studio Mascot">
+    <div class="mascot-speech-bubble" id="mascotBubble">
+      <span class="bubble-text">Hi! I'm Shravan's creative companion 🍀</span>
+    </div>
+    <button class="mascot-avatar-btn" id="mascotAvatarBtn" aria-label="Interact with Creative Sprout Mascot">
+      <img src="assets/sprout-mascot.jpg" alt="Creative Sprout Mascot" class="mascot-img">
+      <span class="mascot-sparkle">🍀</span>
+    </button>
+  </aside>
+
+  <script src="script.js"></script>
+</body>
+</html>

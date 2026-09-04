@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <linearGradient id="archGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F7FBFC" />
+      <stop offset="40%" stop-color="#E2F1F8" />
+      <stop offset="80%" stop-color="#C2E4F4" />
+      <stop offset="100%" stop-color="#1264A3" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#archGrad)" />
+
+  <!-- Vanishing Point Geometry -->
+  <g stroke="#1264A3" stroke-opacity="0.25" stroke-width="2" fill="none">
+    <line x1="600" y1="350" x2="0" y2="0" />
+    <line x1="600" y1="350" x2="1200" y2="0" />
+    <line x1="600" y1="350" x2="0" y2="800" />
+    <line x1="600" y1="350" x2="1200" y2="800" />
+  </g>
+
+  <!-- Modern Glass Campus Facade Shapes -->
+  <polygon points="200,800 450,400 550,400 350,800" fill="#1264A3" opacity="0.8" />
+  <polygon points="1000,800 750,400 650,400 850,800" fill="#18AFA0" opacity="0.75" />
+  <polygon points="450,400 600,200 750,400" fill="#28A9E8" opacity="0.6" />
+
+  <circle cx="600" cy="350" r="12" fill="#FFFFFF" />
+  <circle cx="600" cy="350" r="28" fill="none" stroke="#FFFFFF" stroke-width="3" opacity="0.8" />
+
+  <rect x="40" y="40" width="1120" height="720" fill="none" stroke="#0B1726" stroke-opacity="0.1" stroke-width="2" rx="16" />
+
+  <g transform="translate(70, 710)">
+    <text font-family="Inter, sans-serif" font-size="18" font-weight="600" fill="#0B1726" letter-spacing="3" opacity="0.9">PERSPECTIVE &amp; GEOMETRY</text>
+    <text font-family="Inter, sans-serif" font-size="14" font-weight="400" fill="#1264A3" y="24" letter-spacing="1.5">Campus Architectural Symmetry</text>
+  </g>
+</svg>

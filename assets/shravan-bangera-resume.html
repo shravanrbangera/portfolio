@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shravan R Bangera - Resume</title>
+  <style>
+    :root {
+      --primary: #1264A3;
+      --dark: #0B1726;
+      --text: #334155;
+      --light: #F7FBFC;
+      --border: #E2E8F0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background: var(--light);
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+    .resume-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #FFFFFF;
+      padding: 48px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+    }
+    .header {
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .name { font-size: 32px; font-weight: 800; color: var(--dark); letter-spacing: -0.02em; }
+    .title { font-size: 16px; font-weight: 600; color: var(--primary); margin-top: 4px; }
+    .contact-info { font-size: 14px; color: #64748B; text-align: right; }
+    .section { margin-bottom: 28px; }
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--dark);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+      margin-bottom: 16px;
+    }
+    .item { margin-bottom: 16px; }
+    .item-header { display: flex; justify-content: space-between; font-weight: 700; color: var(--dark); }
+    .item-sub { font-weight: 600; color: var(--primary); font-size: 14px; margin-bottom: 6px; }
+    .item-desc { font-size: 14px; color: #475569; }
+    ul { padding-left: 20px; margin-top: 6px; }
+    li { margin-bottom: 4px; font-size: 14px; }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+    .skill-card { background: #F8FAFC; padding: 12px; border-radius: 8px; border: 1px solid var(--border); }
+    .skill-card h4 { font-size: 13px; color: var(--primary); margin-bottom: 4px; text-transform: uppercase; }
+    .skill-card p { font-size: 13px; color: var(--dark); }
+    .print-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(18,100,163,0.4);
+    }
+    @media print {
+      .print-btn { display: none; }
+      body { padding: 0; background: white; }
+      .resume-container { box-shadow: none; border: none; padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume-container">
+    <div class="header">
+      <div>
+        <h1 class="name">SHRAVAN R BANGERA</h1>
+        <p class="title">MCA Student | Creative Technologist | Media & Marketing Enthusiast</p>
+      </div>
+      <div class="contact-info">
+        <p>shravanrbangera@gmail.com</p>
+        <p>+91 9964429300</p>
+        <p>Udupi, Karnataka, India</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Education</h2>
+      <div class="item">
+        <div class="item-header">
+          <span>Master of Computer Applications (MCA)</span>
+          <span>2025 — 2027</span>
+        </div>
+        <div class="item-sub">N.M.A.M. Institute of Technology, Nitte</div>
+      </div>
+      <div class="item">
+        <div class="item-header">
+          <span>Bachelor of Computer Applications (BCA)</span>
+          <span>2022 — 2025</span>
+        </div>
+        <div class="item-sub">Dr. NSAM First Grade College, Nitte</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Experience &amp; Leadership</h2>
+      <div class="item">
+        <div class="item-header">
+          <span>Media Head &amp; Marketing Operations</span>
+          <span>2025 — Present</span>
+        </div>
+        <div class="item-sub">MCA Department, NMAMIT Nitte</div>
+        <ul>
+          <li>Coordinated logistics and media operations with 180+ student volunteers across departmental programs.</li>
+          <li>Managed departmental media pages and produced high-engagement promotional content.</li>
+          <li>Organized and promoted departmental webinars, achieving 42+ verified registrations.</li>
+          <li>Facilitated seamless communication between faculty, event coordinators, and student teams.</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <span>Media Team Member &amp; Event Coordinator</span>
+          <span>2022 — 2025</span>
+        </div>
+        <div class="item-sub">Dr. NSAM First Grade College, Nitte</div>
+        <ul>
+          <li>Managed media coverage and promotional content for major college fests and committees.</li>
+          <li>Produced promotional posts, reels, and official event photography.</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <span>Student Trainee</span>
+          <span>2024</span>
+        </div>
+        <div class="item-sub">Zephyr Technologies and Solutions Pvt. Ltd.</div>
+        <ul>
+          <li>Completed hands-on software development training and project implementation fundamentals.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Awards &amp; Recognition</h2>
+      <div class="item">
+        <ul>
+          <li><strong>1st Place - Photography</strong>: ETTIN 2025 National-Level Fest</li>
+          <li><strong>1st Place - Photography</strong>: Nitte Aqua Lens 2024 Competition</li>
+          <li><strong>2nd Place - Photography &amp; Reel Making</strong>: AGON 2024 Fest</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Projects</h2>
+      <div class="item">
+        <div class="item-header">FoodIQ — AI Nutrition Scanner</div>
+        <div class="item-desc">Computer vision application that identifies dishes from photos and provides instant nutritional metrics (calories, carbs, protein, health score).</div>
+      </div>
+      <div class="item">
+        <div class="item-header">Photo Studio Management System</div>
+        <div class="item-desc">Integrated scheduling and client record platform designed to prevent double bookings, manage client billing, and organize media assets.</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Skills &amp; Certifications</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h4>Technology</h4>
+          <p>C, Python, Java, Data Structures, OOP, SDLC, Basic UI/UX</p>
+        </div>
+        <div class="skill-card">
+          <h4>Creative</h4>
+          <p>Photography, Photoshop, Canva, DaVinci Resolve, Lightroom, Blender</p>
+        </div>
+        <div class="skill-card">
+          <h4>Marketing &amp; Ops</h4>
+          <p>Campaign Coordination, Event Planning, Social Media Promotion, Records Management</p>
+        </div>
+        <div class="skill-card">
+          <h4>Certifications</h4>
+          <p>Azure AI Challenge (Microsoft), Cybersecurity Fundamentals (ICT Academy), Android Dev (Dr. NSAM FGC)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="print-btn" onclick="window.print()">Print / Save PDF</button>
+</body>
+</html>
