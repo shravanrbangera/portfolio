@@ -1018,27 +1018,36 @@
   }
 
   // --------------------------------------------------------------------------
-  // 17. INTERACTIVE CLOUD MASCOT COMPANION
+  // 17. SPROUTBOT AI CHATBOT & SMART PROFILE NAVIGATOR
   // --------------------------------------------------------------------------
   function initCloudMascot() {
     const mascotBtn = document.getElementById('mascotAvatarBtn');
     const speechBubble = document.getElementById('mascotBubble');
-    if (!mascotBtn || !speechBubble) return;
+    const chatPanel = document.getElementById('mascotChatPanel');
+    const chatCloseBtn = document.getElementById('chatCloseBtn');
+    const chatResetBtn = document.getElementById('chatResetBtn');
+    const chatInputForm = document.getElementById('chatInputForm');
+    const chatInputText = document.getElementById('chatInputText');
+    const chatMessagesContainer = document.getElementById('chatMessagesContainer');
+    const chatQuickChips = document.getElementById('chatQuickChips');
 
+    if (!mascotBtn) return;
+
+    // Speech bubble prompts
     const quotes = [
-      "Hi! I'm Shravan's creative companion 🍀",
-      "MCA Student & Creative Technologist! 🌱",
-      "Led 180+ student volunteers as Media Head! 📢",
-      "Won 1st Place at ETTIN '25 & Aqua Lens '24! 🥇",
-      "Check out the FoodIQ AI neural macro chart in Projects! 🥗",
-      "Need an executive brief? Click Recruiter View ⚡",
-      "Let's build something beautiful and intelligent together! 🌿"
+      "Hi! I'm SproutBot 🤖 Search my work or ask me anything!",
+      "Ask me: 'Show me projects' or 'What awards has he won?' 🚀",
+      "I can navigate you anywhere across Shravan's portfolio! ✨",
+      "Looking for FoodIQ AI or PSMS? Just type it here! 🥗",
+      "180+ student volunteers led as Media Head! 📢",
+      "Want Shravan's resume? Ask me or click CV! 📄"
     ];
 
     let quoteIndex = 0;
     let hideTimeout = null;
 
     const showQuote = (text) => {
+      if (!speechBubble || chatPanel?.classList.contains('active')) return;
       speechBubble.innerHTML = `<span class="bubble-text">${text}</span>`;
       speechBubble.style.display = 'block';
       speechBubble.style.opacity = '1';
@@ -1053,22 +1062,470 @@
             speechBubble.style.display = 'none';
           }
         }, 350);
-      }, 5000);
+      }, 5500);
     };
 
-    mascotBtn.addEventListener('click', () => {
+    // Toggle Chat Panel
+    const openChat = () => {
+      if (chatPanel) {
+        chatPanel.classList.add('active');
+        chatPanel.setAttribute('aria-hidden', 'false');
+        if (speechBubble) speechBubble.style.display = 'none';
+        if (chatMessagesContainer && chatMessagesContainer.children.length === 0) {
+          renderWelcomeMessage();
+        }
+        if (chatInputText) {
+          setTimeout(() => chatInputText.focus(), 250);
+        }
+      }
+    };
+
+    const closeChat = () => {
+      if (chatPanel) {
+        chatPanel.classList.remove('active');
+        chatPanel.setAttribute('aria-hidden', 'true');
+      }
+    };
+
+    mascotBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
       mascotBtn.classList.remove('bounce');
-      void mascotBtn.offsetWidth; // Reflow
+      void mascotBtn.offsetWidth;
       mascotBtn.classList.add('bounce');
 
-      quoteIndex = (quoteIndex + 1) % quotes.length;
-      showQuote(quotes[quoteIndex]);
+      if (chatPanel?.classList.contains('active')) {
+        closeChat();
+      } else {
+        openChat();
+      }
     });
 
-    // Initial greeting after 2s
+    if (speechBubble) {
+      speechBubble.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openChat();
+      });
+    }
+
+    if (chatCloseBtn) {
+      chatCloseBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeChat();
+      });
+    }
+
+    if (chatResetBtn) {
+      chatResetBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (chatMessagesContainer) {
+          chatMessagesContainer.innerHTML = '';
+          renderWelcomeMessage();
+        }
+      });
+    }
+
+    // Close on Escape or click outside
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && chatPanel?.classList.contains('active')) {
+        closeChat();
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (chatPanel?.classList.contains('active') && !chatPanel.contains(e.target) && !mascotBtn.contains(e.target) && !speechBubble?.contains(e.target)) {
+        closeChat();
+      }
+    });
+
+    // Initial greeting bubble
     setTimeout(() => {
-      showQuote("Welcome to Shravan's digital studio! 🍀✨");
-    }, 2000);
+      showQuote("Hi! I'm SproutBot 🤖 Ask me anything or search my work!");
+    }, 1800);
+
+    // Render Welcome Message
+    const renderWelcomeMessage = () => {
+      if (!chatMessagesContainer) return;
+      appendBotMessage({
+        text: "👋 **Hello! I'm SproutBot**, Shravan's intelligent digital companion and profile guide. I can answer questions and instantly navigate you to any section of his portfolio!",
+        actionTitle: "Popular Quick Actions",
+        actionDesc: "Tap any topic or type your query below to explore:",
+        actions: [
+          { label: "🚀 FoodIQ & Projects", targetUrl: "projects.html", targetId: "#scannerStage" },
+          { label: "🏆 Awards & Honors", targetUrl: "journey.html", targetId: "#achievementMuseumGrid" },
+          { label: "📸 Photography Gallery", targetUrl: "journey.html", targetId: "#editorialGallery" },
+          { label: "📄 Download Resume (PDF)", type: "download" },
+          { label: "⚡ Recruiter 1-Min Brief", type: "recruiter" }
+        ]
+      });
+    };
+
+    // Append Messages Helper
+    const appendUserMessage = (text) => {
+      const msg = document.createElement('div');
+      msg.className = 'chat-msg user';
+      msg.innerHTML = `
+        <div class="msg-bubble">${escapeHtml(text)}</div>
+        <div class="chat-msg-user-avatar">YOU</div>
+      `;
+      chatMessagesContainer.appendChild(msg);
+      chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+    };
+
+    const showTypingIndicator = () => {
+      const typingEl = document.createElement('div');
+      typingEl.className = 'chat-msg bot typing-msg';
+      typingEl.id = 'sproutTypingIndicator';
+      typingEl.innerHTML = `
+        <img src="assets/sprout-mascot.jpg" alt="SproutBot" class="chat-msg-avatar">
+        <div class="msg-bubble">
+          <div class="typing-indicator">
+            <span class="typing-dot"></span>
+            <span class="typing-dot"></span>
+            <span class="typing-dot"></span>
+          </div>
+        </div>
+      `;
+      chatMessagesContainer.appendChild(typingEl);
+      chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+      return typingEl;
+    };
+
+    const removeTypingIndicator = () => {
+      const el = document.getElementById('sproutTypingIndicator');
+      if (el) el.remove();
+    };
+
+    const appendBotMessage = (data) => {
+      removeTypingIndicator();
+      const msg = document.createElement('div');
+      msg.className = 'chat-msg bot';
+      
+      let formattedText = formatMarkdown(data.text);
+      let actionsHtml = '';
+
+      if (data.actions && data.actions.length > 0) {
+        actionsHtml = `
+          <div class="chat-action-card">
+            ${data.actionTitle ? `<div class="chat-action-card-title">${data.actionTitle}</div>` : ''}
+            ${data.actionDesc ? `<div class="chat-action-card-desc">${data.actionDesc}</div>` : ''}
+            <div style="display: flex; flex-direction: column; gap: 5px; margin-top: 4px;">
+              ${data.actions.map(act => `
+                <button 
+                  class="chat-nav-action-btn" 
+                  data-action-type="${act.type || 'nav'}" 
+                  data-target-url="${act.targetUrl || ''}" 
+                  data-target-id="${act.targetId || ''}"
+                >
+                  ${act.label} &rarr;
+                </button>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      msg.innerHTML = `
+        <img src="assets/sprout-mascot.jpg" alt="SproutBot" class="chat-msg-avatar">
+        <div class="msg-bubble">
+          ${formattedText}
+          ${actionsHtml}
+        </div>
+      `;
+
+      chatMessagesContainer.appendChild(msg);
+      chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+
+      // Attach click events to action buttons inside the message
+      const actionBtns = msg.querySelectorAll('.chat-nav-action-btn');
+      actionBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const type = btn.getAttribute('data-action-type');
+          const targetUrl = btn.getAttribute('data-target-url');
+          const targetId = btn.getAttribute('data-target-id');
+          handleSmartAction(type, targetUrl, targetId);
+        });
+      });
+    };
+
+    // Smart Action & Deep Link Execution
+    const handleSmartAction = async (type, targetUrl, targetId) => {
+      if (type === 'download') {
+        const a = document.createElement('a');
+        a.href = 'assets/SHRAVAN_RESUME.pdf';
+        a.download = 'SHRAVAN_RESUME.pdf';
+        a.target = '_blank';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        closeChat();
+        return;
+      }
+
+      if (type === 'recruiter') {
+        closeChat();
+        const recModal = document.getElementById('recruiterModal');
+        if (recModal) {
+          recModal.classList.add('active');
+          recModal.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+        }
+        return;
+      }
+
+      if (type === 'nav' && targetUrl) {
+        closeChat();
+        const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+        const targetPath = targetUrl.split('/').pop() || 'index.html';
+
+        if (currentPath === targetPath) {
+          if (targetId) {
+            scrollToTarget(targetId);
+          } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        } else {
+          await navigateRoom(targetUrl);
+          if (targetId) {
+            setTimeout(() => scrollToTarget(targetId), 450);
+          }
+        }
+      }
+    };
+
+    const scrollToTarget = (selector) => {
+      const el = document.querySelector(selector);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        el.classList.remove('pulse-highlight');
+        void el.offsetWidth;
+        el.classList.add('pulse-highlight');
+        setTimeout(() => el.classList.remove('pulse-highlight'), 3600);
+      }
+    };
+
+    // Query Processor & NLP Knowledge Engine
+    const processUserQuery = (query) => {
+      const q = query.toLowerCase().trim();
+      if (!q) return;
+
+      appendUserMessage(query);
+      showTypingIndicator();
+
+      setTimeout(() => {
+        const responseData = generateBotResponse(q);
+        appendBotMessage(responseData);
+      }, 350);
+    };
+
+    const generateBotResponse = (q) => {
+      // Intent 1: Projects / FoodIQ / PSMS / MERN Stack
+      if (q.includes('project') || q.includes('foodiq') || q.includes('food') || q.includes('psms') || q.includes('studio') || q.includes('app') || q.includes('system') || q.includes('build')) {
+        if (q.includes('foodiq') || q.includes('nutrition') || q.includes('diet') || q.includes('health') || q.includes('usda') || q.includes('scanner')) {
+          return {
+            text: "🥗 **FoodIQ — AI-Powered Food & Nutrition Recognition System**\n• Full-stack platform built with **React** & **Node.js/Express**.\n• Deep learning image recognition trained on **148,000+ food items** (Indian cuisine, fruits, vegetables, global dishes).\n• Synchronized with the **USDA database** to compute live calories, protein, carbs, fats, and a 0–100 health score.",
+            actionTitle: "FoodIQ Actions",
+            actionDesc: "Would you like to test the live simulator?",
+            actions: [
+              { label: "🥗 Test FoodIQ Scanner Simulator", targetUrl: "projects.html", targetId: "#scannerStage" },
+              { label: "🚀 View All Projects", targetUrl: "projects.html", targetId: ".section-editorial-header" }
+            ]
+          };
+        }
+
+        if (q.includes('psms') || q.includes('studio') || q.includes('photo studio')) {
+          return {
+            text: "📷 **Photo Studio Management System (PSMS)**\n• Complete platform integrating appointment scheduling, client database management, automated invoicing, and digital asset organization.\n• Eliminates double-bookings and streamlines photography operations.",
+            actionTitle: "PSMS Actions",
+            actions: [
+              { label: "📷 View PSMS Details in Projects Room", targetUrl: "projects.html", targetId: ".foodiq-showcase-card:nth-of-type(2)" }
+            ]
+          };
+        }
+
+        return {
+          text: "🚀 **Shravan's Featured Software Projects:**\n1. **FoodIQ**: AI food & nutrition vision scanner (React, Node.js, 148k+ dataset, USDA API).\n2. **PSMS**: Photo Studio Management platform (scheduling, billing, assets).\n3. **MERN Stack & AI Workflows**.",
+          actionTitle: "Explore Projects",
+          actions: [
+            { label: "🚀 Open Projects & AI Lab", targetUrl: "projects.html", targetId: ".section-editorial-header" },
+            { label: "🥗 Try FoodIQ Simulator", targetUrl: "projects.html", targetId: "#scannerStage" }
+          ]
+        };
+      }
+
+      // Intent 2: Awards / Achievements / Honours / Competitions
+      if (q.includes('award') || q.includes('achieve') || q.includes('honour') || q.includes('honor') || q.includes('ettin') || q.includes('aqua') || q.includes('agon') || q.includes('win') || q.includes('prize') || q.includes('troph')) {
+        return {
+          text: "🏆 **Shravan's Verified Awards & Honors:**\n• 🥇 **1st Place – Photography**: *ETTIN 2025* (National-Level Fest, JKSHIM Nitte)\n• 🥇 **1st Place**: *Nitte Aqua Lens 2024* Photography Competition (SDG Cell, Nitte University)\n• 🥈 **2nd Place – Photography & Reel Making**: *AGON 2024* (ALVA’S AIET, Mijar)\n• 🎖️ **Media Headship**: Directing 180+ volunteers across 5+ departmental programs.",
+          actionTitle: "Awards Actions",
+          actions: [
+            { label: "🏆 View Achievements Museum on Journey Page", targetUrl: "journey.html", targetId: "#achievementMuseumGrid" },
+            { label: "🥇 View ETTIN '25 National Win Spotlight", targetUrl: "journey.html", targetId: ".story-spotlight-card" }
+          ]
+        };
+      }
+
+      // Intent 3: Photography / Creative Work / Camera / Reels
+      if (q.includes('photo') || q.includes('camera') || q.includes('creative') || q.includes('gallery') || q.includes('work') || q.includes('reel') || q.includes('art') || q.includes('shoot')) {
+        return {
+          text: "📸 **Creative Photography & Visual Storytelling:**\nShravan combines photographic composition, golden hour light, and macro water droplet optics with modern UI design principles. He has won multiple 1st-place national and university titles!",
+          actionTitle: "Gallery Actions",
+          actions: [
+            { label: "📸 Open Photography Gallery with Lightbox", targetUrl: "journey.html", targetId: "#editorialGallery" },
+            { label: "🥇 See Award-Winning Captures", targetUrl: "journey.html", targetId: "#achievementMuseumGrid" }
+          ]
+        };
+      }
+
+      // Intent 4: Leadership / Media Head / Volunteers / Events
+      if (q.includes('leader') || q.includes('media') || q.includes('volunteer') || q.includes('event') || q.includes('team') || q.includes('head') || q.includes('manage') || q.includes('coordinat') || q.includes('pr')) {
+        return {
+          text: "📢 **Leadership & Event Operations:**\n• **Media Head (MCA Dept, NMAMIT)**: Coordinated logistics and media coverage across **5+ department programs** with **180+ student volunteers**; published 15+ promotional posts.\n• **BCA Media Team**: Grew post engagement by **87%** and reduced documentation time by **50%** using AI tools.",
+          actionTitle: "Leadership Actions",
+          actions: [
+            { label: "📢 View Volunteer Scaling & Impact Chart", targetUrl: "journey.html", targetId: "#impactMetrics" },
+            { label: "🌱 Read Leadership Evolution Pathway", targetUrl: "journey.html", targetId: ".evolution-track" }
+          ]
+        };
+      }
+
+      // Intent 5: Internship / Experience / Zephyr
+      if (q.includes('intern') || q.includes('zephyr') || q.includes('experience') || q.includes('job') || q.includes('trainee') || q.includes('work history')) {
+        return {
+          text: "💼 **Industry Internship Experience:**\n• **Zephyr Technologies & Solutions Pvt. Ltd.** (Jun 2024 – Jul 2024)\n• Role: **Student Trainee (MERN Stack Projects)**\n• Prepared and maintained technical documentation, API workflows, and structured development tasks in a professional software environment.",
+          actionTitle: "Experience Actions",
+          actions: [
+            { label: "💼 View Internship on Timeline", targetUrl: "journey.html", targetId: ".timeline-container" },
+            { label: "📄 Download Full Verified CV (PDF)", type: "download" }
+          ]
+        };
+      }
+
+      // Intent 6: Education / MCA / BCA / Degree / University
+      if (q.includes('edu') || q.includes('mca') || q.includes('bca') || q.includes('degree') || q.includes('college') || q.includes('nitte') || q.includes('nmamit') || q.includes('nsam') || q.includes('study')) {
+        return {
+          text: "🎓 **Academic Background:**\n• **Master of Computer Applications (MCA, 2025–2027)** — N.M.A.M. Institute of Technology, Nitte, Karnataka (Autonomous).\n• **Bachelor of Computer Applications (BCA, 2022–2025)** — Dr. NSAM First Grade College, Nitte (Graduated with Distinction).",
+          actionTitle: "Education Actions",
+          actions: [
+            { label: "🎓 View Academic Timeline on Journey Page", targetUrl: "journey.html", targetId: ".timeline-container" },
+            { label: "🌿 Read Academic Manifesto", targetUrl: "about.html", targetId: ".about-manifesto-card" }
+          ]
+        };
+      }
+
+      // Intent 7: Skills / Tech Stack / Tools / Languages / Certifications
+      if (q.includes('skill') || q.includes('tech') || q.includes('stack') || q.includes('tool') || q.includes('python') || q.includes('react') || q.includes('node') || q.includes('sql') || q.includes('git') || q.includes('certif') || q.includes('azure') || q.includes('cyber') || q.includes('android') || q.includes('language') || q.includes('japanese')) {
+        return {
+          text: "🛠️ **Technical Skillset & Certifications:**\n• **Languages & Web**: Python, MERN Stack (React, Node.js, Express), HTML5/CSS3, SQL, Git, Vercel.\n• **AI/ML**: Deep Learning Image Recognition, Prompt Engineering, USDA API.\n• **Certifications**: Microsoft Azure AI Challenge, Cyber Security (ICT Academy), Android App Dev (NSAM FGC).\n• **Languages**: English (Fluent), Kannada (Native), Hindi (Professional), Japanese (Beginner).",
+          actionTitle: "Skills Actions",
+          actions: [
+            { label: "🛠️ View Credentials & Languages on About Page", targetUrl: "about.html", targetId: ".credentials-cards-grid" },
+            { label: "🥗 See Skills Applied in FoodIQ", targetUrl: "projects.html", targetId: "#scannerStage" }
+          ]
+        };
+      }
+
+      // Intent 8: Resume / CV / Download / PDF
+      if (q.includes('resume') || q.includes('cv') || q.includes('download') || q.includes('pdf')) {
+        return {
+          text: "📄 **Download Shravan's Official Resume:**\nYou can download the latest official PDF resume directly with all verified full-stack, AI, leadership, and academic details.",
+          actionTitle: "Resume Actions",
+          actions: [
+            { label: "📄 Download Official Resume (PDF)", type: "download" },
+            { label: "⚡ Open 1-Minute Recruiter Brief", type: "recruiter" }
+          ]
+        };
+      }
+
+      // Intent 9: Contact / Email / Phone / Location / Hire / LinkedIn / GitHub
+      if (q.includes('contact') || q.includes('email') || q.includes('phone') || q.includes('whatsapp') || q.includes('hire') || q.includes('reach') || q.includes('linkedin') || q.includes('github') || q.includes('message') || q.includes('connect')) {
+        return {
+          text: "📬 **Get in Touch with Shravan:**\n• 📧 **Email**: shravanrbangera@gmail.com\n• 📱 **Phone**: +91 9964429300\n• 📍 **Location**: Udupi, Karnataka, India\n• 🔗 **LinkedIn**: [linkedin.com/in/shravan-r-bangera-7bb053246](https://www.linkedin.com/in/shravan-r-bangera-7bb053246)\n• 💻 **GitHub**: [github.com/shravanrbangera](https://github.com/shravanrbangera)",
+          actionTitle: "Contact Actions",
+          actions: [
+            { label: "📧 Go to Direct Message Form", targetUrl: "about.html", targetId: "#contactForm" },
+            { label: "📄 Download Resume (PDF)", type: "download" }
+          ]
+        };
+      }
+
+      // Intent 10: Recruiter / Brief / Summary
+      if (q.includes('recruiter') || q.includes('brief') || q.includes('summary') || q.includes('executive') || q.includes('overview') || q.includes('1 minute')) {
+        return {
+          text: "⚡ **1-Minute Executive Briefing:**\nShravan is an MCA student at NMAMIT Nitte specializing in full-stack web development (React, Node.js), AI application development, and 180+ volunteer media leadership.",
+          actionTitle: "Executive View",
+          actions: [
+            { label: "⚡ Launch Recruiter Briefing Modal", type: "recruiter" },
+            { label: "📄 Download Verified CV (PDF)", type: "download" }
+          ]
+        };
+      }
+
+      // Intent 11: Story / About / Who is Shravan
+      if (q.includes('story') || q.includes('about') || q.includes('who') || q.includes('intro') || q.includes('bio') || q.includes('manifesto')) {
+        return {
+          text: "🌿 **About Shravan R Bangera:**\nAn MCA postgraduate student at NMAMIT Nitte who bridges software engineering with visual storytelling, deep learning vision systems, and large-scale media operations.",
+          actionTitle: "Explore Profile",
+          actions: [
+            { label: "🌿 Read About Manifesto & 4 Pillars", targetUrl: "about.html", targetId: ".about-manifesto-card" },
+            { label: "🌱 Read Formative Story on Journey Page", targetUrl: "journey.html", targetId: ".story-spotlight-card" }
+          ]
+        };
+      }
+
+      // Smart Fallback Search
+      return {
+        text: `🔍 I searched for **"${escapeHtml(q)}"** across Shravan's portfolio! Here are the best sections to explore based on your search:`,
+        actionTitle: "Matched Destinations",
+        actions: [
+          { label: "🚀 Projects & AI Lab", targetUrl: "projects.html", targetId: ".section-editorial-header" },
+          { label: "🏆 Journey & Awards", targetUrl: "journey.html", targetId: "#achievementMuseumGrid" },
+          { label: "🌿 About & Contact", targetUrl: "about.html", targetId: ".about-manifesto-card" },
+          { label: "📄 Download Resume (PDF)", type: "download" }
+        ]
+      };
+    };
+
+    // Quick Chips Click Event
+    if (chatQuickChips) {
+      const chipBtns = chatQuickChips.querySelectorAll('.chat-chip-btn');
+      chipBtns.forEach(chip => {
+        chip.addEventListener('click', () => {
+          const query = chip.getAttribute('data-query') || chip.textContent;
+          processUserQuery(query);
+        });
+      });
+    }
+
+    // Chat Input Form Submit Event
+    if (chatInputForm && chatInputText) {
+      chatInputForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const query = chatInputText.value.trim();
+        if (!query) return;
+        chatInputText.value = '';
+        processUserQuery(query);
+      });
+    }
+
+    // Helper Markdown & HTML formatters
+    function escapeHtml(str) {
+      return str.replace(/[&<>'"]/g, tag => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        "'": '&#39;',
+        '"': '&quot;'
+      }[tag] || tag));
+    }
+
+    function formatMarkdown(text) {
+      return text
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+        .replace(/\n/g, '<br>')
+        .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener" style="color: var(--sage-primary); font-weight: 700; text-decoration: underline;">$1</a>');
+    }
   }
 
 })();

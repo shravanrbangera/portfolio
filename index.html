@@ -391,15 +391,65 @@
     </div>
   </footer>
 
-  <!-- Interactive Floating Cloud Mascot Companion -->
-  <aside class="cloud-mascot-companion" id="cloudMascot" aria-label="Digital Studio Mascot">
-    <div class="mascot-speech-bubble" id="mascotBubble">
-      <span class="bubble-text">Hi! I'm Shravan's creative companion ☁️</span>
+  <!-- Interactive Smart AI Robot Companion & Profile Navigator -->
+  <aside class="cloud-mascot-companion" id="cloudMascot" aria-label="Smart AI Profile Navigator">
+    <div class="mascot-speech-bubble" id="mascotBubble" role="status">
+      <span class="bubble-text">Hi! I'm SproutBot 🤖 Ask me anything or search my work!</span>
     </div>
-    <button class="mascot-avatar-btn" id="mascotAvatarBtn" aria-label="Interact with Creative Sprout Mascot">
-      <img src="assets/sprout-mascot.jpg" alt="Creative Sprout Mascot" class="mascot-img">
-      <span class="mascot-sparkle">🍀</span>
+    <button class="mascot-avatar-btn" id="mascotAvatarBtn" aria-label="Open SproutBot AI Profile Navigator" data-magnetic>
+      <img src="assets/sprout-mascot.jpg" alt="SproutBot AI Navigator" class="mascot-img">
+      <span class="mascot-sparkle">✨</span>
+      <span class="mascot-badge-online"></span>
     </button>
+
+    <!-- Smart AI Chatbot Interactive Modal Panel -->
+    <div class="mascot-chat-panel glass-panel" id="mascotChatPanel" aria-hidden="true" role="dialog" aria-label="SproutBot AI Assistant">
+      <div class="chat-panel-header">
+        <div class="chat-header-info">
+          <div class="chat-avatar-frame">
+            <img src="assets/sprout-mascot.jpg" alt="SproutBot" class="chat-avatar-mini">
+            <span class="avatar-live-dot"></span>
+          </div>
+          <div>
+            <div class="chat-bot-title">SproutBot AI <span class="bot-badge">SMART GUIDE</span></div>
+            <div class="chat-bot-status">Trained on Shravan's Full Profile</div>
+          </div>
+        </div>
+        <div class="chat-header-actions">
+          <button class="chat-icon-btn" id="chatResetBtn" title="Clear Conversation" aria-label="Clear Conversation">🔄</button>
+          <button class="chat-icon-btn" id="chatCloseBtn" title="Close Chat" aria-label="Close Chat">&times;</button>
+        </div>
+      </div>
+
+      <div class="chat-quick-chips-bar" id="chatQuickChips">
+        <button class="chat-chip-btn" data-query="projects">🚀 Projects</button>
+        <button class="chat-chip-btn" data-query="foodiq">🥗 FoodIQ AI</button>
+        <button class="chat-chip-btn" data-query="awards">🏆 Awards</button>
+        <button class="chat-chip-btn" data-query="photography">📸 Photography</button>
+        <button class="chat-chip-btn" data-query="leadership">📢 180+ Volunteers</button>
+        <button class="chat-chip-btn" data-query="skills">🛠️ Skills</button>
+        <button class="chat-chip-btn" data-query="resume">📄 Resume</button>
+        <button class="chat-chip-btn" data-query="contact">📧 Contact</button>
+      </div>
+
+      <div class="chat-messages-container" id="chatMessagesContainer" role="log" aria-live="polite"></div>
+
+      <form class="chat-input-wrapper" id="chatInputForm" autocomplete="off">
+        <input 
+          type="text" 
+          id="chatInputText" 
+          class="chat-input-field" 
+          placeholder="Ask me anything (e.g. FoodIQ, awards, skills)..." 
+          aria-label="Ask SproutBot AI"
+        >
+        <button type="submit" class="chat-send-btn" id="chatSendBtn" aria-label="Send query">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </form>
+    </div>
   </aside>
 
   <!-- Script -->
