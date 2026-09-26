@@ -36,26 +36,65 @@
   // --------------------------------------------------------------------------
   function initSeamlessTransitions() {
     document.addEventListener('click', (e) => {
-      const link = e.target.closest('a[data-nav-link], a.portal-room-card, .room-nav-banner a');
+      const link = e.target.closest('a');
       if (!link) return;
 
       const href = link.getAttribute('href');
-      // Only intercept internal html links (not external or pdfs/downloads)
+      if (!href) return;
       const hrefLower = href.toLowerCase();
-      if (!href || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:') || hrefLower.endsWith('.pdf') || hrefLower.includes('.pdf') || hrefLower.includes('resume')) {
+
+      // Skip external links, mailto, tel, pdf downloads, and custom action buttons
+      if (href.startsWith('http://') || href.startsWith('https://') || href.startsWith('mailto:') || href.startsWith('tel:') || hrefLower.endsWith('.pdf') || hrefLower.includes('.pdf') || hrefLower.includes('resume') || link.hasAttribute('download')) {
         return;
       }
 
-      e.preventDefault();
-      if (isTransitioning) return;
+      // Handle pure hash anchor on current page
+      if (href.startsWith('#')) {
+        e.preventDefault();
+        const targetEl = document.querySelector(href);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          targetEl.classList.remove('pulse-highlight');
+          void targetEl.offsetWidth;
+          targetEl.classList.add('pulse-highlight');
+          setTimeout(() => targetEl.classList.remove('pulse-highlight'), 3600);
+        }
+        return;
+      }
 
-      // Extract target url
-      const currentUrl = window.location.pathname;
-      const targetUrl = new URL(href, window.location.href).pathname;
+      // Handle relative/internal html paths
+      try {
+        const targetUrlObj = new URL(href, window.location.href);
+        const currentUrlObj = new URL(window.location.href);
 
-      if (currentUrl === targetUrl && !href.includes('#')) return;
+        if (targetUrlObj.origin === currentUrlObj.origin) {
+          e.preventDefault();
+          if (isTransitioning) return;
 
-      navigateRoom(href);
+          // If on the exact same page with a hash
+          if (targetUrlObj.pathname === currentUrlObj.pathname && targetUrlObj.hash) {
+            const targetEl = document.querySelector(targetUrlObj.hash);
+            if (targetEl) {
+              targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              targetEl.classList.remove('pulse-highlight');
+              void targetEl.offsetWidth;
+              targetEl.classList.add('pulse-highlight');
+              setTimeout(() => targetEl.classList.remove('pulse-highlight'), 3600);
+            }
+            return;
+          }
+
+          // Same page without hash: scroll to top
+          if (targetUrlObj.pathname === currentUrlObj.pathname && !targetUrlObj.hash) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return;
+          }
+
+          navigateRoom(href);
+        }
+      } catch (err) {
+        // Allow default navigation fallback
+      }
     });
 
     // Handle Browser Back / Forward Navigation
@@ -117,9 +156,6 @@
       // Update Active Navigation Item
       updateActiveNavLink(url);
 
-      // Scroll to top
-      window.scrollTo({ top: 0, behavior: 'instant' });
-
       // Update History API
       if (pushToHistory) {
         window.history.pushState({ page: newPageKey }, newDoc.title, url);
@@ -129,6 +165,27 @@
       initPageModules();
       initMobileNav();
       attachCursorHoverListeners();
+
+      // Check for anchor hash
+      try {
+        const hash = new URL(url, window.location.href).hash;
+        if (hash) {
+          setTimeout(() => {
+            const el = document.querySelector(hash);
+            if (el) {
+              el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              el.classList.remove('pulse-highlight');
+              void el.offsetWidth;
+              el.classList.add('pulse-highlight');
+              setTimeout(() => el.classList.remove('pulse-highlight'), 3600);
+            }
+          }, 140);
+        } else {
+          window.scrollTo({ top: 0, behavior: 'instant' });
+        }
+      } catch (e) {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
 
     } catch (err) {
       console.warn('Navigation fallback triggered:', err);
@@ -1033,36 +1090,114 @@
 
     if (!mascotBtn) return;
 
-    // Speech bubble prompts
-    const quotes = [
-      "Hi! I'm SproutBot 🤖 Search my work or ask me anything!",
-      "Ask me: 'Show me projects' or 'What awards has he won?' 🚀",
-      "I can navigate you anywhere across Shravan's portfolio! ✨",
-      "Looking for FoodIQ AI or PSMS? Just type it here! 🥗",
-      "180+ student volunteers led as Media Head! 📢",
-      "Want Shravan's resume? Ask me or click CV! 📄"
+    // Interactive Speech Bubble Guide Prompts
+    const guideQuotes = [
+      {
+        badge: "🥗 LIVE AI PROJECT",
+        text: "FoodIQ AI Nutrition Scanner (React + Node.js)",
+        cta: "Click text to test live ↗",
+        actionType: "nav",
+        targetUrl: "projects.html",
+        targetId: "#scannerStage",
+        query: "Show me FoodIQ AI Scanner"
+      },
+      {
+        badge: "🏆 1ST PLACE WINNER",
+        text: "ETTIN '25 & Aqua Lens National Awards",
+        cta: "Click text to view awards ↗",
+        actionType: "nav",
+        targetUrl: "journey.html",
+        targetId: "#achievementMuseumGrid",
+        query: "What awards has Shravan won?"
+      },
+      {
+        badge: "📸 CREATIVE GALLERY",
+        text: "Award-Winning Photography & Optics",
+        cta: "Click text to explore gallery ↗",
+        actionType: "nav",
+        targetUrl: "journey.html",
+        targetId: "#editorialGallery",
+        query: "Show me photography gallery"
+      },
+      {
+        badge: "📢 LEADERSHIP & SCALE",
+        text: "180+ Volunteers Led as Media Head",
+        cta: "Click text to see telemetry ↗",
+        actionType: "nav",
+        targetUrl: "journey.html",
+        targetId: "#impactMetrics",
+        query: "Tell me about leadership and media head"
+      },
+      {
+        badge: "📄 VERIFIED CV",
+        text: "Download Official Full-Stack Resume (PDF)",
+        cta: "Click text to download ↗",
+        actionType: "download",
+        targetUrl: "assets/SHRAVAN_RESUME.pdf",
+        query: "Download Shravan's resume"
+      },
+      {
+        badge: "📬 GET IN TOUCH",
+        text: "Direct Message & Collaboration Form",
+        cta: "Click text to open contact ↗",
+        actionType: "nav",
+        targetUrl: "about.html",
+        targetId: "#contactForm",
+        query: "How can I contact Shravan?"
+      },
+      {
+        badge: "⚡ RECRUITER 1-MIN BRIEF",
+        text: "Executive Summary & Tech Highlights",
+        cta: "Click text for recruiter modal ↗",
+        actionType: "recruiter",
+        query: "Show recruiter brief"
+      },
+      {
+        badge: "🎓 ACADEMIC TIMELINE",
+        text: "NMAMIT MCA & Dr NSAM BCA Education",
+        cta: "Click text to view timeline ↗",
+        actionType: "nav",
+        targetUrl: "journey.html",
+        targetId: ".timeline-container",
+        query: "Tell me about education"
+      }
     ];
 
     let quoteIndex = 0;
-    let hideTimeout = null;
+    let cycleInterval = null;
 
-    const showQuote = (text) => {
+    const renderQuote = (index) => {
       if (!speechBubble || chatPanel?.classList.contains('active')) return;
-      speechBubble.innerHTML = `<span class="bubble-text">${text}</span>`;
+      const quote = guideQuotes[index % guideQuotes.length];
+      speechBubble.innerHTML = `
+        <div class="bubble-content-wrap">
+          <div class="bubble-header-tag">
+            <span class="bubble-pill-dot"></span>
+            <span class="bubble-badge-text">${quote.badge}</span>
+          </div>
+          <div class="bubble-headline">${quote.text}</div>
+          <div class="bubble-guide-cue">👉 ${quote.cta}</div>
+        </div>
+      `;
       speechBubble.style.display = 'block';
       speechBubble.style.opacity = '1';
       speechBubble.style.transform = 'translateY(0)';
+    };
 
-      if (hideTimeout) clearTimeout(hideTimeout);
-      hideTimeout = setTimeout(() => {
+    const startQuoteCycle = () => {
+      if (cycleInterval) clearInterval(cycleInterval);
+      renderQuote(quoteIndex);
+
+      cycleInterval = setInterval(() => {
+        if (!speechBubble || chatPanel?.classList.contains('active')) return;
         speechBubble.style.opacity = '0';
         speechBubble.style.transform = 'translateY(6px)';
+
         setTimeout(() => {
-          if (speechBubble.style.opacity === '0') {
-            speechBubble.style.display = 'none';
-          }
-        }, 350);
-      }, 5500);
+          quoteIndex = (quoteIndex + 1) % guideQuotes.length;
+          renderQuote(quoteIndex);
+        }, 380);
+      }, 6200);
     };
 
     // Toggle Chat Panel
@@ -1084,6 +1219,13 @@
       if (chatPanel) {
         chatPanel.classList.remove('active');
         chatPanel.setAttribute('aria-hidden', 'true');
+        if (speechBubble) {
+          setTimeout(() => {
+            if (!chatPanel.classList.contains('active')) {
+              renderQuote(quoteIndex);
+            }
+          }, 400);
+        }
       }
     };
 
@@ -1100,10 +1242,14 @@
       }
     });
 
+    // Speech bubble click: Directly guide the user to that section/action!
     if (speechBubble) {
       speechBubble.addEventListener('click', (e) => {
         e.stopPropagation();
-        openChat();
+        const currentQuote = guideQuotes[quoteIndex % guideQuotes.length];
+        if (currentQuote) {
+          handleSmartAction(currentQuote.actionType, currentQuote.targetUrl, currentQuote.targetId);
+        }
       });
     }
 
@@ -1137,24 +1283,25 @@
       }
     });
 
-    // Initial greeting bubble
+    // Start cycling quotes after initial page mount
     setTimeout(() => {
-      showQuote("Hi! I'm SproutBot 🤖 Ask me anything or search my work!");
-    }, 1800);
+      startQuoteCycle();
+    }, 1500);
 
     // Render Welcome Message
     const renderWelcomeMessage = () => {
       if (!chatMessagesContainer) return;
       appendBotMessage({
-        text: "👋 **Hello! I'm SproutBot**, Shravan's intelligent digital companion and profile guide. I can answer questions and instantly navigate you to any section of his portfolio!",
+        text: "👋 **Hello! I'm SproutBot**, Shravan's intelligent digital companion and profile guide.\n\nClick any link or button below, or type what you're looking for, and I will **instantly guide you there** with precision scrolling!",
         actionTitle: "Popular Quick Actions",
-        actionDesc: "Tap any topic or type your query below to explore:",
+        actionDesc: "Tap any topic below to navigate directly:",
         actions: [
-          { label: "🚀 FoodIQ & Projects", targetUrl: "projects.html", targetId: "#scannerStage" },
-          { label: "🏆 Awards & Honors", targetUrl: "journey.html", targetId: "#achievementMuseumGrid" },
-          { label: "📸 Photography Gallery", targetUrl: "journey.html", targetId: "#editorialGallery" },
-          { label: "📄 Download Resume (PDF)", type: "download" },
-          { label: "⚡ Recruiter 1-Min Brief", type: "recruiter" }
+          { label: "🥗 FoodIQ AI Vision Scanner", targetUrl: "projects.html", targetId: "#scannerStage" },
+          { label: "🏆 Awards & Honors Museum", targetUrl: "journey.html", targetId: "#achievementMuseumGrid" },
+          { label: "📸 Award-Winning Photography", targetUrl: "journey.html", targetId: "#editorialGallery" },
+          { label: "📢 180+ Volunteers Telemetry", targetUrl: "journey.html", targetId: "#impactMetrics" },
+          { label: "📄 Download Official Resume (PDF)", type: "download" },
+          { label: "⚡ Recruiter 1-Minute Brief", type: "recruiter" }
         ]
       });
     };
@@ -1235,20 +1382,33 @@
       chatMessagesContainer.appendChild(msg);
       chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
 
-      // Attach click events to action buttons inside the message
+      // Attach click events to inline guide links and action buttons
+      const inlineLinks = msg.querySelectorAll('.inline-guide-link');
+      inlineLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const type = link.getAttribute('data-action-type') || 'nav';
+          const targetUrl = link.getAttribute('data-target-url') || '';
+          const targetId = link.getAttribute('data-target-id') || '';
+          handleSmartAction(type, targetUrl, targetId);
+        });
+      });
+
       const actionBtns = msg.querySelectorAll('.chat-nav-action-btn');
       actionBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
           e.preventDefault();
-          const type = btn.getAttribute('data-action-type');
-          const targetUrl = btn.getAttribute('data-target-url');
-          const targetId = btn.getAttribute('data-target-id');
+          e.stopPropagation();
+          const type = btn.getAttribute('data-action-type') || 'nav';
+          const targetUrl = btn.getAttribute('data-target-url') || '';
+          const targetId = btn.getAttribute('data-target-id') || '';
           handleSmartAction(type, targetUrl, targetId);
         });
       });
     };
 
-    // Smart Action & Deep Link Execution
+    // Smart Action & Deep Link Execution: Guides the user directly to the section!
     const handleSmartAction = async (type, targetUrl, targetId) => {
       if (type === 'download') {
         const a = document.createElement('a');
@@ -1323,7 +1483,7 @@
       if (q.includes('project') || q.includes('foodiq') || q.includes('food') || q.includes('psms') || q.includes('studio') || q.includes('app') || q.includes('system') || q.includes('build')) {
         if (q.includes('foodiq') || q.includes('nutrition') || q.includes('diet') || q.includes('health') || q.includes('usda') || q.includes('scanner')) {
           return {
-            text: "🥗 **FoodIQ — AI-Powered Food & Nutrition Recognition System**\n• Full-stack platform built with **React** & **Node.js/Express**.\n• Deep learning image recognition trained on **148,000+ food items** (Indian cuisine, fruits, vegetables, global dishes).\n• Synchronized with the **USDA database** to compute live calories, protein, carbs, fats, and a 0–100 health score.",
+            text: "🥗 **FoodIQ — AI-Powered Food & Nutrition Recognition System**\n• Full-stack platform built with **React** & **Node.js/Express**.\n• Deep learning image recognition trained on **148,000+ food items** (Indian cuisine, fruits, vegetables, global dishes).\n• Synchronized with the **USDA database** to compute live calories, protein, carbs, fats, and a 0–100 health score.\n\n👉 Click [Test FoodIQ Live Simulator](projects.html#scannerStage) or [Explore Projects Room](projects.html#.section-editorial-header) to navigate directly there!",
             actionTitle: "FoodIQ Actions",
             actionDesc: "Would you like to test the live simulator?",
             actions: [
@@ -1335,7 +1495,7 @@
 
         if (q.includes('psms') || q.includes('studio') || q.includes('photo studio')) {
           return {
-            text: "📷 **Photo Studio Management System (PSMS)**\n• Complete platform integrating appointment scheduling, client database management, automated invoicing, and digital asset organization.\n• Eliminates double-bookings and streamlines photography operations.",
+            text: "📷 **Photo Studio Management System (PSMS)**\n• Complete platform integrating appointment scheduling, client database management, automated invoicing, and digital asset organization.\n• Eliminates double-bookings and streamlines photography operations.\n\n👉 Click [View PSMS Details in Projects Room](projects.html#.foodiq-showcase-card:nth-of-type(2)) to jump straight to this card!",
             actionTitle: "PSMS Actions",
             actions: [
               { label: "📷 View PSMS Details in Projects Room", targetUrl: "projects.html", targetId: ".foodiq-showcase-card:nth-of-type(2)" }
@@ -1344,7 +1504,7 @@
         }
 
         return {
-          text: "🚀 **Shravan's Featured Software Projects:**\n1. **FoodIQ**: AI food & nutrition vision scanner (React, Node.js, 148k+ dataset, USDA API).\n2. **PSMS**: Photo Studio Management platform (scheduling, billing, assets).\n3. **MERN Stack & AI Workflows**.",
+          text: "🚀 **Shravan's Featured Software Projects:**\n1. [FoodIQ AI Vision Scanner](projects.html#scannerStage): React, Node.js, 148k+ dataset, USDA API.\n2. [PSMS Management System](projects.html#.foodiq-showcase-card:nth-of-type(2)): Scheduling, client invoicing, digital asset vault.\n3. [MERN Stack Workflows](projects.html#.section-editorial-header).\n\n👉 Click any highlighted link to navigate straight to that section!",
           actionTitle: "Explore Projects",
           actions: [
             { label: "🚀 Open Projects & AI Lab", targetUrl: "projects.html", targetId: ".section-editorial-header" },
@@ -1356,7 +1516,7 @@
       // Intent 2: Awards / Achievements / Honours / Competitions
       if (q.includes('award') || q.includes('achieve') || q.includes('honour') || q.includes('honor') || q.includes('ettin') || q.includes('aqua') || q.includes('agon') || q.includes('win') || q.includes('prize') || q.includes('troph')) {
         return {
-          text: "🏆 **Shravan's Verified Awards & Honors:**\n• 🥇 **1st Place – Photography**: *ETTIN 2025* (National-Level Fest, JKSHIM Nitte)\n• 🥇 **1st Place**: *Nitte Aqua Lens 2024* Photography Competition (SDG Cell, Nitte University)\n• 🥈 **2nd Place – Photography & Reel Making**: *AGON 2024* (ALVA’S AIET, Mijar)\n• 🎖️ **Media Headship**: Directing 180+ volunteers across 5+ departmental programs.",
+          text: "🏆 **Shravan's Verified Awards & Honors:**\n• 🥇 **1st Place – Photography**: [ETTIN 2025 National Fest](journey.html#achievementMuseumGrid) (JKSHIM Nitte)\n• 🥇 **1st Place**: [Nitte Aqua Lens 2024](journey.html#achievementMuseumGrid) Photography Competition (SDG Cell, Nitte University)\n• 🥈 **2nd Place – Photography & Reel Making**: [AGON 2024](journey.html#achievementMuseumGrid) (ALVA’S AIET, Mijar)\n• 🎖️ **Media Headship**: Directing [180+ Student Volunteers](journey.html#impactMetrics) across 5+ departmental programs.\n\n👉 Click any award link above to visit the museum grid!",
           actionTitle: "Awards Actions",
           actions: [
             { label: "🏆 View Achievements Museum on Journey Page", targetUrl: "journey.html", targetId: "#achievementMuseumGrid" },
@@ -1368,7 +1528,7 @@
       // Intent 3: Photography / Creative Work / Camera / Reels
       if (q.includes('photo') || q.includes('camera') || q.includes('creative') || q.includes('gallery') || q.includes('work') || q.includes('reel') || q.includes('art') || q.includes('shoot')) {
         return {
-          text: "📸 **Creative Photography & Visual Storytelling:**\nShravan combines photographic composition, golden hour light, and macro water droplet optics with modern UI design principles. He has won multiple 1st-place national and university titles!",
+          text: "📸 **Creative Photography & Visual Storytelling:**\nShravan combines photographic composition, golden hour light, and macro water droplet optics with modern UI design principles. He has won multiple 1st-place national and university titles!\n\n👉 Click [Open Photography Gallery](journey.html#editorialGallery) to view the curated high-res gallery with interactive lightbox!",
           actionTitle: "Gallery Actions",
           actions: [
             { label: "📸 Open Photography Gallery with Lightbox", targetUrl: "journey.html", targetId: "#editorialGallery" },
@@ -1380,7 +1540,7 @@
       // Intent 4: Leadership / Media Head / Volunteers / Events
       if (q.includes('leader') || q.includes('media') || q.includes('volunteer') || q.includes('event') || q.includes('team') || q.includes('head') || q.includes('manage') || q.includes('coordinat') || q.includes('pr')) {
         return {
-          text: "📢 **Leadership & Event Operations:**\n• **Media Head (MCA Dept, NMAMIT)**: Coordinated logistics and media coverage across **5+ department programs** with **180+ student volunteers**; published 15+ promotional posts.\n• **BCA Media Team**: Grew post engagement by **87%** and reduced documentation time by **50%** using AI tools.",
+          text: "📢 **Leadership & Event Operations:**\n• **Media Head (MCA Dept, NMAMIT)**: Coordinated logistics and media coverage across **5+ department programs** with **180+ student volunteers**; published 15+ promotional posts.\n• **BCA Media Team**: Grew post engagement by **87%** and reduced documentation time by **50%** using AI tools.\n\n👉 Click [View Volunteer Scaling & Impact Chart](journey.html#impactMetrics) to explore the live telemetry data!",
           actionTitle: "Leadership Actions",
           actions: [
             { label: "📢 View Volunteer Scaling & Impact Chart", targetUrl: "journey.html", targetId: "#impactMetrics" },
@@ -1392,7 +1552,7 @@
       // Intent 5: Internship / Experience / Zephyr
       if (q.includes('intern') || q.includes('zephyr') || q.includes('experience') || q.includes('job') || q.includes('trainee') || q.includes('work history')) {
         return {
-          text: "💼 **Industry Internship Experience:**\n• **Zephyr Technologies & Solutions Pvt. Ltd.** (Jun 2024 – Jul 2024)\n• Role: **Student Trainee (MERN Stack Projects)**\n• Prepared and maintained technical documentation, API workflows, and structured development tasks in a professional software environment.",
+          text: "💼 **Industry Internship Experience:**\n• **Zephyr Technologies & Solutions Pvt. Ltd.** (Jun 2024 – Jul 2024)\n• Role: **Student Trainee (MERN Stack Projects)**\n• Prepared and maintained technical documentation, API workflows, and structured development tasks in a professional software environment.\n\n👉 Click [View Internship on Timeline](journey.html#.timeline-container) or [Download Verified CV](download)!",
           actionTitle: "Experience Actions",
           actions: [
             { label: "💼 View Internship on Timeline", targetUrl: "journey.html", targetId: ".timeline-container" },
@@ -1404,7 +1564,7 @@
       // Intent 6: Education / MCA / BCA / Degree / University
       if (q.includes('edu') || q.includes('mca') || q.includes('bca') || q.includes('degree') || q.includes('college') || q.includes('nitte') || q.includes('nmamit') || q.includes('nsam') || q.includes('study')) {
         return {
-          text: "🎓 **Academic Background:**\n• **Master of Computer Applications (MCA, 2025–2027)** — N.M.A.M. Institute of Technology, Nitte, Karnataka (Autonomous).\n• **Bachelor of Computer Applications (BCA, 2022–2025)** — Dr. NSAM First Grade College, Nitte (Graduated with Distinction).",
+          text: "🎓 **Academic Background:**\n• **Master of Computer Applications (MCA, 2025–2027)** — N.M.A.M. Institute of Technology, Nitte, Karnataka (Autonomous).\n• **Bachelor of Computer Applications (BCA, 2022–2025)** — Dr. NSAM First Grade College, Nitte (Graduated with Distinction).\n\n👉 Click [View Academic Timeline](journey.html#.timeline-container) or [Read Academic Manifesto](about.html#.about-manifesto-card)!",
           actionTitle: "Education Actions",
           actions: [
             { label: "🎓 View Academic Timeline on Journey Page", targetUrl: "journey.html", targetId: ".timeline-container" },
@@ -1416,7 +1576,7 @@
       // Intent 7: Skills / Tech Stack / Tools / Languages / Certifications
       if (q.includes('skill') || q.includes('tech') || q.includes('stack') || q.includes('tool') || q.includes('python') || q.includes('react') || q.includes('node') || q.includes('sql') || q.includes('git') || q.includes('certif') || q.includes('azure') || q.includes('cyber') || q.includes('android') || q.includes('language') || q.includes('japanese')) {
         return {
-          text: "🛠️ **Technical Skillset & Certifications:**\n• **Languages & Web**: Python, MERN Stack (React, Node.js, Express), HTML5/CSS3, SQL, Git, Vercel.\n• **AI/ML**: Deep Learning Image Recognition, Prompt Engineering, USDA API.\n• **Certifications**: Microsoft Azure AI Challenge, Cyber Security (ICT Academy), Android App Dev (NSAM FGC).\n• **Languages**: English (Fluent), Kannada (Native), Hindi (Professional), Japanese (Beginner).",
+          text: "🛠️ **Technical Skillset & Certifications:**\n• **Languages & Web**: Python, MERN Stack (React, Node.js, Express), HTML5/CSS3, SQL, Git, Vercel.\n• **AI/ML**: Deep Learning Image Recognition, Prompt Engineering, USDA API.\n• **Certifications**: Microsoft Azure AI Challenge, Cyber Security (ICT Academy), Android App Dev (NSAM FGC).\n• **Languages**: English (Fluent), Kannada (Native), Hindi (Professional), Japanese (Beginner).\n\n👉 Click [View Full Credentials on About Page](about.html#.credentials-cards-grid) or [Test FoodIQ Scanner](projects.html#scannerStage)!",
           actionTitle: "Skills Actions",
           actions: [
             { label: "🛠️ View Credentials & Languages on About Page", targetUrl: "about.html", targetId: ".credentials-cards-grid" },
@@ -1428,7 +1588,7 @@
       // Intent 8: Resume / CV / Download / PDF
       if (q.includes('resume') || q.includes('cv') || q.includes('download') || q.includes('pdf')) {
         return {
-          text: "📄 **Download Shravan's Official Resume:**\nYou can download the latest official PDF resume directly with all verified full-stack, AI, leadership, and academic details.",
+          text: "📄 **Download Shravan's Official Resume:**\nYou can download the latest official PDF resume directly with all verified full-stack, AI, leadership, and academic details.\n\n👉 Click [Download Official Resume (PDF)](download) or [Launch 1-Minute Recruiter Brief](recruiter)!",
           actionTitle: "Resume Actions",
           actions: [
             { label: "📄 Download Official Resume (PDF)", type: "download" },
@@ -1440,7 +1600,7 @@
       // Intent 9: Contact / Email / Phone / Location / Hire / LinkedIn / GitHub
       if (q.includes('contact') || q.includes('email') || q.includes('phone') || q.includes('whatsapp') || q.includes('hire') || q.includes('reach') || q.includes('linkedin') || q.includes('github') || q.includes('message') || q.includes('connect')) {
         return {
-          text: "📬 **Get in Touch with Shravan:**\n• 📧 **Email**: shravanrbangera@gmail.com\n• 📱 **Phone**: +91 9964429300\n• 📍 **Location**: Udupi, Karnataka, India\n• 🔗 **LinkedIn**: [linkedin.com/in/shravan-r-bangera-7bb053246](https://www.linkedin.com/in/shravan-r-bangera-7bb053246)\n• 💻 **GitHub**: [github.com/shravanrbangera](https://github.com/shravanrbangera)",
+          text: "📬 **Get in Touch with Shravan:**\n• 📧 **Email**: [shravanrbangera@gmail.com](mailto:shravanrbangera@gmail.com)\n• 📱 **Phone**: +91 9964429300\n• 📍 **Location**: Udupi, Karnataka, India\n• 🔗 **LinkedIn**: [LinkedIn Profile](https://www.linkedin.com/in/shravan-r-bangera-7bb053246)\n• 💻 **GitHub**: [GitHub Repositories](https://github.com/shravanrbangera)\n\n👉 Click [Go to Direct Message Form](about.html#contactForm) to send an instant message!",
           actionTitle: "Contact Actions",
           actions: [
             { label: "📧 Go to Direct Message Form", targetUrl: "about.html", targetId: "#contactForm" },
@@ -1452,7 +1612,7 @@
       // Intent 10: Recruiter / Brief / Summary
       if (q.includes('recruiter') || q.includes('brief') || q.includes('summary') || q.includes('executive') || q.includes('overview') || q.includes('1 minute')) {
         return {
-          text: "⚡ **1-Minute Executive Briefing:**\nShravan is an MCA student at NMAMIT Nitte specializing in full-stack web development (React, Node.js), AI application development, and 180+ volunteer media leadership.",
+          text: "⚡ **1-Minute Executive Briefing:**\nShravan is an MCA student at NMAMIT Nitte specializing in full-stack web development (React, Node.js), AI application development, and 180+ volunteer media leadership.\n\n👉 Click [Open Recruiter Briefing Modal](recruiter) or [Download Verified CV](download)!",
           actionTitle: "Executive View",
           actions: [
             { label: "⚡ Launch Recruiter Briefing Modal", type: "recruiter" },
@@ -1464,7 +1624,7 @@
       // Intent 11: Story / About / Who is Shravan
       if (q.includes('story') || q.includes('about') || q.includes('who') || q.includes('intro') || q.includes('bio') || q.includes('manifesto')) {
         return {
-          text: "🌿 **About Shravan R Bangera:**\nAn MCA postgraduate student at NMAMIT Nitte who bridges software engineering with visual storytelling, deep learning vision systems, and large-scale media operations.",
+          text: "🌿 **About Shravan R Bangera:**\nAn MCA postgraduate student at NMAMIT Nitte who bridges software engineering with visual storytelling, deep learning vision systems, and large-scale media operations.\n\n👉 Click [Read About Manifesto & 4 Pillars](about.html#.about-manifesto-card) or [Read Formative Story on Journey Page](journey.html#.story-spotlight-card)!",
           actionTitle: "Explore Profile",
           actions: [
             { label: "🌿 Read About Manifesto & 4 Pillars", targetUrl: "about.html", targetId: ".about-manifesto-card" },
@@ -1475,7 +1635,7 @@
 
       // Smart Fallback Search
       return {
-        text: `🔍 I searched for **"${escapeHtml(q)}"** across Shravan's portfolio! Here are the best sections to explore based on your search:`,
+        text: `🔍 I searched for **"${escapeHtml(q)}"** across Shravan's portfolio! Here are the best sections to explore based on your search:\n\n• [Projects & AI Lab](projects.html#.section-editorial-header)\n• [Journey & Awards Museum](journey.html#achievementMuseumGrid)\n• [About & Contact](about.html#.about-manifesto-card)\n• [Download Official Resume](download)`,
         actionTitle: "Matched Destinations",
         actions: [
           { label: "🚀 Projects & AI Lab", targetUrl: "projects.html", targetId: ".section-editorial-header" },
@@ -1520,11 +1680,26 @@
     }
 
     function formatMarkdown(text) {
+      if (!text) return '';
       return text
         .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
         .replace(/\*(.*?)\*/g, '<em>$1</em>')
         .replace(/\n/g, '<br>')
-        .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener" style="color: var(--sage-primary); font-weight: 700; text-decoration: underline;">$1</a>');
+        .replace(/\[(.*?)\]\((.*?)\)/g, (match, p1, p2) => {
+          if (p2 === 'download' || p2.includes('.pdf') || p2.includes('resume')) {
+            return `<button class="inline-guide-link" data-action-type="download" data-target-url="assets/SHRAVAN_RESUME.pdf">${p1} <span class="guide-arrow">↗</span></button>`;
+          }
+          if (p2 === 'recruiter') {
+            return `<button class="inline-guide-link" data-action-type="recruiter">${p1} <span class="guide-arrow">↗</span></button>`;
+          }
+          if (p2.includes('.html') || p2.startsWith('#') || p2.startsWith('.')) {
+            const parts = p2.split('#');
+            const targetUrl = parts[0] || '';
+            const targetId = parts[1] ? `#${parts[1]}` : (p2.startsWith('.') ? p2 : '');
+            return `<button class="inline-guide-link" data-action-type="nav" data-target-url="${targetUrl}" data-target-id="${targetId}">${p1} <span class="guide-arrow">↗</span></button>`;
+          }
+          return `<a href="${p2}" target="_blank" rel="noopener" class="inline-guide-link">${p1} <span class="guide-arrow">↗</span></a>`;
+        });
     }
   }
 
