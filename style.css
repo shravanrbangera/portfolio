@@ -1696,18 +1696,20 @@ img, svg {
   overflow: hidden;
   border-radius: var(--radius-lg);
   cursor: pointer;
+  background: #0d1a10;
   transition: transform var(--time-normal) var(--ease-spring), box-shadow var(--time-normal);
 }
 
-.gallery-item.feature-large { grid-column: span 7; min-height: 380px; }
-.gallery-item.card-medium { grid-column: span 5; min-height: 380px; }
-.gallery-item:nth-child(3) { grid-column: span 4; min-height: 320px; }
-.gallery-item:nth-child(4) { grid-column: span 4; min-height: 320px; }
-.gallery-item:nth-child(5) { grid-column: span 4; min-height: 320px; }
+.gallery-item.feature-large { grid-column: span 7; min-height: 400px; }
+.gallery-item.card-medium { grid-column: span 5; min-height: 400px; }
+.gallery-item:nth-child(3) { grid-column: span 4; min-height: 340px; }
+.gallery-item:nth-child(4) { grid-column: span 4; min-height: 340px; }
+.gallery-item:nth-child(5) { grid-column: span 4; min-height: 340px; }
 
-.gallery-image-frame { width: 100%; height: 100%; position: relative; overflow: hidden; }
-.gallery-img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--time-slow) var(--ease-spring); }
-.gallery-item:hover .gallery-img { transform: scale(1.06); }
+.gallery-image-frame { width: 100%; height: 100%; position: relative; overflow: hidden; background: #0c180e; display: flex; align-items: center; justify-content: center; }
+.gallery-img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform var(--time-slow) var(--ease-spring); }
+.gallery-img.trophy-img { object-fit: contain; padding: 14px; background: radial-gradient(circle at center, rgba(30, 48, 28, 0.9) 0%, rgba(8, 16, 10, 0.98) 100%); }
+.gallery-item:hover .gallery-img { transform: scale(1.04); }
 
 .gallery-award-pill {
   position: absolute;
