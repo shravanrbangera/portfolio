@@ -11,7 +11,7 @@
 - **Candidate**: Shravan R Bangera
 - **Academic Background**: Master of Computer Applications (MCA, 2025–2027) — N.M.A.M. Institute of Technology, Nitte; Bachelor of Computer Applications (BCA, 2022–2025) — Dr. NSAM First Grade College, Nitte
 - **Specializations**: Full-Stack Web Development (MERN Stack: React, Node.js, Express, MongoDB), AI/ML Application Development, Prompt Engineering, Media Operations & Event Coordination, Photography & Visual Storytelling
-- **Key Milestones**: Media Head (MCA Dept - 180+ volunteers), Zephyr Technologies MERN Trainee, 1st Place Photography (ETTIN 2025 National Fest, Nitte Aqua Lens 2024), 2nd Place (AGON 2024)
+- **Key Milestones**: Media Head (MCA Dept - 180+ volunteers), Zephyr Technologies MERN Trainee, 1st Place Photography (Nitte Aqua Lens 2024 University Level, ETTIN 2025 National Fest), 2nd Place (AGON 2024)
 
 ### 1.3 Project Objective
 To engineer an editorial, high-performance personal portfolio that bridges technical software engineering with high-end creative direction. The platform moves beyond generic CV websites by presenting an immersive **8-room digital studio** featuring modern **Pistachio / Sage Green & Editorial Cream Bento aesthetics**, **interactive SVG telemetry charts**, a **3D Sprout IP mascot**, **1-click downloadable PDF resume**, and **seamless Single-Page Application (SPA) navigation** built entirely with pure Vanilla web technologies.

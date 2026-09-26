@@ -1103,7 +1103,7 @@
       },
       {
         badge: "🏆 1ST PLACE WINNER",
-        text: "ETTIN '25 & Aqua Lens National Awards",
+        text: "Nitte Aqua Lens '24 & ETTIN '25 Awards",
         cta: "Click text to view awards ↗",
         actionType: "nav",
         targetUrl: "journey.html",
@@ -1516,11 +1516,11 @@
       // Intent 2: Awards / Achievements / Honours / Competitions
       if (q.includes('award') || q.includes('achieve') || q.includes('honour') || q.includes('honor') || q.includes('ettin') || q.includes('aqua') || q.includes('agon') || q.includes('win') || q.includes('prize') || q.includes('troph')) {
         return {
-          text: "🏆 **Shravan's Verified Awards & Honors:**\n• 🥇 **1st Place – Photography**: [ETTIN 2025 National Fest](journey.html#achievementMuseumGrid) (JKSHIM Nitte)\n• 🥇 **1st Place**: [Nitte Aqua Lens 2024](journey.html#achievementMuseumGrid) Photography Competition (SDG Cell, Nitte University)\n• 🥈 **2nd Place – Photography & Reel Making**: [AGON 2024](journey.html#achievementMuseumGrid) (ALVA’S AIET, Mijar)\n• 🎖️ **Media Headship**: Directing [180+ Student Volunteers](journey.html#impactMetrics) across 5+ departmental programs.\n\n👉 Click any award link above to visit the museum grid!",
+          text: "🏆 **Shravan's Verified Awards & Honors:**\n• 🥇 **1st Place (University Level)**: [Nitte Aqua Lens 2024](journey.html#achievementMuseumGrid) (SDG Cell, Nitte DU — Felicitated in Republic Day '25)\n• 🥇 **1st Place (National Fest)**: [ETTIN 2025 Eco-Vision](journey.html#achievementMuseumGrid) (JKSHIM Nitte)\n• 🥈 **2nd Place (National Fest)**: [AGON 2024 Apollo](journey.html#achievementMuseumGrid) (ALVA’S AIET, Mijar)\n• 🎖️ **Media Headship**: Directing [180+ Student Volunteers](journey.html#impactMetrics) across 5+ departmental programs.\n\n👉 Click any award link above to visit the museum grid!",
           actionTitle: "Awards Actions",
           actions: [
             { label: "🏆 View Achievements Museum on Journey Page", targetUrl: "journey.html", targetId: "#achievementMuseumGrid" },
-            { label: "🥇 View ETTIN '25 National Win Spotlight", targetUrl: "journey.html", targetId: ".story-spotlight-card" }
+            { label: "🥇 View Aqua Lens '24 Spotlight Exhibit", targetUrl: "journey.html", targetId: ".story-spotlight-card" }
           ]
         };
       }
