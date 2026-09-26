@@ -70,7 +70,7 @@ http://localhost:5500
 
 - **Email**: [shravanrbangera@gmail.com](mailto:shravanrbangera@gmail.com)
 - **Phone**: [+91 9964429300](tel:+919964429300)
-- **LinkedIn**: [linkedin.com/in/shravan-r-bangera-7bb053246](https://www.linkedin.com/in/shravan-r-bangera-7bb053246)
+- **LinkedIn**: [linkedin.com/in/shravan-r-bangera-7bb053246](https://www.linkedin.com/in/shravan-r-bangera-7bb053246/)
 - **GitHub**: [@shravanrbangera](https://github.com/shravanrbangera)
 
 ---

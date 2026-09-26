@@ -1600,7 +1600,7 @@
       // Intent 9: Contact / Email / Phone / Location / Hire / LinkedIn / GitHub
       if (q.includes('contact') || q.includes('email') || q.includes('phone') || q.includes('whatsapp') || q.includes('hire') || q.includes('reach') || q.includes('linkedin') || q.includes('github') || q.includes('message') || q.includes('connect')) {
         return {
-          text: "📬 **Get in Touch with Shravan:**\n• 📧 **Email**: [shravanrbangera@gmail.com](mailto:shravanrbangera@gmail.com)\n• 📱 **Phone**: +91 9964429300\n• 📍 **Location**: Udupi, Karnataka, India\n• 🔗 **LinkedIn**: [LinkedIn Profile](https://www.linkedin.com/in/shravan-r-bangera-7bb053246)\n• 💻 **GitHub**: [GitHub Repositories](https://github.com/shravanrbangera)\n\n👉 Click [Go to Direct Message Form](about.html#contactForm) to send an instant message!",
+          text: "📬 **Get in Touch with Shravan:**\n• 📧 **Email**: [shravanrbangera@gmail.com](mailto:shravanrbangera@gmail.com)\n• 📱 **Phone**: +91 9964429300\n• 📍 **Location**: Udupi, Karnataka, India\n• 🔗 **LinkedIn**: [linkedin.com/in/shravan-r-bangera-7bb053246](https://www.linkedin.com/in/shravan-r-bangera-7bb053246/)\n• 💻 **GitHub**: [github.com/shravanrbangera](https://github.com/shravanrbangera)\n\n👉 Click [Go to Direct Message Form](about.html#contactForm) to send an instant message!",
           actionTitle: "Contact Actions",
           actions: [
             { label: "📧 Go to Direct Message Form", targetUrl: "about.html", targetId: "#contactForm" },
