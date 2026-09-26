@@ -1,16 +1,19 @@
 # 🌿 Shravan R Bangera — Digital Studio & Portfolio
 
-> **MCA Student | Creative Technologist | Media & Marketing Specialist**  
-> An editorial digital studio and portfolio designed in a modern **Pistachio / Sage Green & Editorial Cream Bento** aesthetic, featuring interactive SVG charts, 8 curated digital rooms, seamless SPA room transitions, and an interactive 3D Sprout mascot companion.
+> **MCA Postgraduate Student | Full-Stack Developer (MERN) | AI Applications | Media & Marketing Operations**  
+> An editorial digital studio and portfolio designed in a modern **Pistachio / Sage Green & Editorial Cream Bento** aesthetic, featuring interactive SVG charts, 8 curated digital rooms, seamless SPA room transitions, downloadable PDF resume, and an interactive 3D Sprout mascot companion.
 
 ---
 
 ## ✨ Features & Design Highlights
 
 - **🍃 Pistachio & Sage Green Bento Design**: Warm porcelain cream canvas (`#F6F8F3`), rich matcha/sage cards (`#6B8E4E`), forest charcoal typography (`#172312`), big display numerals (`01`, `02`, `03`), and rounded bento modules (`border-radius: 26px - 32px`).
+- **📄 Downloadable PDF Resume & Interactive Web Resume**:
+  - Direct 1-click download of the official resume PDF: [`assets/SHRAVAN_RESUME.pdf`](assets/SHRAVAN_RESUME.pdf).
+  - Standalone interactive HTML resume view: [`assets/shravan-bangera-resume.html`](assets/shravan-bangera-resume.html) with clean print styling.
 - **📊 Interactive SVG Charts & Telemetry**:
-  - **Volunteer & Event Operations Sparkline** (`index.html`): Interactive telemetry tracking **180+ student volunteers** with live hover nodes and tooltips.
-  - **FoodIQ AI Nutrition Macro Donut Chart** (`projects.html`): Dynamic multi-ring SVG donut chart calculating real-time protein, carb, fat, and calorie ratios.
+  - **Volunteer & Event Operations Sparkline** (`index.html`): Interactive telemetry tracking **180+ student volunteers** across 5+ programs with live hover nodes and tooltips.
+  - **FoodIQ AI Nutrition Macro Donut Chart** (`projects.html`): Dynamic multi-ring SVG donut chart calculating real-time protein, carb, fat, and calorie ratios connected with USDA database and 148k+ image deep-learning model simulation.
   - **Leadership Growth Area Chart** (`journey.html`): Smooth Bezier-curve SVG chart visualizing media and leadership scaling from 2022 to 2026.
 - **🍀 3D Sprout Mascot Companion**: Pinned interactive companion across all pages cycling through key achievements and personality quotes with physics bounce animations.
 - **⚡ 60-Second Recruiter Brief**: Instant modal providing executive summary and one-click PDF resume preview/download.
@@ -19,28 +22,23 @@
 
 ---
 
-## 🏛️ Digital Rooms Architecture
+## 🏛️ Digital Rooms Architecture (4 Core Pages)
 
 | Room | Path | Description |
 | :--- | :--- | :--- |
-| **Studio Hub** | `index.html` | Hero grid, featured bento metrics, photography spotlight & telemetry sparkline |
-| **About** | `about.html` | Academic manifesto, core pillars, and creative identity |
-| **Story** | `story.html` | Formative experiences, photography passion, and media background |
-| **Journey** | `journey.html` | Interactive timeline & volunteer impact growth chart |
-| **Work** | `work.html` | Leadership roles, media head responsibilities & production campaigns |
-| **Projects** | `projects.html` | FoodIQ AI Scanner with dynamic macro chart & technical deep-dives |
-| **Milestones** | `achievements.html` | ETTIN '25, Aqua Lens '24, and university competition trophies |
-| **Credentials** | `certifications.html` | Technical certifications and modal details |
-| **Contact** | `contact.html` | Glassmorphic contact channel and social links |
+| **Studio Hub** | `index.html` | Hero grid, featured bento metrics, 180+ volunteer sparkline telemetry, and portal links |
+| **Journey &amp; Story** | `journey.html` | Formative story, leadership pathway, interactive timeline, creative photography gallery &amp; achievement museum |
+| **Projects &amp; AI Lab** | `projects.html` | FoodIQ (AI Food &amp; Nutrition Recognition System with USDA API) &amp; PSMS platform simulator |
+| **About &amp; Contact** | `about.html` | Academic manifesto, 4 pillars, verified Azure AI/Cybersecurity certifications, and direct inquiry message form |
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Tech Stack & Skills
 
-- **Markup**: Semantic HTML5 with accessibility attributes (`aria-label`, `role`).
-- **Styling**: Vanilla CSS3 with custom CSS properties, glassmorphism, responsive grid & flexbox.
-- **Interactivity**: Vanilla JavaScript (ES6+), History API, dynamic SVG stroke calculations.
-- **Local Server**: Lightweight Node.js static HTTP server with route aliases.
+- **Full-Stack & Web**: Python, MERN Stack (React, Node.js, Express.js), HTML5, CSS3, JavaScript (ES6+), SQL, Git, Vercel
+- **AI/ML**: AI/ML Fundamentals, Deep Learning Image Recognition (148k+ model dataset), Prompt Engineering, USDA Nutrition API Integration
+- **Media & Operations**: Media Operations (180+ volunteers, 5+ programs), Campaign Planning, Adobe Photoshop, Lightroom, DaVinci Resolve, Canva, Blender
+- **AI Productivity Tools**: Claude, Antigravity, ChatGPT
 
 ---
 
@@ -63,15 +61,16 @@ node server.js
 
 Open your browser and navigate to:
 ```
-http://localhost:3000
+http://localhost:5500
 ```
 
 ---
 
 ## 📬 Contact & Connect
 
-- **Portfolio**: [shravanrbangera.github.io](https://shravanrbangera.github.io)
-- **LinkedIn**: [linkedin.com/in/shravanrbangera](https://linkedin.com/in/shravanrbangera)
+- **Email**: [shravanrbangera@gmail.com](mailto:shravanrbangera@gmail.com)
+- **Phone**: [+91 9964429300](tel:+919964429300)
+- **LinkedIn**: [linkedin.com/in/shravan-r-bangera-7bb053246](https://www.linkedin.com/in/shravan-r-bangera-7bb053246)
 - **GitHub**: [@shravanrbangera](https://github.com/shravanrbangera)
 
 ---

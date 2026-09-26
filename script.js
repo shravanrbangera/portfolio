@@ -40,8 +40,9 @@
       if (!link) return;
 
       const href = link.getAttribute('href');
-      // Only intercept internal html links (not external or pdfs)
-      if (!href || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:') || href.endsWith('.pdf') || href.includes('resume')) {
+      // Only intercept internal html links (not external or pdfs/downloads)
+      const hrefLower = href.toLowerCase();
+      if (!href || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:') || hrefLower.endsWith('.pdf') || hrefLower.includes('.pdf') || hrefLower.includes('resume')) {
         return;
       }
 
@@ -616,32 +617,32 @@
 
     const caseStudyData = {
       foodiq: {
-        category: 'AI & COMPUTER VISION CASE STUDY',
-        title: 'FoodIQ — AI Nutrition Intelligence',
-        tagline: '“Transforming plate photography into instant nutritional analytics.”',
-        overview: 'FoodIQ is an artificial intelligence application built to solve the tedious problem of manual dietary tracking. By leveraging deep convolutional neural networks trained on over 148,000 food images, it recognizes complex food plates and surfaces key macronutrients instantly.',
-        workedOn: 'Designed the end-to-end user workflow, created the visual UI/UX layout system, integrated the computer vision model inference pipeline, and engineered responsive metric dashboards.',
+        category: 'FULL-STACK & AI COMPUTER VISION CASE STUDY',
+        title: 'FoodIQ – AI-Powered Food & Nutrition Recognition System',
+        tagline: '“React frontend, Node.js/Express backend, 148,000+ image deep learning model & USDA nutrition tracking.”',
+        overview: 'Built a full-stack web application (React frontend, Node.js/Express backend) that lets users upload a photo of any meal and instantly identifies the food item, calculating macronutrients and a 0–100 health score in real time.',
+        workedOn: 'Engineered the React UI and Node.js/Express REST API, integrated the deep learning model trained on 148,000+ food images (Indian dishes, fruits, vegetables, and global foods), and linked predictions to the USDA nutrition database.',
         features: [
-          'Instant multi-item food recognition using deep learning vision models.',
-          'Real-time nutritional calculation including total calories, proteins, carbohydrates, and fats.',
-          'Dynamic Health Score index providing dietary assessment based on nutritional density.',
-          'Clean, accessible responsive UI designed for quick mobile and desktop scanning.'
+          'Full-stack architecture: Modern React user interface backed by high-performance Node.js & Express API services.',
+          'Deep learning image recognition trained on 148,000+ images covering Indian dishes, fruits, vegetables, and international cuisines.',
+          'Real-time connection to the official USDA nutrition database for automated calculation of calories, protein, carbohydrates, and fats.',
+          'Automated 0–100 health scoring engine assessing nutrient density and meal balance.'
         ],
-        learned: 'Gained practical experience bridging machine learning model outputs with human-centric interfaces, optimizing asset loads for real-time camera feedback, and structuring clear visual data hierarchies.'
+        learned: 'Mastered combining full-stack React and Node.js/Express web development with deep-learning vision inference, USDA nutrition database synchronization, and responsive real-time data visualization.'
       },
       studio: {
-        category: 'WORKFLOW & OPERATIONS CASE STUDY',
-        title: 'Photo Studio Management System',
-        tagline: '“A centralized platform for appointments, client records, billing, and asset organization.”',
-        overview: 'Designed to solve operational bottlenecks for photography businesses, this management platform replaces fragmented spreadsheets with an integrated dashboard for booking, client registries, automated invoicing, and digital asset tracking.',
-        workedOn: 'Architected the database schema, engineered conflict-free appointment scheduling logic, built client profile vaults, and crafted a modern desktop dashboard with instant status reporting.',
+        category: 'FULL-STACK OPERATIONS & WORKFLOW CASE STUDY',
+        title: 'Photo Studio Management System (PSMS)',
+        tagline: '“An integrated platform for appointment scheduling, client database management, billing, and asset organization.”',
+        overview: 'Designed a comprehensive platform integrating appointment scheduling, client database management, billing, and asset organization, eliminating double bookings and streamlining studio operations.',
+        workedOn: 'Architected the relational schema, engineered conflict-free appointment scheduling algorithms, built client databases, automated billing, and developed media asset organization vaults.',
         features: [
-          'Real-time schedule conflict engine to prevent double bookings across studio slots.',
-          'Comprehensive client registry linking shoot histories, preferences, and contact records.',
-          'Automated billing workflow with invoice generation and payment tracking.',
-          'Secure asset organization portal linking delivered media packages to client profiles.'
+          'Real-time conflict-free appointment scheduling engine eliminating double bookings across studio sessions.',
+          'Unified client database management tracking shoot history, client preferences, and contact records.',
+          'Automated invoicing and billing management system with transparent payment tracking.',
+          'Secure digital asset organization repository linking final deliverables to client profiles.'
         ],
-        learned: 'Deepened practical knowledge of full-stack software development workflows, relational data models, user role management, and operational software reliability.'
+        learned: 'Deepened practical expertise in full-stack architecture, relational database management (SQL), business process automation, and operational software reliability.'
       }
     };
 

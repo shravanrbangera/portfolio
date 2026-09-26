@@ -33,11 +33,21 @@ const server = http.createServer((req, res) => {
     pathname = '/index.html';
   }
 
-  // Handle semantic route aliases
+  // Handle semantic route aliases & 4-page consolidation redirects
   const ROUTE_ALIASES = {
-    '/creative': '/work.html',
-    '/milestones': '/achievements.html',
-    '/credentials': '/certifications.html'
+    '/story': '/journey.html',
+    '/story.html': '/journey.html',
+    '/work': '/journey.html',
+    '/work.html': '/journey.html',
+    '/creative': '/journey.html',
+    '/achievements': '/journey.html',
+    '/achievements.html': '/journey.html',
+    '/milestones': '/journey.html',
+    '/certifications': '/about.html',
+    '/certifications.html': '/about.html',
+    '/credentials': '/about.html',
+    '/contact': '/about.html',
+    '/contact.html': '/about.html'
   };
 
   if (ROUTE_ALIASES[pathname]) {

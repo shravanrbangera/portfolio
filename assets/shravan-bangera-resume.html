@@ -3,204 +3,408 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shravan R Bangera - Resume</title>
+  <title>Shravan R Bangera - Resume / CV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #1264A3;
-      --dark: #0B1726;
+      --primary: #4A6E2E;
+      --primary-dark: #2A3B21;
+      --primary-light: #6B8E4E;
+      --accent: #8FC065;
+      --dark: #172312;
       --text: #334155;
-      --light: #F7FBFC;
+      --text-muted: #64748B;
+      --light: #F6F8F3;
       --border: #E2E8F0;
+      --card-bg: #F8FAFC;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
       color: var(--text);
       background: var(--light);
-      line-height: 1.6;
-      padding: 40px 20px;
+      line-height: 1.55;
+      padding: 36px 20px 80px;
+    }
+    .top-action-bar {
+      max-width: 860px;
+      margin: 0 auto 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--primary-dark); }
+    .btn-group {
+      display: flex;
+      gap: 10px;
+    }
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 24px;
+      font-weight: 600;
+      font-size: 13.5px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 14px rgba(74, 110, 46, 0.25);
+    }
+    .action-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(74, 110, 46, 0.35);
+    }
+    .action-btn.secondary {
+      background: #FFFFFF;
+      color: var(--dark);
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .action-btn.secondary:hover {
+      background: #F1F5F9;
+      color: var(--primary);
     }
     .resume-container {
-      max-width: 800px;
+      max-width: 860px;
       margin: 0 auto;
       background: #FFFFFF;
       padding: 48px;
       border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.06);
       border: 1px solid var(--border);
     }
     .header {
-      border-bottom: 2px solid var(--primary);
-      padding-bottom: 24px;
-      margin-bottom: 32px;
+      border-bottom: 2.5px solid var(--primary);
+      padding-bottom: 20px;
+      margin-bottom: 26px;
       display: flex;
       justify-content: space-between;
-      align-items: flex-end;
+      align-items: flex-start;
       flex-wrap: wrap;
       gap: 16px;
     }
-    .name { font-size: 32px; font-weight: 800; color: var(--dark); letter-spacing: -0.02em; }
-    .title { font-size: 16px; font-weight: 600; color: var(--primary); margin-top: 4px; }
-    .contact-info { font-size: 14px; color: #64748B; text-align: right; }
-    .section { margin-bottom: 28px; }
+    .name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 30px;
+      font-weight: 800;
+      color: var(--dark);
+      letter-spacing: -0.02em;
+    }
+    .contact-info {
+      font-size: 13.5px;
+      color: #475569;
+      text-align: right;
+      line-height: 1.5;
+    }
+    .contact-info a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+    .section {
+      margin-bottom: 24px;
+    }
     .section-title {
-      font-size: 18px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--primary-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border-bottom: 1.5px solid #E2E8F0;
+      padding-bottom: 5px;
+      margin-bottom: 14px;
+    }
+    .summary-p {
+      font-size: 13.5px;
+      color: var(--text);
+      line-height: 1.6;
+      text-align: justify;
+    }
+    .item {
+      margin-bottom: 14px;
+    }
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
       font-weight: 700;
       color: var(--dark);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 6px;
-      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 4px;
     }
-    .item { margin-bottom: 16px; }
-    .item-header { display: flex; justify-content: space-between; font-weight: 700; color: var(--dark); }
-    .item-sub { font-weight: 600; color: var(--primary); font-size: 14px; margin-bottom: 6px; }
-    .item-desc { font-size: 14px; color: #475569; }
-    ul { padding-left: 20px; margin-top: 6px; }
-    li { margin-bottom: 4px; font-size: 14px; }
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
-    .skill-card { background: #F8FAFC; padding: 12px; border-radius: 8px; border: 1px solid var(--border); }
-    .skill-card h4 { font-size: 13px; color: var(--primary); margin-bottom: 4px; text-transform: uppercase; }
-    .skill-card p { font-size: 13px; color: var(--dark); }
-    .print-btn {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 30px;
+    .item-sub {
       font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 4px 14px rgba(18,100,163,0.4);
+      color: var(--primary);
+      font-size: 13.5px;
+      margin-top: 1px;
+      margin-bottom: 4px;
+    }
+    .item-desc {
+      font-size: 13px;
+      color: #475569;
+      line-height: 1.5;
+    }
+    ul {
+      padding-left: 20px;
+      margin-top: 4px;
+    }
+    li {
+      margin-bottom: 3.5px;
+      font-size: 13px;
+      color: #334155;
+      line-height: 1.5;
+    }
+    li strong {
+      color: var(--dark);
+    }
+    .skills-category {
+      margin-bottom: 8px;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .skills-category strong {
+      color: var(--dark);
+      font-weight: 700;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .skill-card {
+      background: var(--card-bg);
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .skill-card h4 {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .skill-card p {
+      font-size: 12.5px;
+      color: var(--dark);
+      line-height: 1.45;
+    }
+    @media (max-width: 640px) {
+      .resume-container { padding: 24px; }
+      .header { flex-direction: column; align-items: flex-start; }
+      .contact-info { text-align: left; }
+      .top-action-bar { flex-direction: column; align-items: stretch; }
+      .btn-group { flex-direction: column; }
     }
     @media print {
-      .print-btn { display: none; }
-      body { padding: 0; background: white; }
-      .resume-container { box-shadow: none; border: none; padding: 0; }
+      .top-action-bar { display: none; }
+      body { padding: 0; background: white; font-size: 12pt; }
+      .resume-container { box-shadow: none; border: none; padding: 0; max-width: 100%; }
+      a { text-decoration: none; color: inherit; }
     }
   </style>
 </head>
 <body>
+
+  <!-- Top Action Navigation -->
+  <div class="top-action-bar">
+    <a href="../index.html" class="back-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      <span>Back to Portfolio Website</span>
+    </a>
+    <div class="btn-group">
+      <a href="SHRAVAN_RESUME.pdf" download="SHRAVAN_RESUME.pdf" target="_blank" rel="noopener" class="action-btn">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/><path d="M5 21h14"/></svg>
+        <span>Download Official PDF</span>
+      </a>
+      <button class="action-btn secondary" onclick="window.print()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        <span>Print Resume</span>
+      </button>
+    </div>
+  </div>
+
   <div class="resume-container">
+    
+    <!-- HEADER -->
     <div class="header">
       <div>
         <h1 class="name">SHRAVAN R BANGERA</h1>
-        <p class="title">MCA Student | Creative Technologist | Media & Marketing Enthusiast</p>
+        <p style="font-size: 13.5px; color: var(--primary); font-weight: 600; margin-top: 4px;">Udupi, Karnataka, India</p>
       </div>
       <div class="contact-info">
-        <p>shravanrbangera@gmail.com</p>
-        <p>+91 9964429300</p>
-        <p>Udupi, Karnataka, India</p>
+        <p><strong>Phone:</strong> +91 9964429300</p>
+        <p><strong>Email:</strong> <a href="mailto:shravanrbangera@gmail.com">shravanrbangera@gmail.com</a></p>
+        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/shravan-r-bangera-7bb053246" target="_blank" rel="noopener">linkedin.com/in/shravan-r-bangera-7bb053246</a></p>
       </div>
     </div>
 
+    <!-- PROFESSIONAL SUMMARY -->
+    <div class="section">
+      <h2 class="section-title">Professional Summary</h2>
+      <p class="summary-p">
+        MCA postgraduate student with hands-on experience in full-stack web development, AI-powered applications, and project/event coordination. Built AI and web-based projects using React and Node.js, with experience in technical documentation, data management, stakeholder coordination, and digital campaign execution. Strong foundation in programming, problem-solving, communication, and cross-functional collaboration, with the ability to adapt across software development and technology-driven project environments.
+      </p>
+    </div>
+
+    <!-- EDUCATION -->
     <div class="section">
       <h2 class="section-title">Education</h2>
       <div class="item">
         <div class="item-header">
-          <span>Master of Computer Applications (MCA)</span>
-          <span>2025 — 2027</span>
+          <span>N.M.A.M. Institute of Technology, Nitte, Karnataka, India</span>
+          <span>2025 – 2027</span>
         </div>
-        <div class="item-sub">N.M.A.M. Institute of Technology, Nitte</div>
+        <div class="item-sub">Master of Computer Applications (MCA)</div>
       </div>
-      <div class="item">
+      <div class="item" style="margin-bottom: 0;">
         <div class="item-header">
-          <span>Bachelor of Computer Applications (BCA)</span>
-          <span>2022 — 2025</span>
+          <span>Dr. NSAM First Grade College, Nitte, Karnataka</span>
+          <span>2022 – 2025</span>
         </div>
-        <div class="item-sub">Dr. NSAM First Grade College, Nitte</div>
+        <div class="item-sub">Bachelor of Computer Applications (BCA)</div>
       </div>
     </div>
 
+    <!-- LEADERSHIP & CAMPUS MEDIA EXPERIENCE -->
     <div class="section">
-      <h2 class="section-title">Experience &amp; Leadership</h2>
+      <h2 class="section-title">Leadership &amp; Campus Media Experience</h2>
+      
       <div class="item">
         <div class="item-header">
-          <span>Media Head &amp; Marketing Operations</span>
-          <span>2025 — Present</span>
+          <span>MCA Department, N.M.A.M. Institute of Technology</span>
+          <span>2025 – Present</span>
         </div>
-        <div class="item-sub">MCA Department, NMAMIT Nitte</div>
+        <div class="item-sub">Media Head (Marketing Operations)</div>
         <ul>
-          <li>Coordinated logistics and media operations with 180+ student volunteers across departmental programs.</li>
-          <li>Managed departmental media pages and produced high-engagement promotional content.</li>
-          <li>Organized and promoted departmental webinars, achieving 42+ verified registrations.</li>
-          <li>Facilitated seamless communication between faculty, event coordinators, and student teams.</li>
+          <li>Coordinated event logistics and media coverage across <strong>5+ department programs</strong> with <strong>180+ student volunteers</strong>.</li>
+          <li>Managed department social media pages, publishing <strong>15+ promotional posts</strong> and increasing engagement.</li>
         </ul>
       </div>
 
-      <div class="item">
+      <div class="item" style="margin-bottom: 0;">
         <div class="item-header">
-          <span>Media Team Member &amp; Event Coordinator</span>
-          <span>2022 — 2025</span>
+          <span>BCA Program, College Fests &amp; Committees</span>
+          <span>2022 – 2025</span>
         </div>
-        <div class="item-sub">Dr. NSAM First Grade College, Nitte</div>
+        <div class="item-sub">Media Team Member (Marketing Operations)</div>
         <ul>
-          <li>Managed media coverage and promotional content for major college fests and committees.</li>
-          <li>Produced promotional posts, reels, and official event photography.</li>
-        </ul>
-      </div>
-
-      <div class="item">
-        <div class="item-header">
-          <span>Student Trainee</span>
-          <span>2024</span>
-        </div>
-        <div class="item-sub">Zephyr Technologies and Solutions Pvt. Ltd.</div>
-        <ul>
-          <li>Completed hands-on software development training and project implementation fundamentals.</li>
+          <li>Executed promotional campaigns for 4 departmental events, growing average post engagement by <strong>87%</strong>.</li>
+          <li>Maintained event and participant records using Google Sheets, Forms, and Drive.</li>
+          <li>Used AI tools to transcribe/summarize meeting audio and draft communications, cutting documentation time by <strong>50%</strong>.</li>
         </ul>
       </div>
     </div>
 
+    <!-- INTERNSHIP EXPERIENCE -->
     <div class="section">
-      <h2 class="section-title">Awards &amp; Recognition</h2>
-      <div class="item">
+      <h2 class="section-title">Internship Experience</h2>
+      <div class="item" style="margin-bottom: 0;">
+        <div class="item-header">
+          <span>Zephyr Technologies and Solutions Pvt. Ltd.</span>
+          <span>Jun 2024 – Jul 2024</span>
+        </div>
+        <div class="item-sub">Student Trainee</div>
         <ul>
-          <li><strong>1st Place - Photography</strong>: ETTIN 2025 National-Level Fest</li>
-          <li><strong>1st Place - Photography</strong>: Nitte Aqua Lens 2024 Competition</li>
-          <li><strong>2nd Place - Photography &amp; Reel Making</strong>: AGON 2024 Fest</li>
+          <li>Prepared and maintained technical documentation for <strong>MERN Stack</strong> projects, documenting project components, workflows, and development activities.</li>
+          <li>Gained practical exposure to software development workflows, project documentation, and structured task execution in a professional environment.</li>
         </ul>
       </div>
     </div>
 
+    <!-- PROJECT EXPERIENCE -->
     <div class="section">
-      <h2 class="section-title">Projects</h2>
+      <h2 class="section-title">Project Experience</h2>
+      
       <div class="item">
-        <div class="item-header">FoodIQ — AI Nutrition Scanner</div>
-        <div class="item-desc">Computer vision application that identifies dishes from photos and provides instant nutritional metrics (calories, carbs, protein, health score).</div>
+        <div class="item-header">FoodIQ – AI-Powered Food &amp; Nutrition Recognition System</div>
+        <ul>
+          <li>Built a full-stack web application (<strong>React frontend, Node.js/Express backend</strong>) that lets users upload a photo of any meal and instantly identifies the food item.</li>
+          <li>Integrated a deep-learning image recognition model trained on <strong>148,000+ food images</strong> to accurately identify Indian dishes, fruits, vegetables, and global foods.</li>
+          <li>Connected recognized items to the official <strong>USDA nutrition database</strong> to auto-calculate calories, protein, carbohydrates, fats, and a 0–100 health score in real time.</li>
+        </ul>
       </div>
-      <div class="item">
-        <div class="item-header">Photo Studio Management System</div>
-        <div class="item-desc">Integrated scheduling and client record platform designed to prevent double bookings, manage client billing, and organize media assets.</div>
+
+      <div class="item" style="margin-bottom: 0;">
+        <div class="item-header">Photo Studio Management System (PSMS)</div>
+        <ul>
+          <li>Designed a platform integrating appointment scheduling, client database management, billing, and asset organization, eliminating double bookings.</li>
+        </ul>
       </div>
     </div>
 
+    <!-- SKILLS -->
     <div class="section">
-      <h2 class="section-title">Skills &amp; Certifications</h2>
-      <div class="skills-grid">
-        <div class="skill-card">
-          <h4>Technology</h4>
-          <p>C, Python, Java, Data Structures, OOP, SDLC, Basic UI/UX</p>
-        </div>
-        <div class="skill-card">
-          <h4>Creative</h4>
-          <p>Photography, Photoshop, Canva, DaVinci Resolve, Lightroom, Blender</p>
-        </div>
-        <div class="skill-card">
-          <h4>Marketing &amp; Ops</h4>
-          <p>Campaign Coordination, Event Planning, Social Media Promotion, Records Management</p>
-        </div>
-        <div class="skill-card">
-          <h4>Certifications</h4>
-          <p>Azure AI Challenge (Microsoft), Cybersecurity Fundamentals (ICT Academy), Android Dev (Dr. NSAM FGC)</p>
-        </div>
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-category">
+        <strong>• Programming &amp; Development:</strong> Python, MERN Stack, Git, SQL
+      </div>
+      <div class="skills-category">
+        <strong>• AI/ML:</strong> AI/ML Fundamentals, AI-Powered Application Development, Prompt Engineering
+      </div>
+      <div class="skills-category">
+        <strong>• Web Development:</strong> React, Node.js, Express.js, Full-Stack Web Development
+      </div>
+      <div class="skills-category">
+        <strong>• Project &amp; Operations:</strong> Project Coordination, Event Coordination, Stakeholder Management, Vendor Management, Records &amp; Data Management, Cross-Functional Collaboration, Agile Fundamentals
+      </div>
+      <div class="skills-category">
+        <strong>• Marketing &amp; Creative:</strong> Campaign Planning, Social Media Promotion, Canva, Adobe Photoshop, Lightroom, Blender, DaVinci Resolve
+      </div>
+      <div class="skills-category">
+        <strong>• Tools &amp; Platforms:</strong> Git, Microsoft Office, Google Workspace, Vercel
+      </div>
+      <div class="skills-category">
+        <strong>• AI Productivity Tools:</strong> Claude, Antigravity, ChatGPT
       </div>
     </div>
+
+    <!-- HONOURS & AWARDS -->
+    <div class="section">
+      <h2 class="section-title">Honours &amp; Awards</h2>
+      <ul>
+        <li><strong>1st Place – Photography:</strong> ETTIN 2025, Justice K S Hegde Institute of Management, Nitte (National-Level Fest)</li>
+        <li><strong>1st Place – Photography:</strong> Nitte Aqua Lens 2024 Photography Competition, SDG Cell, Nitte University</li>
+        <li><strong>2nd Place – Photography &amp; Reel Making:</strong> AGON 2024, ALVA’S Institute of Engineering and Technology, Mijar</li>
+      </ul>
+    </div>
+
+    <!-- CERTIFICATIONS & LANGUAGES -->
+    <div class="section" style="margin-bottom: 0;">
+      <h2 class="section-title">Certifications &amp; Languages</h2>
+      <ul>
+        <li><strong>Microsoft Azure AI Learning Challenge:</strong> Microsoft (covered applied AI fundamentals and use cases)</li>
+        <li><strong>Cyber Security Fundamentals:</strong> ICT Academy</li>
+        <li><strong>Android Application Development for Beginners:</strong> Dr. NSAM FGC, Nitte</li>
+        <li><strong>Languages:</strong> English, Kannada, Hindi; Japanese (Beginner)</li>
+      </ul>
+    </div>
+
   </div>
 
-  <button class="print-btn" onclick="window.print()">Print / Save PDF</button>
 </body>
 </html>

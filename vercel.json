@@ -2,9 +2,14 @@
   "version": 2,
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/creative", "destination": "/work.html" },
-    { "source": "/milestones", "destination": "/achievements.html" },
-    { "source": "/credentials", "destination": "/certifications.html" }
+    { "source": "/story", "destination": "/journey.html" },
+    { "source": "/work", "destination": "/journey.html" },
+    { "source": "/creative", "destination": "/journey.html" },
+    { "source": "/achievements", "destination": "/journey.html" },
+    { "source": "/milestones", "destination": "/journey.html" },
+    { "source": "/certifications", "destination": "/about.html" },
+    { "source": "/credentials", "destination": "/about.html" },
+    { "source": "/contact", "destination": "/about.html" }
   ],
   "headers": [
     {

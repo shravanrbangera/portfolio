@@ -7,7 +7,7 @@
 | Resource | Link / URL |
 | :--- | :--- |
 | **GitHub Repository** | [https://github.com/shravanrbangera/portfolio](https://github.com/shravanrbangera/portfolio) |
-| **Local Development Server** | `http://localhost:3000` |
+| **Local Development Server** | `http://localhost:5500` |
 | **Vercel Production Deployment** | `https://portfolio-shravanrbangera.vercel.app` *(or custom domain)* |
 | **Primary Branch** | `main` |
 
@@ -253,7 +253,7 @@ cd portfolio
 # Run server
 node server.js
 ```
-Navigate to `http://localhost:3000`.
+Navigate to `http://localhost:5500`.
 
 ### Deploying to Vercel:
 1. Open [https://vercel.com/new](https://vercel.com/new).
