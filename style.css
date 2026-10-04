@@ -3938,39 +3938,119 @@ img, svg, video, canvas {
 
 /* --- 18.5 Tablet Portrait & Mobile (max-width: 768px) --- */
 @media (max-width: 768px) {
-  /* Navigation Bar */
+  /* Navigation Bar — Ultra Compact & Perfectly Responsive */
   .studio-header {
-    top: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
+    top: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+    width: 100vw;
+    box-sizing: border-box;
+    max-width: 100%;
   }
   .nav-island {
-    padding: 5px 10px 5px 12px;
+    padding: 5px 8px;
+    gap: 6px;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
     border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.94);
+  }
+  .nav-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    min-width: 0;
+  }
+  .brand-monogram {
+    width: 30px;
+    height: 30px;
+    font-size: 11px;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+  .brand-name {
+    display: none !important; /* Hide full text name on mobile to guarantee all action buttons and hamburger toggle fit */
+  }
+  .brand-dot {
+    display: none !important;
+  }
+
+  .nav-cta-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+  .btn-recruiter-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 9px;
+    font-size: 11px;
+    height: 32px;
+    border-radius: var(--radius-full);
+    white-space: nowrap;
+  }
+  .btn-pill-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 9px;
+    font-size: 11px;
+    height: 32px;
+    border-radius: var(--radius-full);
+    white-space: nowrap;
+  }
+  .btn-pill-nav .btn-icon {
+    width: 11px;
+    height: 11px;
   }
   .menu-toggle-btn {
-    display: flex;
+    display: flex !important;
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: rgba(107, 142, 78, 0.12);
+    border: 1px solid rgba(107, 142, 78, 0.22);
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 0;
+    gap: 3.5px;
   }
+  .menu-line {
+    width: 15px;
+    height: 2px;
+  }
+
+  /* Slide-down Mobile Menu Sheet */
   .nav-menu-wrapper {
     position: fixed;
-    top: 64px;
-    left: 10px;
-    right: 10px;
+    top: 54px;
+    left: 8px;
+    right: 8px;
     background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(28px) saturate(190%);
     -webkit-backdrop-filter: blur(28px) saturate(190%);
     border: 1.5px solid rgba(107, 142, 78, 0.28);
-    border-radius: 20px;
-    box-shadow: 0 24px 50px -10px rgba(23, 35, 18, 0.22), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
-    padding: 18px 14px;
+    border-radius: 18px;
+    box-shadow: 0 24px 50px -10px rgba(23, 35, 18, 0.24), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+    padding: 14px 12px;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-12px) scale(0.98);
+    transform: translateY(-10px) scale(0.98);
     transition: all var(--time-normal) var(--ease-spring);
     z-index: 1001;
-    max-height: calc(100dvh - 80px);
+    max-height: calc(100dvh - 72px);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    display: block;
   }
   .nav-menu-wrapper.active {
     opacity: 1;
@@ -3980,21 +4060,62 @@ img, svg, video, canvas {
   .nav-links-list {
     flex-direction: column;
     align-items: stretch;
-    gap: 6px;
+    gap: 4px;
   }
   .nav-item {
-    padding: 12px 16px;
-    font-size: 15px;
+    padding: 11px 14px;
+    font-size: 14.5px;
     font-weight: 700;
-    border-radius: var(--radius-md);
-    min-height: 46px;
+    border-radius: 12px;
+    min-height: 42px;
     justify-content: flex-start;
+  }
+
+  /* Mobile Menu In-Drawer Action Buttons */
+  .mobile-menu-cta-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(107, 142, 78, 0.18);
+  }
+  .btn-recruiter-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 16px;
+    background: linear-gradient(135deg, rgba(107, 142, 78, 0.15), rgba(143, 192, 101, 0.2));
+    border: 1px solid rgba(107, 142, 78, 0.35);
+    border-radius: var(--radius-md);
+    color: var(--sage-deep);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    font-family: var(--font-primary);
+  }
+  .btn-resume-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 16px;
+    background: var(--navy-dark);
+    color: #FFFFFF;
+    border-radius: var(--radius-md);
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    width: 100%;
+    font-family: var(--font-primary);
   }
 
   /* Home Hero Mobile Refinements */
   .home-hero-section {
     min-height: auto;
-    padding-top: 76px;
+    padding-top: 72px;
     padding-bottom: 28px;
   }
   .hero-layout-grid {
@@ -4195,29 +4316,27 @@ img, svg, video, canvas {
     padding: clamp(20px, 4vw, 32px) clamp(16px, 3.5vw, 24px);
   }
 
-  /* SproutBot Mascot Companion */
+  /* SproutBot Mascot Companion on Mobile — Zero Overlap Guarantee */
+  .mascot-speech-bubble {
+    display: none !important; /* Hide automatic speech bubble on mobile so hero buttons & content are never blocked */
+  }
   .cloud-mascot-companion {
-    bottom: 14px;
-    right: 14px;
+    bottom: 12px;
+    right: 12px;
   }
   .mascot-avatar-btn {
-    width: 50px;
-    height: 50px;
-  }
-  .mascot-speech-bubble {
-    max-width: min(220px, calc(100vw - 80px));
-    font-size: 11px;
-    padding: 6px 10px;
+    width: 44px;
+    height: 44px;
   }
   .mascot-chat-panel {
     position: fixed;
-    bottom: 12px;
-    left: 10px;
-    right: 10px;
+    bottom: 10px;
+    left: 8px;
+    right: 8px;
     width: auto;
     max-width: none;
-    height: calc(100dvh - 80px);
-    height: calc(100vh - 80px);
+    height: calc(100dvh - 76px);
+    height: calc(100vh - 76px);
     max-height: 540px;
     border-radius: 18px;
     transform: translateY(20px) scale(0.96);
@@ -4239,12 +4358,12 @@ img, svg, video, canvas {
     padding: 8px 10px;
   }
   .chat-input-field {
-    font-size: 16px; /* Prevents auto zoom */
+    font-size: 16px; /* Prevents iOS/Android auto zoom */
     padding: 8px 12px;
   }
   .chat-send-btn {
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
   }
 }
 
@@ -4261,12 +4380,15 @@ img, svg, video, canvas {
     justify-content: center;
   }
   .hero-status-strip {
-    font-size: 12px;
-    padding: 8px 12px;
-    background: rgba(255, 255, 255, 0.7);
+    font-size: 11.5px;
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.85);
     border-radius: var(--radius-full);
     width: fit-content;
     max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
   }
 
   /* Portrait Aperture */
@@ -4287,18 +4409,23 @@ img, svg, video, canvas {
   }
 
   /* Nav Compact */
-  .btn-recruiter-toggle {
-    padding: 6px 9px;
-    font-size: 11px;
+  .nav-island {
+    padding: 4px 6px;
     gap: 4px;
   }
-  .btn-pill-nav {
-    padding: 6px 10px;
-    font-size: 11.5px;
+  .btn-recruiter-toggle {
+    padding: 5px 8px;
+    font-size: 10.5px;
+    gap: 3px;
   }
-  .brand-name {
-    font-size: 11px;
-    letter-spacing: 0.04em;
+  .btn-pill-nav {
+    padding: 5px 8px;
+    font-size: 10.5px;
+  }
+  .menu-toggle-btn {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
   }
 
   /* FoodIQ Simulator Mobile View */
@@ -4399,22 +4526,22 @@ img, svg, video, canvas {
 /* --- 18.7 Small Mobile (max-width: 360px) --- */
 @media (max-width: 360px) {
   .nav-island {
-    padding: 4px 8px;
+    padding: 3px 6px;
     gap: 4px;
   }
-  .brand-name {
-    display: none; /* Keep monogram SB + dot for ultra compact 320px screens */
-  }
   .brand-monogram {
-    width: 26px;
-    height: 26px;
+    width: 28px;
+    height: 28px;
     font-size: 10px;
   }
   .btn-recruiter-toggle span:not(.recruiter-zap) {
     display: none; /* Show ⚡ only */
   }
   .btn-recruiter-toggle {
-    padding: 6px 8px;
+    padding: 5px 7px;
+  }
+  .btn-pill-nav {
+    padding: 5px 7px;
   }
   .portrait-glass-aperture {
     width: 210px;

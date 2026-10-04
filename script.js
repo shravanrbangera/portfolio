@@ -327,7 +327,7 @@
         }
       });
 
-      const navLinks = navMenuWrapper.querySelectorAll('.nav-item');
+      const navLinks = navMenuWrapper.querySelectorAll('.nav-item, .btn-recruiter-menu, .btn-resume-menu, a, button');
       navLinks.forEach((link) => {
         link.addEventListener('click', () => {
           closeMenu();
@@ -850,7 +850,7 @@
 
   // Recruiter Executive Briefing Modal
   function initRecruiterModal() {
-    const trigger = document.getElementById('recruiterModalTrigger');
+    const triggers = document.querySelectorAll('#recruiterModalTrigger, #mobileRecruiterTrigger, [data-open-recruiter]');
     const modal = document.getElementById('recruiterModal');
     const closeBtn = document.getElementById('recruiterCloseBtn');
 
@@ -868,12 +868,12 @@
       document.body.style.overflow = '';
     };
 
-    if (trigger) {
+    triggers.forEach((trigger) => {
       trigger.onclick = (e) => {
         e.preventDefault();
         openModal();
       };
-    }
+    });
 
     if (closeBtn) {
       closeBtn.onclick = closeModal;
