@@ -303,20 +303,56 @@
       const newToggle = menuToggleBtn.cloneNode(true);
       menuToggleBtn.parentNode.replaceChild(newToggle, menuToggleBtn);
 
-      newToggle.addEventListener('click', () => {
+      const closeMenu = () => {
+        newToggle.classList.remove('active');
+        navMenuWrapper.classList.remove('active');
+        newToggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('nav-open');
+      };
+
+      const openMenu = () => {
+        newToggle.classList.add('active');
+        navMenuWrapper.classList.add('active');
+        newToggle.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('nav-open');
+      };
+
+      newToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
         const isExpanded = newToggle.getAttribute('aria-expanded') === 'true';
-        newToggle.setAttribute('aria-expanded', !isExpanded);
-        newToggle.classList.toggle('active');
-        navMenuWrapper.classList.toggle('active');
+        if (isExpanded) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
       });
 
       const navLinks = navMenuWrapper.querySelectorAll('.nav-item');
       navLinks.forEach((link) => {
         link.addEventListener('click', () => {
-          newToggle.classList.remove('active');
-          navMenuWrapper.classList.remove('active');
-          newToggle.setAttribute('aria-expanded', 'false');
+          closeMenu();
         });
+      });
+
+      // Close when clicking outside
+      document.addEventListener('click', (e) => {
+        if (navMenuWrapper.classList.contains('active') && !navMenuWrapper.contains(e.target) && !newToggle.contains(e.target)) {
+          closeMenu();
+        }
+      });
+
+      // Close on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navMenuWrapper.classList.contains('active')) {
+          closeMenu();
+        }
+      });
+
+      // Close on resize to desktop width
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && navMenuWrapper.classList.contains('active')) {
+          closeMenu();
+        }
       });
     }
   }

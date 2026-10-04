@@ -214,11 +214,18 @@
       line-height: 1.45;
     }
     @media (max-width: 640px) {
-      .resume-container { padding: 24px; }
-      .header { flex-direction: column; align-items: flex-start; }
+      body { padding: 18px 12px 60px; }
+      .resume-container { padding: clamp(16px, 4vw, 24px); border-radius: 12px; }
+      .header { flex-direction: column; align-items: flex-start; gap: 12px; }
       .contact-info { text-align: left; }
-      .top-action-bar { flex-direction: column; align-items: stretch; }
-      .btn-group { flex-direction: column; }
+      .top-action-bar { flex-direction: column; align-items: stretch; gap: 10px; }
+      .btn-group { flex-direction: column; width: 100%; }
+      .action-btn { width: 100%; justify-content: center; }
+      .skills-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 400px) {
+      .name { font-size: 24px; }
+      .item-header { flex-direction: column; gap: 2px; }
     }
     @media print {
       .top-action-bar { display: none; }
