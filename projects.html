@@ -8,9 +8,10 @@
   <meta name="theme-color" content="#F8FBFC">
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230878C9'/><text x='16' y='22' font-family='sans-serif' font-size='18' font-weight='bold' fill='white' text-anchor='middle'>S</text></svg>">
+  <!-- Google Fonts: Unified Typography (Plus Jakarta Sans) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=2.5">
 </head>
 <body data-page="projects">
@@ -87,151 +88,104 @@
 
   <main class="page-content-wrapper" id="mainContent">
 
-    <section class="section inner-page-hero">
-      <div class="container">
+    <section class="section inner-page-hero" style="position: relative;">
+      <!-- Dreamscape Ambient Radiant Light Beam -->
+      <div class="dreamscape-beam-glow" aria-hidden="true"></div>
+
+      <div class="container" style="position: relative; z-index: 1;">
         
-        <div class="section-editorial-header">
+        <div class="section-editorial-header text-center">
           <div class="header-tag-pill reveal-item">
-            <span class="tag-number">03</span>
-            <span class="tag-title">ENGINEERING &amp; AI LAB</span>
+            <span class="tag-number font-mono">03</span>
+            <span class="tag-title font-mono">ENGINEERING &amp; SOFTWARE SYSTEMS</span>
           </div>
-          <h1 class="section-giant-title reveal-item" data-delay="100">Featured Projects</h1>
+          <h1 class="section-giant-title editorial-display-heading reveal-item" data-delay="100">
+            Featured <em>Projects &amp; Software</em>
+          </h1>
           <p class="section-lead-paragraph reveal-item" data-delay="200">
-            Full-stack web applications and AI systems engineered using React, Node.js/Express, deep learning vision models, and USDA database integrations.
+            Full-stack web applications, database platforms, and experimental software prototypes engineered with React, Node.js/Express, MongoDB, and modern API integrations.
           </p>
         </div>
 
-        <!-- Featured Project 1: FoodIQ AI Nutrition Simulator -->
-        <div class="foodiq-showcase-card glass-panel reveal-item" data-delay="250">
-          
-          <div class="foodiq-grid-layout">
+        <!-- Featured Project 1: Photo Studio Management System (PSMS) Lead Showcase -->
+        <div class="foodiq-showcase-card glass-panel card-3d-tilt reveal-item" data-delay="250">
+          <div class="foodiq-grid-layout" style="grid-template-columns: 1fr 1fr; gap: 36px; align-items: center;">
             
-            <!-- Left Simulator Interactive Box -->
-            <div class="foodiq-simulator-box" data-cursor-text="SIMULATOR">
-              <div class="simulator-top-bar">
+            <!-- Left Mockup / Platform Preview Box -->
+            <div style="background: rgba(255,255,255,0.9); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--glass-shadow);" data-cursor-text="PSMS">
+              <div class="simulator-top-bar" style="margin-bottom: 16px;">
                 <div class="mac-dots">
                   <span class="dot dot-r"></span>
                   <span class="dot dot-y"></span>
                   <span class="dot dot-g"></span>
                 </div>
-                <span class="simulator-title">FoodIQ Neural Scanner v1.2</span>
-                <span class="simulator-live-badge">● LIVE MODEL</span>
+                <span class="simulator-title font-mono">PSMS Studio Platform v2.0</span>
+                <span class="simulator-live-badge font-mono" style="background: rgba(90,126,64,0.12); color: var(--sage-deep);">● MERN ARCHITECTURE</span>
               </div>
 
-              <!-- Interactive Dish Selector -->
-              <div class="demo-dish-selector">
-                <span class="selector-prompt">Select Sample Input:</span>
-                <div class="dish-btn-group">
-                  <button class="dish-btn active" data-dish="avocado">Avocado Salad</button>
-                  <button class="dish-btn" data-dish="salmon">Salmon Bowl</button>
-                  <button class="dish-btn" data-dish="oatmeal">Berry Oatmeal</button>
-                </div>
+              <div style="aspect-ratio: 16 / 10; border-radius: var(--radius-md); overflow: hidden; background: #FAF8F3; border: 1px solid rgba(90,126,64,0.15); display: flex; align-items: center; justify-content: center;">
+                <img src="assets/studio-mockup.svg" alt="Photo Studio Management System Platform" style="width: 100%; height: 100%; object-fit: contain; padding: 12px;">
               </div>
 
-              <!-- Scanner Screen -->
-              <div class="scanner-stage" id="scannerStage">
-                <div class="scanner-crosshairs"></div>
-                <div class="scanner-laser-beam" id="scannerBeam"></div>
-                
-                <div class="scanner-hud-info">
-                  <span class="hud-tag" id="hudDetection">AI Recognition: AVOCADO SALAD</span>
-                  <span class="hud-confidence" id="hudConfidence">Confidence: 98.4%</span>
+              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 16px; text-align: center;">
+                <div style="background: var(--bg-alt); padding: 8px; border-radius: 8px;">
+                  <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); display: block;">BOOKINGS</span>
+                  <strong style="font-size: 13px; color: var(--text-dark);">0 Conflicts</strong>
                 </div>
-
-                <div class="scanner-macro-hud" id="scannerMacroHud">
-                  <div class="hud-macro-item">
-                    <span class="hud-macro-val" id="hudCal">320</span>
-                    <span class="hud-macro-label">KCAL</span>
-                  </div>
-                  <div class="hud-macro-item">
-                    <span class="hud-macro-val" id="hudProtein">12.5g</span>
-                    <span class="hud-macro-label">PROTEIN</span>
-                  </div>
-                  <div class="hud-macro-item">
-                    <span class="hud-macro-val" id="hudCarbs">24.0g</span>
-                    <span class="hud-macro-label">CARBS</span>
-                  </div>
-                  <div class="hud-macro-item">
-                    <span class="hud-macro-val hud-score" id="hudScore">92</span>
-                    <span class="hud-macro-label">HEALTH SCORE</span>
-                  </div>
+                <div style="background: var(--bg-alt); padding: 8px; border-radius: 8px;">
+                  <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); display: block;">INVOICING</span>
+                  <strong style="font-size: 13px; color: var(--text-dark);">Automated</strong>
                 </div>
-              </div>
-
-              <!-- Interactive Macro Breakdown Donut Chart -->
-              <div class="macro-chart-wrapper">
-                <div class="donut-svg-box">
-                  <svg viewBox="0 0 36 36" style="width: 100%; height: 100%; transform: rotate(-90deg);">
-                    <circle cx="18" cy="18" r="14" fill="none" stroke="rgba(107, 142, 78, 0.15)" stroke-width="4"/>
-                    <circle id="donutProtein" cx="18" cy="18" r="14" fill="none" stroke="#6B8E4E" stroke-width="4" stroke-dasharray="25 100" stroke-dashoffset="0"/>
-                    <circle id="donutCarbs" cx="18" cy="18" r="14" fill="none" stroke="#8FC065" stroke-width="4" stroke-dasharray="50 100" stroke-dashoffset="-25"/>
-                    <circle id="donutFats" cx="18" cy="18" r="14" fill="none" stroke="#EAB308" stroke-width="4" stroke-dasharray="25 100" stroke-dashoffset="-75"/>
-                  </svg>
-                  <div class="donut-center-label" id="donutKcal">320<br><span style="font-size:9px; font-weight:700; color:var(--text-muted);">KCAL</span></div>
+                <div style="background: var(--bg-alt); padding: 8px; border-radius: 8px;">
+                  <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); display: block;">DATABASE</span>
+                  <strong style="font-size: 13px; color: var(--text-dark);">MongoDB</strong>
                 </div>
-
-                <div class="donut-legend">
-                  <div class="legend-item">
-                    <span><span class="legend-dot" style="background:#6B8E4E;"></span>Protein</span>
-                    <strong id="legProtein">12.5g (25%)</strong>
-                  </div>
-                  <div class="legend-item">
-                    <span><span class="legend-dot" style="background:#8FC065;"></span>Carbohydrates</span>
-                    <strong id="legCarbs">24.0g (50%)</strong>
-                  </div>
-                  <div class="legend-item">
-                    <span><span class="legend-dot" style="background:#EAB308;"></span>Healthy Fats</span>
-                    <strong id="legFats">14.2g (25%)</strong>
-                  </div>
-                </div>
-              </div>
-
-              <div class="simulator-footer-note">
-                <span>Trained on 148,000+ real food dataset images (Indian dishes, fruits, veggies &amp; global foods)</span>
               </div>
             </div>
 
             <!-- Right Narrative Description -->
             <div class="foodiq-narrative-box">
               <div class="narrative-tagline">
-                <span class="tag-accent-pill">REACT + NODE.JS + 148K+ IMAGE VISION MODEL + USDA DB</span>
-                <h2>FoodIQ – AI-Powered Food &amp; Nutrition Recognition System</h2>
-                <p>
-                  Built a full-stack web application (React frontend, Node.js/Express backend) that lets users upload a photo of any meal and instantly identifies the food item, calculating calories, protein, carbs, fats, and a 0–100 health score in real time via the official USDA nutrition database.
+                <span class="tag-accent-pill font-mono" style="background: rgba(90,126,64,0.12); color: var(--sage-deep); padding: 4px 10px; border-radius: 9999px; font-size: 11px; font-weight: 700;">REACT + NODE.JS + EXPRESS + MONGODB</span>
+                <h2 class="editorial-display-heading" style="font-size: clamp(1.6rem, 2.6vw, 2.3rem); margin: 12px 0 14px;">
+                  Photo Studio Management <em>System (PSMS)</em>
+                </h2>
+                <p style="color: var(--text-muted); line-height: 1.6; font-size: 14.5px;">
+                  A full-stack workflow management platform engineered to eliminate scheduling conflicts, automate client booking records, generate digital invoices, and organize media assets for professional studio operations.
                 </p>
               </div>
 
-              <div class="three-steps-list">
+              <div class="three-steps-list" style="margin: 20px 0;">
                 
-                <div class="step-card">
-                  <div class="step-badge">01</div>
+                <div class="step-card" style="display: flex; gap: 14px; margin-bottom: 12px;">
+                  <div class="step-badge" style="width: 28px; height: 28px; border-radius: 50%; background: var(--sage-pale); color: var(--sage-deep); font-family: var(--font-mono); font-weight: 700; font-size: 11px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">01</div>
                   <div class="step-text">
-                    <h3 class="step-title">CAPTURE</h3>
-                    <p class="step-desc">Upload a photo of Indian dishes, fruits, vegetables, or global meals via the React client.</p>
+                    <h3 class="step-title" style="font-size: 14px; font-weight: 700; margin-bottom: 2px;">Conflict-Free Booking Scheduler</h3>
+                    <p class="step-desc" style="font-size: 12.5px; color: var(--text-muted);">Real-time slot reservation system eliminating double bookings across photography sessions.</p>
                   </div>
                 </div>
 
-                <div class="step-card">
-                  <div class="step-badge">02</div>
+                <div class="step-card" style="display: flex; gap: 14px; margin-bottom: 12px;">
+                  <div class="step-badge" style="width: 28px; height: 28px; border-radius: 50%; background: var(--sage-pale); color: var(--sage-deep); font-family: var(--font-mono); font-weight: 700; font-size: 11px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">02</div>
                   <div class="step-text">
-                    <h3 class="step-title">RECOGNIZE</h3>
-                    <p class="step-desc">Deep learning model trained on 148,000+ food images delivers instant identification.</p>
+                    <h3 class="step-title" style="font-size: 14px; font-weight: 700; margin-bottom: 2px;">Client CRM &amp; History Vault</h3>
+                    <p class="step-desc" style="font-size: 12.5px; color: var(--text-muted);">Unified client profiles tracking shoot requirements, deliverables, and communication records.</p>
                   </div>
                 </div>
 
-                <div class="step-card">
-                  <div class="step-badge">03</div>
+                <div class="step-card" style="display: flex; gap: 14px;">
+                  <div class="step-badge" style="width: 28px; height: 28px; border-radius: 50%; background: var(--sage-pale); color: var(--sage-deep); font-family: var(--font-mono); font-weight: 700; font-size: 11px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">03</div>
                   <div class="step-text">
-                    <h3 class="step-title">ANALYZE</h3>
-                    <p class="step-desc">Connected to official USDA nutrition database for automated macronutrients and real-time health score.</p>
+                    <h3 class="step-title" style="font-size: 14px; font-weight: 700; margin-bottom: 2px;">Automated Invoicing &amp; Billing</h3>
+                    <p class="step-desc" style="font-size: 12.5px; color: var(--text-muted);">Instant invoice generation and payment tracking tied directly to completed assignments.</p>
                   </div>
                 </div>
 
               </div>
 
-              <div class="foodiq-cta-row">
-                <button class="btn btn-primary-glow open-case-study" data-project="foodiq" data-magnetic>
-                  <span>View Full Case Study</span>
+              <div class="foodiq-cta-row" style="margin-top: 22px;">
+                <button class="btn btn-primary-glow open-case-study" data-project="studio" data-magnetic>
+                  <span>View PSMS Case Study</span>
                   <svg class="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </button>
               </div>
@@ -239,71 +193,73 @@
             </div>
 
           </div>
-
         </div>
 
-        <!-- Additional Project Showcase Grid -->
-        <div class="projects-editorial-grid" style="margin-top: 50px;">
+        <!-- Additional Projects 2-Column Grid -->
+        <div class="projects-editorial-grid" style="margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
           
-          <!-- Project 02: Studio Pro Management System -->
-          <div class="project-showcase-card glass-panel reveal-item" data-delay="300" data-cursor-text="CASE STUDY">
+          <!-- Project 02: FoodIQ (In-Development Prototype) -->
+          <div class="project-showcase-card glass-panel reveal-item" data-delay="300" data-cursor-text="PROTOTYPE">
             <div class="project-card-image-wrap">
-              <img src="assets/studio-mockup.svg" alt="Photo Studio Management System" loading="lazy" class="project-preview-img">
-              <div class="project-category-tag">FULL-STACK PLATFORM</div>
+              <img src="assets/foodiq-mockup.svg" alt="FoodIQ AI Nutrition Prototype" loading="lazy" class="project-preview-img">
+              <div class="project-category-tag font-mono">IN-DEVELOPMENT PROTOTYPE</div>
             </div>
             
             <div class="project-card-info">
-              <h2 class="project-heading">Photo Studio Management System (PSMS)</h2>
+              <h2 class="project-heading font-display">FoodIQ – AI Nutrition Recognition</h2>
               <p class="project-one-liner">
-                Designed a platform integrating appointment scheduling, client database management, billing, and asset organization, eliminating double bookings.
+                An ongoing research and software prototype exploring computer vision for automated meal identification and macronutrient estimates linked with the USDA database.
               </p>
 
-              <div class="project-highlights-chips">
-                <span class="chip">Conflict-Free Scheduling</span>
-                <span class="chip">Client Database</span>
-                <span class="chip">Billing &amp; Invoicing</span>
-                <span class="chip">Asset Organization</span>
-              </div>
-
-              <div class="project-action-footer">
-                <button class="btn btn-pill-outline open-case-study" data-project="studio" data-magnetic>
-                  <span>View Project Details</span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 01 Preview Card (Compact) -->
-          <div class="project-showcase-card glass-panel reveal-item" data-delay="350" data-cursor-text="CASE STUDY">
-            <div class="project-card-image-wrap">
-              <img src="assets/foodiq-mockup.svg" alt="FoodIQ AI Nutrition App" loading="lazy" class="project-preview-img">
-              <div class="project-category-tag">AI &amp; COMPUTER VISION</div>
-            </div>
-            
-            <div class="project-card-info">
-              <h2 class="project-heading">FoodIQ Case Study</h2>
-              <p class="project-one-liner">
-                Detailed architecture breakdown of the 148,000+ food image deep learning pipeline and real-time macronutrient scoring system.
-              </p>
-
-              <div class="project-highlights-chips">
-                <span class="chip">Model Inference</span>
-                <span class="chip">Computer Vision</span>
-                <span class="chip">UI/UX Prototype</span>
-                <span class="chip">API Layer</span>
+              <div class="project-highlights-chips font-mono">
+                <span class="chip">Active R&amp;D</span>
+                <span class="chip">React UI</span>
+                <span class="chip">USDA Database API</span>
+                <span class="chip">Macronutrient Engine</span>
               </div>
 
               <div class="project-action-footer">
                 <button class="btn btn-pill-outline open-case-study" data-project="foodiq" data-magnetic>
-                  <span>Read Case Study</span>
+                  <span>Read Prototype Notes</span>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </button>
               </div>
             </div>
           </div>
 
+          <!-- Project 03: Event Operations & Digital Tooling -->
+          <div class="project-showcase-card glass-panel reveal-item" data-delay="350" data-cursor-text="OPERATIONS">
+            <div class="project-card-image-wrap" style="background: linear-gradient(135deg, #FAF0E7 0%, #EBF2E3 100%); display: flex; align-items: center; justify-content: center; min-height: 180px;">
+              <div style="font-size: 48px;">📢</div>
+              <div class="project-category-tag font-mono">OPERATIONS TOOLKIT</div>
+            </div>
+            
+            <div class="project-card-info">
+              <h2 class="project-heading font-display">Media Operations &amp; Campaign Automation</h2>
+              <p class="project-one-liner">
+                Internal digital pipelines and AI-assisted documentation workflows engineered to manage event publicity across 180+ student volunteers and 5+ departmental programs.
+              </p>
+
+              <div class="project-highlights-chips font-mono">
+                <span class="chip">180+ Squad Coordination</span>
+                <span class="chip">AI Documentation</span>
+                <span class="chip">Campaign Analytics</span>
+                <span class="chip">+87% Engagement</span>
+              </div>
+
+              <div class="project-action-footer">
+                <a href="journey.html" class="btn btn-pill-outline" data-nav-link data-magnetic>
+                  <span>View Leadership Milestones</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
         </div>
+
+      </div>
+    </section>
 
       </div>
     </section>
@@ -416,7 +372,7 @@
             <li><strong>Media Head (MCA Dept, NMAMIT):</strong> Coordinated logistics &amp; media across 5+ programs with 180+ volunteers; published 15+ promotional campaigns.</li>
             <li><strong>Media Team Member (BCA Program):</strong> Grew average post engagement by 87% across 4 departmental events; cut documentation time by 50% using AI tools.</li>
             <li><strong>Internship (Zephyr Technologies):</strong> Prepared technical documentation for MERN Stack projects and development workflows.</li>
-            <li><strong>Top Project (FoodIQ):</strong> AI food recognition web app (React, Node.js/Express) with 148,000+ image deep learning model &amp; USDA nutrition database.</li>
+            <li><strong>Featured Projects:</strong> Photo Studio Management System (PSMS &mdash; MERN Stack) &amp; FoodIQ (AI prototype).</li>
             <li><strong>Honours &amp; Awards:</strong> 1st Place Photography (Nitte Aqua Lens 2024 University Level &amp; ETTIN 2025 National Fest); 2nd Place (AGON 2024).</li>
           </ul>
 
@@ -496,7 +452,7 @@
 
       <div class="chat-quick-chips-bar" id="chatQuickChips">
         <button class="chat-chip-btn" data-query="projects">🚀 Projects</button>
-        <button class="chat-chip-btn" data-query="foodiq">🥗 FoodIQ AI</button>
+        <button class="chat-chip-btn" data-query="psms">📷 PSMS App</button>
         <button class="chat-chip-btn" data-query="awards">🏆 Awards</button>
         <button class="chat-chip-btn" data-query="photography">📸 Photography</button>
         <button class="chat-chip-btn" data-query="leadership">📢 180+ Volunteers</button>
@@ -512,7 +468,7 @@
           type="text" 
           id="chatInputText" 
           class="chat-input-field" 
-          placeholder="Ask me anything (e.g. FoodIQ, awards, skills)..." 
+          placeholder="Ask me anything (e.g. PSMS, awards, skills)..." 
           aria-label="Ask SproutBot AI"
         >
         <button type="submit" class="chat-send-btn" id="chatSendBtn" aria-label="Send query">

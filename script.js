@@ -218,21 +218,32 @@
 
     if (!isFinePointer || !cursorDot || !cursorRing) return;
 
-    mouseX = window.innerWidth / 2;
-    mouseY = window.innerHeight / 2;
-    ringX = mouseX;
-    ringY = mouseY;
+    let hasMoved = false;
 
     window.addEventListener('mousemove', (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
+      if (!hasMoved) {
+        ringX = mouseX;
+        ringY = mouseY;
+        hasMoved = true;
+      }
+      cursorDot.classList.add('cursor-visible');
+      cursorRing.classList.add('cursor-visible');
       cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
     });
 
+    document.addEventListener('mouseleave', () => {
+      cursorDot.classList.remove('cursor-visible');
+      cursorRing.classList.remove('cursor-visible');
+    });
+
     const renderLoop = () => {
-      ringX += (mouseX - ringX) * 0.18;
-      ringY += (mouseY - ringY) * 0.18;
-      cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
+      if (hasMoved) {
+        ringX += (mouseX - ringX) * 0.18;
+        ringY += (mouseY - ringY) * 0.18;
+        cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
+      }
       requestAnimationFrame(renderLoop);
     };
     requestAnimationFrame(renderLoop);
@@ -363,6 +374,7 @@
   function initPageModules() {
     initStaggeredReveals();
     initHeroParallax();
+    init3DCardTilt();
     initTimelineConstellation();
     initImpactCounters();
     initFoodIQSimulator();
@@ -377,6 +389,31 @@
     initLeadershipModal();
     initCredentialDetailModal();
     initCloudMascot();
+  }
+
+  // 3D Perspective Card Tilt Physics
+  function init3DCardTilt() {
+    if (window.innerWidth < 1024) return;
+    const tiltCards = document.querySelectorAll('.card-3d-tilt, .portal-room-card, .bento-card-green, .bento-card-cream, .story-spotlight-card, .value-feature-card, .foodiq-showcase-card, .atelier-step-item');
+    
+    tiltCards.forEach((card) => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = ((y - centerY) / centerY) * -6;
+        const rotateY = ((x - centerX) / centerX) * 6;
+        
+        card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-2px)`;
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+      });
+    });
   }
 
   // Staggered Scroll Reveals
@@ -397,23 +434,77 @@
     items.forEach((el) => observer.observe(el));
   }
 
-  // Hero 3D Portrait Tilt (Home)
+  // Hero 3D Portrait Scroll Zoom & Interactive 3D Parallax (Home)
   function initHeroParallax() {
     const heroSec = document.querySelector('.home-hero-section');
     const portraitStage = document.getElementById('portraitStage');
+    const portraitImg = document.querySelector('.portrait-image');
+    const badgeTop = document.querySelector('.badge-top-right');
+    const badgeBottom = document.querySelector('.badge-bottom-left');
+    const auraGlow = document.querySelector('.portrait-aura-glow');
 
-    if (heroSec && portraitStage && window.innerWidth > 1024) {
-      heroSec.addEventListener('mousemove', (e) => {
-        const { clientX, clientY } = e;
-        const { innerWidth, innerHeight } = window;
-        const rotateY = ((clientX - innerWidth / 2) / innerWidth) * 12;
-        const rotateX = -((clientY - innerHeight / 2) / innerHeight) * 12;
-        portraitStage.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-      });
+    if (!heroSec || !portraitStage) return;
 
-      heroSec.addEventListener('mouseleave', () => {
-        portraitStage.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
-      });
+    let mouseX = 0;
+    let mouseY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let scrollProgress = 0;
+
+    const onMouseMove = (e) => {
+      const rect = heroSec.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      mouseX = x * 16;
+      mouseY = -y * 16;
+    };
+
+    const onMouseLeave = () => {
+      mouseX = 0;
+      mouseY = 0;
+    };
+
+    const updateTransforms = () => {
+      currentX += (mouseX - currentX) * 0.1;
+      currentY += (mouseY - currentY) * 0.1;
+
+      const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+      const heroHeight = heroSec.offsetHeight || 600;
+      scrollProgress = Math.min(Math.max(scrollY / heroHeight, 0), 1.5);
+
+      const scrollZoom = 1 + scrollProgress * 0.18;
+      const scrollTranslateY = scrollProgress * 60;
+
+      if (portraitStage) {
+        portraitStage.style.transform = `perspective(1200px) rotateX(${currentY.toFixed(2)}deg) rotateY(${currentX.toFixed(2)}deg) translate3d(0, ${scrollTranslateY.toFixed(1)}px, 0)`;
+      }
+
+      if (portraitImg) {
+        portraitImg.style.transform = `scale(${scrollZoom.toFixed(3)}) translateZ(30px)`;
+      }
+
+      if (badgeTop) {
+        const badgeTopOffset = -scrollProgress * 70;
+        badgeTop.style.transform = `translate3d(${(currentX * 0.7).toFixed(1)}px, ${(badgeTopOffset + currentY * 0.7).toFixed(1)}px, 50px)`;
+      }
+
+      if (badgeBottom) {
+        const badgeBottomOffset = scrollProgress * 40;
+        badgeBottom.style.transform = `translate3d(${(-currentX * 0.5).toFixed(1)}px, ${(badgeBottomOffset - currentY * 0.5).toFixed(1)}px, 40px)`;
+      }
+
+      if (auraGlow) {
+        const auraScale = 1 + scrollProgress * 0.3;
+        auraGlow.style.transform = `scale(${auraScale.toFixed(2)})`;
+      }
+
+      requestAnimationFrame(updateTransforms);
+    };
+
+    if (window.innerWidth > 768) {
+      heroSec.addEventListener('mousemove', onMouseMove, { passive: true });
+      heroSec.addEventListener('mouseleave', onMouseLeave);
+      requestAnimationFrame(updateTransforms);
     }
   }
 
@@ -710,18 +801,18 @@
 
     const caseStudyData = {
       foodiq: {
-        category: 'FULL-STACK & AI COMPUTER VISION CASE STUDY',
-        title: 'FoodIQ – AI-Powered Food & Nutrition Recognition System',
-        tagline: '“React frontend, Node.js/Express backend, 148,000+ image deep learning model & USDA nutrition tracking.”',
-        overview: 'Built a full-stack web application (React frontend, Node.js/Express backend) that lets users upload a photo of any meal and instantly identifies the food item, calculating macronutrients and a 0–100 health score in real time.',
-        workedOn: 'Engineered the React UI and Node.js/Express REST API, integrated the deep learning model trained on 148,000+ food images (Indian dishes, fruits, vegetables, and global foods), and linked predictions to the USDA nutrition database.',
+        category: 'R&D PROTOTYPE & COMPUTER VISION CASE STUDY',
+        title: 'FoodIQ – AI Nutrition Recognition (In-Development Prototype)',
+        tagline: '“An exploratory full-stack research prototype for meal image recognition and USDA nutrition data sync.”',
+        overview: 'An ongoing software prototype exploring computer vision and REST API architecture to identify food items from images and estimate nutritional metrics via USDA database integration.',
+        workedOn: 'Developed the React prototype interface, Node.js/Express backend API endpoints, and experimental model integration pipelines for nutritional data mapping.',
         features: [
-          'Full-stack architecture: Modern React user interface backed by high-performance Node.js & Express API services.',
-          'Deep learning image recognition trained on 148,000+ images covering Indian dishes, fruits, vegetables, and international cuisines.',
-          'Real-time connection to the official USDA nutrition database for automated calculation of calories, protein, carbohydrates, and fats.',
-          'Automated 0–100 health scoring engine assessing nutrient density and meal balance.'
+          'Full-Stack Architecture: React user interface backed by Node.js & Express API routing.',
+          'Computer Vision Pipeline: Exploratory image classification for everyday meal recognition.',
+          'USDA Database Synchronization: REST API pipeline estimating calories and macronutrient ratios.',
+          'Nutritional Assessment: Experimental algorithm generating estimated health scores.'
         ],
-        learned: 'Mastered combining full-stack React and Node.js/Express web development with deep-learning vision inference, USDA nutrition database synchronization, and responsive real-time data visualization.'
+        learned: 'Gained practical experience in computer vision integration, handling external nutritional APIs, and architecting scalable REST backends for data-intensive prototypes.'
       },
       studio: {
         category: 'FULL-STACK OPERATIONS & WORKFLOW CASE STUDY',
@@ -1129,13 +1220,13 @@
     // Interactive Speech Bubble Guide Prompts
     const guideQuotes = [
       {
-        badge: "🥗 LIVE AI PROJECT",
-        text: "FoodIQ AI Nutrition Scanner (React + Node.js)",
-        cta: "Click text to test live ↗",
+        badge: "💻 FULL-STACK SOFTWARE",
+        text: "Photo Studio Management System (PSMS) & MERN Stack",
+        cta: "Click text to view software ↗",
         actionType: "nav",
         targetUrl: "projects.html",
-        targetId: "#scannerStage",
-        query: "Show me FoodIQ AI Scanner"
+        targetId: ".foodiq-showcase-card",
+        query: "Show me Photo Studio Management System"
       },
       {
         badge: "🏆 1ST PLACE WINNER",
@@ -1332,7 +1423,7 @@
         actionTitle: "Popular Quick Actions",
         actionDesc: "Tap any topic below to navigate directly:",
         actions: [
-          { label: "🥗 FoodIQ AI Vision Scanner", targetUrl: "projects.html", targetId: "#scannerStage" },
+          { label: "📷 Photo Studio Management (PSMS)", targetUrl: "projects.html", targetId: ".foodiq-showcase-card" },
           { label: "🏆 Awards & Honors Museum", targetUrl: "journey.html", targetId: "#achievementMuseumGrid" },
           { label: "📸 Award-Winning Photography", targetUrl: "journey.html", targetId: "#editorialGallery" },
           { label: "📢 180+ Volunteers Telemetry", targetUrl: "journey.html", targetId: "#impactMetrics" },
@@ -1515,15 +1606,15 @@
     };
 
     const generateBotResponse = (q) => {
-      // Intent 1: Projects / FoodIQ / PSMS / MERN Stack
+      // Intent 1: Projects / PSMS / FoodIQ / MERN Stack
       if (q.includes('project') || q.includes('foodiq') || q.includes('food') || q.includes('psms') || q.includes('studio') || q.includes('app') || q.includes('system') || q.includes('build')) {
         if (q.includes('foodiq') || q.includes('nutrition') || q.includes('diet') || q.includes('health') || q.includes('usda') || q.includes('scanner')) {
           return {
-            text: "🥗 **FoodIQ — AI-Powered Food & Nutrition Recognition System**\n• Full-stack platform built with **React** & **Node.js/Express**.\n• Deep learning image recognition trained on **148,000+ food items** (Indian cuisine, fruits, vegetables, global dishes).\n• Synchronized with the **USDA database** to compute live calories, protein, carbs, fats, and a 0–100 health score.\n\n👉 Click [Test FoodIQ Live Simulator](projects.html#scannerStage) or [Explore Projects Room](projects.html#.section-editorial-header) to navigate directly there!",
-            actionTitle: "FoodIQ Actions",
-            actionDesc: "Would you like to test the live simulator?",
+            text: "🥗 **FoodIQ — AI Nutrition Recognition (In-Development Prototype)**\n• An ongoing full-stack research prototype built with **React** & **Node.js/Express**.\n• Explores computer vision image recognition and USDA database synchronization for meal nutrition tracking.\n\n👉 Click [View FoodIQ Prototype in Projects](projects.html) or [Explore All Software](projects.html#.section-editorial-header)!",
+            actionTitle: "FoodIQ Prototype Actions",
+            actionDesc: "Explore prototype research notes:",
             actions: [
-              { label: "🥗 Test FoodIQ Scanner Simulator", targetUrl: "projects.html", targetId: "#scannerStage" },
+              { label: "🥗 View Prototype Card in Projects", targetUrl: "projects.html", targetId: ".project-showcase-card" },
               { label: "🚀 View All Projects", targetUrl: "projects.html", targetId: ".section-editorial-header" }
             ]
           };
@@ -1531,20 +1622,20 @@
 
         if (q.includes('psms') || q.includes('studio') || q.includes('photo studio')) {
           return {
-            text: "📷 **Photo Studio Management System (PSMS)**\n• Complete platform integrating appointment scheduling, client database management, automated invoicing, and digital asset organization.\n• Eliminates double-bookings and streamlines photography operations.\n\n👉 Click [View PSMS Details in Projects Room](projects.html#.foodiq-showcase-card:nth-of-type(2)) to jump straight to this card!",
+            text: "📷 **Photo Studio Management System (PSMS)**\n• Flagship full-stack MERN platform integrating conflict-free appointment scheduling, client CRM database, automated invoicing, and digital asset organization.\n• Eliminates double-bookings and streamlines photography operations.\n\n👉 Click [View PSMS Case Study](projects.html#.foodiq-showcase-card) to explore the full architecture!",
             actionTitle: "PSMS Actions",
             actions: [
-              { label: "📷 View PSMS Details in Projects Room", targetUrl: "projects.html", targetId: ".foodiq-showcase-card:nth-of-type(2)" }
+              { label: "📷 View PSMS Platform in Projects Room", targetUrl: "projects.html", targetId: ".foodiq-showcase-card" }
             ]
           };
         }
 
         return {
-          text: "🚀 **Shravan's Featured Software Projects:**\n1. [FoodIQ AI Vision Scanner](projects.html#scannerStage): React, Node.js, 148k+ dataset, USDA API.\n2. [PSMS Management System](projects.html#.foodiq-showcase-card:nth-of-type(2)): Scheduling, client invoicing, digital asset vault.\n3. [MERN Stack Workflows](projects.html#.section-editorial-header).\n\n👉 Click any highlighted link to navigate straight to that section!",
+          text: "🚀 **Shravan's Featured Software & Systems:**\n1. [Photo Studio Management System (PSMS)](projects.html#.foodiq-showcase-card): Conflict-free scheduling, client CRM, automated invoicing.\n2. [Media Operations & Campaign Automation](projects.html#.projects-editorial-grid): Coordination workflows for 180+ student volunteers.\n3. [FoodIQ Prototype (In Development)](projects.html#.projects-editorial-grid): Computer vision & USDA nutrition exploratory prototype.\n\n👉 Click any highlighted link to navigate straight there!",
           actionTitle: "Explore Projects",
           actions: [
-            { label: "🚀 Open Projects & AI Lab", targetUrl: "projects.html", targetId: ".section-editorial-header" },
-            { label: "🥗 Try FoodIQ Simulator", targetUrl: "projects.html", targetId: "#scannerStage" }
+            { label: "📷 Open PSMS Platform Lead Showcase", targetUrl: "projects.html", targetId: ".foodiq-showcase-card" },
+            { label: "🚀 Open Projects Room", targetUrl: "projects.html", targetId: ".section-editorial-header" }
           ]
         };
       }
@@ -1612,11 +1703,11 @@
       // Intent 7: Skills / Tech Stack / Tools / Languages / Certifications
       if (q.includes('skill') || q.includes('tech') || q.includes('stack') || q.includes('tool') || q.includes('python') || q.includes('react') || q.includes('node') || q.includes('sql') || q.includes('git') || q.includes('certif') || q.includes('azure') || q.includes('cyber') || q.includes('android') || q.includes('language') || q.includes('japanese')) {
         return {
-          text: "🛠️ **Technical Skillset & Certifications:**\n• **Languages & Web**: Python, MERN Stack (React, Node.js, Express), HTML5/CSS3, SQL, Git, Vercel.\n• **AI/ML**: Deep Learning Image Recognition, Prompt Engineering, USDA API.\n• **Certifications**: Microsoft Azure AI Challenge, Cyber Security (ICT Academy), Android App Dev (NSAM FGC).\n• **Languages**: English (Fluent), Kannada (Native), Hindi (Professional), Japanese (Beginner).\n\n👉 Click [View Full Credentials on About Page](about.html#.credentials-cards-grid) or [Test FoodIQ Scanner](projects.html#scannerStage)!",
+          text: "🛠️ **Technical Skillset & Certifications:**\n• **Languages & Web**: Python, MERN Stack (React, Node.js, Express), HTML5/CSS3, SQL, Git, Vercel.\n• **AI/ML & Cloud**: Azure AI Fundamentals, Prompt Engineering, REST API Integrations.\n• **Certifications**: Microsoft Azure AI Challenge, Cyber Security (ICT Academy), Android App Dev (NSAM FGC).\n• **Languages**: English (Fluent), Kannada (Native), Hindi (Professional), Japanese (Beginner).\n\n👉 Click [View Full Credentials on About Page](about.html#.credentials-cards-grid) or [Explore PSMS Platform](projects.html#.foodiq-showcase-card)!",
           actionTitle: "Skills Actions",
           actions: [
             { label: "🛠️ View Credentials & Languages on About Page", targetUrl: "about.html", targetId: ".credentials-cards-grid" },
-            { label: "🥗 See Skills Applied in FoodIQ", targetUrl: "projects.html", targetId: "#scannerStage" }
+            { label: "💻 See Skills Applied in PSMS", targetUrl: "projects.html", targetId: ".foodiq-showcase-card" }
           ]
         };
       }

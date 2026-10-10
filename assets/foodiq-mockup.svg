@@ -75,5 +75,5 @@
   <text x="630" y="435" font-family="Inter, sans-serif" font-size="28" font-weight="800" fill="#36B37E">92 <tspan font-size="16" font-weight="500" fill="#FFFFFF">/ 100</tspan></text>
 
   <!-- Dataset tag -->
-  <text x="610" y="525" font-family="Inter, sans-serif" font-size="12" font-weight="500" fill="#FFFFFF" opacity="0.6">Trained on 148,000+ food dataset images</text>
+  <text x="610" y="525" font-family="Inter, sans-serif" font-size="12" font-weight="500" fill="#FFFFFF" opacity="0.6">Exploratory Computer Vision Model &amp; USDA API</text>
 </svg>

@@ -17,10 +17,10 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230878C9'/><text x='16' y='22' font-family='sans-serif' font-size='18' font-weight='bold' fill='white' text-anchor='middle'>S</text></svg>">
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts: Unified Typography (Plus Jakarta Sans) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
 
   <!-- Primary Stylesheet -->
   <link rel="stylesheet" href="style.css?v=2.5">
@@ -102,6 +102,9 @@
 
     <!-- HOME HERO SECTION -->
     <section class="section home-hero-section">
+      <!-- Dreamscape Ambient Radiant Light Beam (Sample 3) -->
+      <div class="dreamscape-beam-glow" aria-hidden="true"></div>
+
       <div class="container hero-layout-grid">
         
         <!-- Hero Left Content -->
@@ -109,24 +112,28 @@
           
           <div class="hero-eyebrow-pill reveal-item">
             <span class="eyebrow-pulse-dot"></span>
-            <span class="eyebrow-text">HELLO, I'M SHRAVAN</span>
+            <span class="eyebrow-text">HELLO, I'M SHRAVAN <span class="sparkle-star">✦</span> DIGITAL CRAFTSMAN</span>
           </div>
 
           <div class="hero-headline-group reveal-item" data-delay="100">
-            <h1 class="hero-main-title">
-              <span class="title-sub-line">MCA STUDENT</span>
-              <span class="title-hero-line gradient-text-lumina">CREATIVE TECHNOLOGIST</span>
-              <span class="title-sub-line">MEDIA &amp; MARKETING ENTHUSIAST</span>
+            <h1 class="hero-main-title editorial-display-heading">
+              <span class="title-sub-line font-mono" style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sage-primary); font-weight: 700; margin-bottom: 6px;">[01] MCA POSTGRADUATE // CREATIVE TECH</span>
+              <span class="title-hero-line font-display" style="font-size: clamp(2.6rem, 5.4vw, 4.4rem); font-weight: 800; line-height: 1.06;">
+                Architecting <em class="editorial-italic">intelligent</em> digital experiences.
+              </span>
+              <span class="title-sub-line font-display" style="font-size: clamp(1.25rem, 2.2vw, 1.7rem); font-weight: 400; color: var(--text-secondary); margin-top: 6px;">
+                Rooted in logic. <i>Designed for impact.</i>
+              </span>
             </h1>
           </div>
 
           <p class="hero-bio-lead reveal-item" data-delay="200">
-            MCA student bridging full-stack web development (React, Node.js), AI applications, and departmental media leadership. Building intelligent products with human-centered aesthetics.
+            MCA postgraduate student bridging full-stack web software development (React, Node.js, Express, MongoDB), intelligent application prototypes, and large-scale media marketing operations across 180+ student squads.
           </p>
 
           <div class="hero-actions-cluster reveal-item" data-delay="300">
-            <a href="about.html" class="btn btn-primary-glow" data-nav-link data-magnetic>
-              <span>Explore My World</span>
+            <a href="projects.html" class="btn btn-primary-glow" data-nav-link data-magnetic>
+              <span>Explore Projects</span>
               <svg class="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
             <a href="assets/SHRAVAN_RESUME.pdf" download="SHRAVAN_RESUME.pdf" target="_blank" rel="noopener" class="btn btn-glass-card" data-magnetic>
@@ -138,35 +145,73 @@
             </a>
           </div>
 
-          <div class="hero-status-strip reveal-item" data-delay="400">
+          <div class="hero-status-strip reveal-item" data-delay="350">
             <div class="status-indicator">
               <span class="pulse-ring"></span>
               <span class="status-dot"></span>
             </div>
-            <span class="status-msg"><strong>Open to Opportunities</strong> &bull; MCA '27 Placement &amp; Internships</span>
-          </div>
-
-          <div class="hero-editorial-quote reveal-item" data-delay="450">
-            <span class="quote-symbol">“</span>
-            <p>I thrive where technology, creative expression, and people intersect.</p>
+            <span class="status-msg"><strong>Open for Opportunities</strong> &bull; MCA '27 Placement &amp; Internships</span>
           </div>
         </div>
 
-        <!-- Hero Right: Portrait with Glass Halo -->
+        <!-- Hero Right: Clean Organic Portrait with Subtle Floating Badges -->
         <div class="hero-visual-block reveal-item" data-delay="250">
-          <div class="portrait-stage-wrapper" id="portraitStage">
+          <div class="portrait-stage-wrapper card-3d-tilt" id="portraitStage">
             <div class="portrait-aura-glow" aria-hidden="true"></div>
-            <div class="portrait-glass-aperture">
+            
+            <div class="portrait-glass-aperture modern-3d-frame">
               <div class="portrait-image-container">
                 <img src="assets/shravan-portrait.png" alt="Shravan R Bangera - MCA Student and Creative Technologist" class="portrait-image" loading="eager">
               </div>
               <div class="portrait-glass-rim"></div>
             </div>
+
+            <!-- Floating Badge Top Right -->
+            <div class="floating-badge badge-top-right" data-magnetic>
+              <div class="badge-icon-wrap icon-cyan">
+                <span style="font-size: 16px;">⚡</span>
+              </div>
+              <div class="badge-text-group">
+                <span class="badge-kicker font-mono">SOFTWARE &amp; WEB</span>
+                <span class="badge-title font-mono">MERN Developer</span>
+              </div>
+            </div>
+
+            <!-- Floating Badge Bottom Left -->
+            <div class="floating-badge badge-bottom-left" data-magnetic>
+              <div class="badge-icon-wrap icon-emerald">
+                <span style="font-size: 16px;">📢</span>
+              </div>
+              <div class="badge-text-group">
+                <span class="badge-kicker font-mono">LEADERSHIP</span>
+                <span class="badge-title font-mono">180+ Volunteer Squad</span>
+              </div>
+            </div>
+
           </div>
         </div>
 
       </div>
     </section>
+
+    <!-- Endless Looping Marquee Ticker Strip -->
+    <div class="marquee-ribbon-container" aria-label="Skill & Leadership Marquee Ticker">
+      <div class="marquee-ribbon-track">
+        <div class="marquee-ribbon-item"><span class="marquee-star">✦</span> FULL-STACK MERN ARCHITECTURE</div>
+        <div class="marquee-ribbon-item"><span class="marquee-star">✦</span> 180+ VOLUNTEER MEDIA LEADERSHIP</div>
+        <div class="marquee-ribbon-item"><span class="marquee-star">✦</span> RESTFUL API &amp; DATABASE DESIGN</div>
+        <div class="marquee-ribbon-item"><span class="marquee-star">✦</span> ETTIN '25 NATIONAL FESTIVAL CHAMPION</div>
+        <div class="marquee-ribbon-item"><span class="marquee-star">✦</span> AZURE AI AI-900 CERTIFIED</div>
+        <div class="marquee-ribbon-item"><span class="marquee-star">✦</span> AVAILABLE FOR MCA '27 RECRUITMENT</div>
+        <!-- Duplicated for seamless loop -->
+        <div class="marquee-ribbon-item"><span class="marquee-star">✦</span> FULL-STACK MERN ARCHITECTURE</div>
+        <div class="marquee-ribbon-item"><span class="marquee-star">✦</span> 180+ VOLUNTEER MEDIA LEADERSHIP</div>
+        <div class="marquee-ribbon-item"><span class="marquee-star">✦</span> RESTFUL API &amp; DATABASE DESIGN</div>
+        <div class="marquee-ribbon-item"><span class="marquee-star">✦</span> ETTIN '25 NATIONAL FESTIVAL CHAMPION</div>
+        <div class="marquee-ribbon-item"><span class="marquee-star">✦</span> AZURE AI AI-900 CERTIFIED</div>
+        <div class="marquee-ribbon-item"><span class="marquee-star">✦</span> AVAILABLE FOR MCA '27 RECRUITMENT</div>
+      </div>
+    </div>
 
     <!-- DIGITAL STUDIO ROOM PORTALS -->
     <section class="section home-portals-section">
@@ -174,10 +219,10 @@
         
         <div class="section-editorial-header text-center">
           <div class="header-tag-pill">
-            <span class="tag-number">00</span>
+            <span class="tag-number">02</span>
             <span class="tag-title">DISCOVER THE SPACES</span>
           </div>
-          <h2 class="section-giant-title">Explore My Digital Identity</h2>
+          <h2 class="section-giant-title editorial-display-heading">Explore My <em>Digital Identity</em></h2>
           <p class="section-lead-paragraph">
             Step into the distinct rooms of my portfolio to discover my narrative, journey, creative captures, and software projects.
           </p>
@@ -186,11 +231,12 @@
         <div class="portals-quad-grid">
           
           <!-- Portal 1: Journey (Story, Milestones & Creative Work) -->
-          <a href="journey.html" class="portal-room-card glass-panel" data-nav-link>
+          <a href="journey.html" class="portal-room-card glass-panel card-3d-tilt" data-nav-link>
             <div class="portal-card-top">
-              <span class="portal-badge">CHRONICLE &amp; GALLERY</span>
+              <span class="portal-badge font-mono">01 &bull; CHRONICLE &amp; GALLERY</span>
+              <span class="sparkle-star">✦</span>
             </div>
-            <h3 class="portal-title">Journey &amp; Story</h3>
+            <h3 class="portal-title editorial-display-heading">Journey &amp; <em>Story</em></h3>
             <p class="portal-sub">Formative story &bull; 180+ volunteer Media Headship &bull; ETTIN '25 1st place gallery &amp; trophies.</p>
             <div class="portal-cta-arrow">
               <span>Explore Journey</span>
@@ -199,24 +245,26 @@
           </a>
 
           <!-- Portal 2: Projects & AI Lab -->
-          <a href="projects.html" class="portal-room-card glass-panel" data-nav-link>
+          <a href="projects.html" class="portal-room-card glass-panel card-3d-tilt" data-nav-link>
             <div class="portal-card-top">
-              <span class="portal-badge">PRODUCT &amp; AI LAB</span>
+              <span class="portal-badge font-mono">02 &bull; SOFTWARE &amp; LAB</span>
+              <span class="sparkle-star">✦</span>
             </div>
-            <h3 class="portal-title">Featured Projects</h3>
-            <p class="portal-sub">FoodIQ 148k+ AI neural nutrition scanner &bull; USDA API &bull; PSMS studio platform.</p>
+            <h3 class="portal-title editorial-display-heading">Featured <em>Projects</em></h3>
+            <p class="portal-sub">Photo Studio Management System (PSMS) &bull; Full-stack MERN apps &bull; AI prototypes.</p>
             <div class="portal-cta-arrow">
-              <span>Test Simulator</span>
+              <span>View Projects</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </div>
           </a>
 
           <!-- Portal 3: About & Contact -->
-          <a href="about.html" class="portal-room-card glass-panel" data-nav-link>
+          <a href="about.html" class="portal-room-card glass-panel card-3d-tilt" data-nav-link>
             <div class="portal-card-top">
-              <span class="portal-badge">PROFILE &amp; CONTACT</span>
+              <span class="portal-badge font-mono">03 &bull; PROFILE &amp; CONTACT</span>
+              <span class="sparkle-star">✦</span>
             </div>
-            <h3 class="portal-title">About &amp; Connect</h3>
+            <h3 class="portal-title editorial-display-heading">About &amp; <em>Connect</em></h3>
             <p class="portal-sub">Academic manifesto &bull; 4 pillars &bull; Azure AI certifications &bull; Direct inquiry channel.</p>
             <div class="portal-cta-arrow">
               <span>Get in Touch</span>
@@ -229,39 +277,39 @@
         <!-- BENTO TELEMETRY & STUDIO HIGHLIGHTS (Editorial Bento Grid) -->
         <div class="bento-hero-grid reveal-item" data-delay="300">
           
-          <!-- Left Bento Green Card (Inspired by Image 1) -->
-          <div class="bento-card-green">
+          <!-- Left Bento Green Card (Inspired by Image 1 & 4) -->
+          <div class="bento-card-green card-3d-tilt">
             <div class="bento-card-top">
-              <span class="portal-badge" style="background: rgba(255,255,255,0.2); color: #FFFFFF;">01 &bull; CREATIVE TECH</span>
-              <div class="bento-big-num">01</div>
+              <span class="portal-badge font-mono" style="background: rgba(255,255,255,0.22); color: #FFFFFF;">01 &bull; CREATIVE TECH</span>
+              <div class="bento-big-num font-mono">01</div>
             </div>
             
             <div>
-              <h3 style="font-size: clamp(1.4rem, 2.4vw, 2rem); font-weight: 800; line-height: 1.2; margin-bottom: 12px;">
-                Where Software Architecture Meets Visual Direction.
+              <h3 class="editorial-display-heading" style="font-size: clamp(1.5rem, 2.5vw, 2.1rem); font-weight: 800; line-height: 1.18; margin-bottom: 12px; color: #FFFFFF;">
+                Where Software Architecture Meets <em>Visual Direction</em>.
               </h3>
-              <p style="font-size: 14px; opacity: 0.9; line-height: 1.6; margin-bottom: 24px; max-width: 480px;">
+              <p style="font-size: 14px; opacity: 0.92; line-height: 1.6; margin-bottom: 24px; max-width: 480px; color: #F5FAF0;">
                 Mastering computer applications, deep neural vision models, and large-scale media operations with 180+ team coordination.
               </p>
             </div>
 
-            <a href="projects.html" class="bento-pill-action" data-nav-link>
+            <a href="projects.html" class="bento-pill-action" data-nav-link data-magnetic>
               <span>Explore AI &amp; Projects</span>
               <span class="bento-circle-arrow">&rarr;</span>
             </a>
           </div>
 
           <!-- Right Bento Cream Card with Interactive Telemetry Chart -->
-          <div class="bento-card-cream">
+          <div class="bento-card-cream card-3d-tilt">
             <div>
               <div class="chart-header-row" style="margin-bottom: 12px;">
                 <div class="chart-title-group">
-                  <span class="portal-badge">02 &bull; IMPACT METRICS</span>
-                  <h3 style="margin-top: 6px;">Operational Reach</h3>
+                  <span class="portal-badge font-mono">02 &bull; IMPACT METRICS</span>
+                  <h3 class="editorial-display-heading" style="margin-top: 6px; font-size: 18px;">Operational Reach</h3>
                 </div>
                 <div class="chart-hud-stat">
-                  <span class="chart-hud-val">180+</span>
-                  <span class="chart-hud-label">Volunteers</span>
+                  <span class="chart-hud-val font-mono">180+</span>
+                  <span class="chart-hud-label font-mono">Volunteers</span>
                 </div>
               </div>
 
@@ -273,8 +321,8 @@
               <svg class="svg-telemetry-chart" viewBox="0 0 380 140" aria-label="Volunteer & Operations Growth Chart">
                 <defs>
                   <linearGradient id="sageAreaGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#6B8E4E" stop-opacity="0.35"/>
-                    <stop offset="100%" stop-color="#8FC065" stop-opacity="0.0"/>
+                    <stop offset="0%" stop-color="#5A7E40" stop-opacity="0.38"/>
+                    <stop offset="100%" stop-color="#8EBE67" stop-opacity="0.0"/>
                   </linearGradient>
                 </defs>
                 <path class="chart-area" d="M 10 120 Q 90 105, 140 80 T 260 45 T 370 20 L 370 130 L 10 130 Z"/>
@@ -287,7 +335,7 @@
                 <circle class="chart-point" cx="370" cy="20" data-val="2025: Media Head (180+ Team)"/>
               </svg>
 
-              <div style="display: flex; justify-content: space-between; font-size: 11px; font-weight: 700; color: var(--text-muted); margin-top: 8px;">
+              <div style="display: flex; justify-content: space-between; font-size: 11px; font-weight: 700; color: var(--text-muted); margin-top: 8px; font-family: var(--font-mono);">
                 <span>2022 (Start)</span>
                 <span>2024 (Award)</span>
                 <span>2025–26 (Media Head)</span>
@@ -295,7 +343,7 @@
             </div>
 
             <div style="margin-top: 20px;">
-              <a href="journey.html" class="bento-pill-action" data-nav-link>
+              <a href="journey.html" class="bento-pill-action" data-nav-link data-magnetic>
                 <span>View Full Journey</span>
                 <span class="bento-circle-arrow">&rarr;</span>
               </a>
@@ -363,7 +411,7 @@
             <li><strong>Media Head (MCA Dept, NMAMIT):</strong> Coordinated logistics &amp; media across 5+ programs with 180+ volunteers; published 15+ promotional campaigns.</li>
             <li><strong>Media Team Member (BCA Program):</strong> Grew average post engagement by 87% across 4 departmental events; cut documentation time by 50% using AI tools.</li>
             <li><strong>Internship (Zephyr Technologies):</strong> Prepared technical documentation for MERN Stack projects and development workflows.</li>
-            <li><strong>Top Project (FoodIQ):</strong> AI food recognition web app (React, Node.js/Express) with 148,000+ image deep learning model &amp; USDA nutrition database.</li>
+            <li><strong>Featured Projects:</strong> Photo Studio Management System (PSMS &mdash; MERN Stack) &amp; FoodIQ (AI prototype).</li>
             <li><strong>Honours &amp; Awards:</strong> 1st Place Photography (Nitte Aqua Lens 2024 University Level &amp; ETTIN 2025 National Fest); 2nd Place (AGON 2024).</li>
           </ul>
 
@@ -444,7 +492,7 @@
 
       <div class="chat-quick-chips-bar" id="chatQuickChips">
         <button class="chat-chip-btn" data-query="projects">🚀 Projects</button>
-        <button class="chat-chip-btn" data-query="foodiq">🥗 FoodIQ AI</button>
+        <button class="chat-chip-btn" data-query="psms">📷 PSMS App</button>
         <button class="chat-chip-btn" data-query="awards">🏆 Awards</button>
         <button class="chat-chip-btn" data-query="photography">📸 Photography</button>
         <button class="chat-chip-btn" data-query="leadership">📢 180+ Volunteers</button>
@@ -460,7 +508,7 @@
           type="text" 
           id="chatInputText" 
           class="chat-input-field" 
-          placeholder="Ask me anything (e.g. FoodIQ, awards, skills)..." 
+          placeholder="Ask me anything (e.g. PSMS, awards, skills)..." 
           aria-label="Ask SproutBot AI"
         >
         <button type="submit" class="chat-send-btn" id="chatSendBtn" aria-label="Send query">

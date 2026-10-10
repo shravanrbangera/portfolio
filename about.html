@@ -8,9 +8,10 @@
   <meta name="theme-color" content="#F8FBFC">
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230878C9'/><text x='16' y='22' font-family='sans-serif' font-size='18' font-weight='bold' fill='white' text-anchor='middle'>S</text></svg>">
+  <!-- Google Fonts: Unified Typography (Plus Jakarta Sans) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=2.5">
 </head>
 <body data-page="about">
@@ -88,33 +89,38 @@
   <main class="page-content-wrapper" id="mainContent">
 
     <!-- PAGE HERO HEADER -->
-    <section class="section inner-page-hero">
-      <div class="container">
+    <section class="section inner-page-hero" style="position: relative;">
+      <!-- Dreamscape Ambient Radiant Light Beam (Sample 3) -->
+      <div class="dreamscape-beam-glow" aria-hidden="true"></div>
+
+      <div class="container" style="position: relative; z-index: 1;">
         
-        <div class="section-editorial-header">
+        <div class="section-editorial-header text-center">
           <div class="header-tag-pill reveal-item">
-            <span class="tag-number">04</span>
-            <span class="tag-title">PROFILE &amp; CONNECT</span>
+            <span class="tag-number font-mono">04</span>
+            <span class="tag-title font-mono">IDENTITY, CREDENTIALS &amp; CONNECT</span>
           </div>
-          <h1 class="section-giant-title reveal-item" data-delay="100">About Me &amp; Direct Channels</h1>
+          <h1 class="section-giant-title editorial-display-heading reveal-item" data-delay="100">
+            About Me &amp; <em>Direct Channels</em>
+          </h1>
           <p class="section-lead-paragraph reveal-item" data-delay="200">
             Technology is the foundation; human connection, aesthetics, purposeful execution, and open collaboration are the destination.
           </p>
         </div>
 
         <!-- ===================================================================
-             SECTION 1: NARRATIVE MANIFESTO & 4 PILLARS
+             SECTION 1: NARRATIVE MANIFESTO & 4 PILLARS (Side-by-Side 2-Column Grid)
              =================================================================== -->
         <div class="about-editorial-layout">
           
-          <!-- Narrative Manifesto Card -->
-          <div class="about-manifesto-card glass-panel reveal-item" data-delay="250" data-cursor-text="STORY">
-            <div class="watermark-symbol" aria-hidden="true">MCA</div>
+          <!-- Column 1: Narrative Manifesto Card -->
+          <div class="about-manifesto-card glass-panel card-3d-tilt reveal-item" data-delay="250" data-cursor-text="STORY">
+            <div class="watermark-symbol font-mono" aria-hidden="true">MCA</div>
             <div class="mascot-badge-pill">
               <img src="assets/sprout-mascot.jpg" alt="Creative Sprout Companion" class="mascot-badge-img">
-              <span>Creative Digital Identity</span>
+              <span class="font-mono">Creative Digital Identity</span>
             </div>
-            <h2 class="manifesto-lead">
+            <h2 class="manifesto-lead editorial-display-heading" style="font-size: clamp(1.35rem, 2.2vw, 1.9rem); line-height: 1.35; margin-bottom: 20px;">
               I am an <strong>MCA postgraduate student</strong> at N.M.A.M. Institute of Technology with hands-on experience in full-stack web development (React, Node.js/Express), AI-powered applications, and project/event coordination.
             </h2>
             
@@ -127,7 +133,7 @@
               </p>
             </div>
 
-            <div class="manifesto-tags-row">
+            <div class="manifesto-tags-row font-mono">
               <span class="pill-chip">N.M.A.M.I.T. Nitte (MCA)</span>
               <span class="pill-chip">Full-Stack (MERN)</span>
               <span class="pill-chip">AI &amp; Computer Vision</span>
@@ -135,56 +141,56 @@
             </div>
           </div>
 
-          <!-- 4 Concept Pillars -->
+          <!-- Column 2: 4 Pillars 2x2 Grid (Fills Right Column Perfectly) -->
           <div class="about-pillars-grid">
             
-            <div class="pillar-card glass-panel reveal-item" data-delay="300" data-pillar-theme="tech" data-cursor-text="TECH">
+            <div class="pillar-card glass-panel card-3d-tilt reveal-item" data-delay="300" data-pillar-theme="tech" data-cursor-text="TECH">
               <div class="pillar-top">
-                <span class="pillar-index">01</span>
+                <span class="pillar-index font-mono">01</span>
                 <div class="pillar-icon-box cyan-glow">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
                 </div>
               </div>
-              <h3 class="pillar-name">TECHNOLOGY</h3>
+              <h3 class="pillar-name font-mono">TECHNOLOGY</h3>
               <p class="pillar-desc">
                 Building intuitive web applications (MERN), deep learning models (148k+ dataset), and structured development workflows.
               </p>
             </div>
 
-            <div class="pillar-card glass-panel reveal-item" data-delay="350" data-pillar-theme="creative" data-cursor-text="PHOTO">
+            <div class="pillar-card glass-panel card-3d-tilt reveal-item" data-delay="350" data-pillar-theme="creative" data-cursor-text="PHOTO">
               <div class="pillar-top">
-                <span class="pillar-index">02</span>
+                <span class="pillar-index font-mono">02</span>
                 <div class="pillar-icon-box emerald-glow">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83M16.62 12l-5.74 9.94"/></svg>
                 </div>
               </div>
-              <h3 class="pillar-name">CREATIVITY</h3>
+              <h3 class="pillar-name font-mono">CREATIVITY</h3>
               <p class="pillar-desc">
                 Award-winning photography (Aqua Lens '24, ETTIN '25, AGON '24), visual framing, light composition, and design.
               </p>
             </div>
 
-            <div class="pillar-card glass-panel reveal-item" data-delay="400" data-pillar-theme="lead" data-cursor-text="LEAD">
+            <div class="pillar-card glass-panel card-3d-tilt reveal-item" data-delay="400" data-pillar-theme="lead" data-cursor-text="LEAD">
               <div class="pillar-top">
-                <span class="pillar-index">03</span>
+                <span class="pillar-index font-mono">03</span>
                 <div class="pillar-icon-box blue-glow">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                 </div>
               </div>
-              <h3 class="pillar-name">LEADERSHIP</h3>
+              <h3 class="pillar-name font-mono">LEADERSHIP</h3>
               <p class="pillar-desc">
                 Departmental Media Head directing 180+ student volunteers across 5+ programs, bridging faculty and coordinators.
               </p>
             </div>
 
-            <div class="pillar-card glass-panel reveal-item" data-delay="450" data-pillar-theme="media" data-cursor-text="MEDIA">
+            <div class="pillar-card glass-panel card-3d-tilt reveal-item" data-delay="450" data-pillar-theme="media" data-cursor-text="MEDIA">
               <div class="pillar-top">
-                <span class="pillar-index">04</span>
+                <span class="pillar-index font-mono">04</span>
                 <div class="pillar-icon-box teal-glow">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
                 </div>
               </div>
-              <h3 class="pillar-name">MEDIA &amp; PR</h3>
+              <h3 class="pillar-name font-mono">MEDIA &amp; PR</h3>
               <p class="pillar-desc">
                 Event promotions, digital campaigns (+87% engagement growth), and AI-driven 50% faster documentation.
               </p>
@@ -573,7 +579,7 @@
             <li><strong>Media Head (MCA Dept):</strong> Coordinated logistics &amp; media across 5+ programs with 180+ student volunteers; managed social media.</li>
             <li><strong>Internship Trainee:</strong> Zephyr Technologies &amp; Solutions &mdash; MERN Stack technical documentation &amp; software workflows.</li>
             <li><strong>Honours &amp; Awards:</strong> 1st Place Photography (Nitte Aqua Lens 2024 University Level &amp; ETTIN 2025 National Fest); 2nd Place (AGON 2024).</li>
-            <li><strong>Top Project:</strong> FoodIQ &mdash; React + Node.js/Express with 148k+ image deep learning model, USDA database &amp; 0&ndash;100 health scoring.</li>
+            <li><strong>Featured Projects:</strong> Photo Studio Management System (PSMS &mdash; MERN Stack) &amp; FoodIQ (AI prototype).</li>
           </ul>
 
           <h3 class="recruiter-section-title" style="margin-top: 18px;">Direct Placement Contacts</h3>
@@ -652,7 +658,7 @@
 
       <div class="chat-quick-chips-bar" id="chatQuickChips">
         <button class="chat-chip-btn" data-query="projects">🚀 Projects</button>
-        <button class="chat-chip-btn" data-query="foodiq">🥗 FoodIQ AI</button>
+        <button class="chat-chip-btn" data-query="psms">📷 PSMS App</button>
         <button class="chat-chip-btn" data-query="awards">🏆 Awards</button>
         <button class="chat-chip-btn" data-query="photography">📸 Photography</button>
         <button class="chat-chip-btn" data-query="leadership">📢 180+ Volunteers</button>
@@ -668,7 +674,7 @@
           type="text" 
           id="chatInputText" 
           class="chat-input-field" 
-          placeholder="Ask me anything (e.g. FoodIQ, awards, skills)..." 
+          placeholder="Ask me anything (e.g. PSMS, awards, skills)..." 
           aria-label="Ask SproutBot AI"
         >
         <button type="submit" class="chat-send-btn" id="chatSendBtn" aria-label="Send query">
