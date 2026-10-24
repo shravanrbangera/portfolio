@@ -1,0 +1,220 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="boutiqueBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141E15" />
+      <stop offset="45%" stop-color="#1C2E20" />
+      <stop offset="100%" stop-color="#0F1710" />
+    </linearGradient>
+
+    <linearGradient id="goldAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F3E5AB" />
+      <stop offset="50%" stop-color="#D4AF37" />
+      <stop offset="100%" stop-color="#AA7C11" />
+    </linearGradient>
+
+    <linearGradient id="roseAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE8EC" />
+      <stop offset="50%" stop-color="#E89B93" />
+      <stop offset="100%" stop-color="#C25953" />
+    </linearGradient>
+
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.02" />
+    </linearGradient>
+
+    <linearGradient id="heroCardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2D4532" stop-opacity="0.75" />
+      <stop offset="100%" stop-color="#1A2B1E" stop-opacity="0.85" />
+    </linearGradient>
+
+    <!-- Subtle Shadows & Filters -->
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1000" height="650" rx="24" fill="url(#boutiqueBg)" />
+
+  <!-- Ambient Golden Glow -->
+  <circle cx="850" cy="120" r="180" fill="url(#goldAccent)" opacity="0.08" filter="blur(40px)" />
+  <circle cx="150" cy="500" r="220" fill="#4B6B4E" opacity="0.12" filter="blur(50px)" />
+
+  <!-- Browser Window Wrapper -->
+  <g transform="translate(36, 32)">
+    <!-- Browser Window Card -->
+    <rect width="928" height="586" rx="18" fill="#182419" stroke="rgba(212,175,55,0.25)" stroke-width="1.5" filter="url(#softShadow)" />
+
+    <!-- Browser Window Header Strip -->
+    <rect width="928" height="52" rx="18" fill="#121B13" />
+    <rect y="40" width="928" height="12" fill="#121B13" />
+    <line x1="0" y1="52" x2="928" y2="52" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+
+    <!-- Mac Window Control Dots -->
+    <circle cx="28" cy="26" r="6" fill="#FF5F56" />
+    <circle cx="48" cy="26" r="6" fill="#FFBD2E" />
+    <circle cx="68" cy="26" r="6" fill="#27C93F" />
+
+    <!-- Browser Address Bar -->
+    <rect x="220" y="12" width="488" height="28" rx="14" fill="#0D150E" stroke="rgba(212,175,55,0.3)" stroke-width="1" />
+    <!-- Lock Icon -->
+    <path d="M242 27 h12 v-5 a6 6 0 0 0 -12 0 z M245 22 a3 3 0 0 1 6 0 v5 h-6 z" fill="#D4AF37" opacity="0.9" />
+    <text x="264" y="30" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="600" fill="#E8D5A0" letter-spacing="0.02em">
+      https://jashvi-boutique.onrender.com
+    </text>
+    <rect x="635" y="16" width="60" height="20" rx="10" fill="rgba(39,201,63,0.18)" />
+    <text x="665" y="30" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#4ADE80" text-anchor="middle">LIVE</text>
+
+    <!-- Boutique Storefront Inner Content -->
+    <!-- Boutique Brand Nav Strip -->
+    <g transform="translate(0, 52)">
+      <rect width="928" height="64" fill="#172318" />
+      <line x1="0" y1="64" x2="928" y2="64" stroke="rgba(212,175,55,0.15)" stroke-width="1" />
+
+      <!-- Brand Monogram & Name -->
+      <g transform="translate(36, 16)">
+        <rect width="32" height="32" rx="8" fill="url(#goldAccent)" />
+        <text x="16" y="22" font-family="'Cinzel', serif, Georgia" font-size="16" font-weight="800" fill="#172312" text-anchor="middle">J</text>
+        <text x="44" y="21" font-family="'Cinzel', serif, Georgia" font-size="16" font-weight="700" fill="#FDFBF7" letter-spacing="0.1em">JASHVI BOUTIQUE</text>
+        <text x="44" y="31" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="600" fill="#D4AF37" letter-spacing="0.12em">LADIES' FASHION &amp; BESPOKE TAILORING</text>
+      </g>
+
+      <!-- Nav Links -->
+      <g transform="translate(480, 24)" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="500">
+        <text x="0" y="15" fill="#D4AF37" font-weight="700">Home</text>
+        <text x="55" y="15" fill="#CAD8C5">Ethnic Wear</text>
+        <text x="145" y="15" fill="#CAD8C5">Bridal Lehengas</text>
+        <text x="255" y="15" fill="#CAD8C5">Bespoke Tailoring</text>
+      </g>
+
+      <!-- WhatsApp CTA Button -->
+      <g transform="translate(775, 17)">
+        <rect width="118" height="30" rx="15" fill="#25D366" />
+        <circle cx="20" cy="15" r="7" fill="#FFFFFF" opacity="0.3" />
+        <text x="64" y="20" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#0C2513" text-anchor="middle">WhatsApp 💬</text>
+      </g>
+    </g>
+
+    <!-- Main Hero Banner Card -->
+    <g transform="translate(36, 136)">
+      <rect width="856" height="190" rx="16" fill="url(#heroCardGrad)" stroke="rgba(212,175,55,0.2)" stroke-width="1.2" />
+
+      <!-- Left Hero Editorial Text -->
+      <g transform="translate(36, 32)">
+        <rect width="186" height="22" rx="11" fill="rgba(212,175,55,0.18)" />
+        <text x="93" y="15" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="800" fill="#F3E5AB" letter-spacing="0.12em" text-anchor="middle">
+          ATTAVARA, MANGALORE
+        </text>
+
+        <text x="0" y="56" font-family="'Cinzel', 'Playfair Display', serif" font-size="28" font-weight="700" fill="#FFFFFF" letter-spacing="0.02em">
+          Bespoke Tailoring &amp; Ethnic Luxury
+        </text>
+
+        <text x="0" y="84" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="400" fill="#D3E0CE">
+          Handcrafted Indian ethnic wear, ready-made designer kurtis, festive bridal
+        </text>
+        <text x="0" y="102" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="400" fill="#D3E0CE">
+          lehengas, pure silk dress materials &amp; precision in-store custom fitting.
+        </text>
+
+        <!-- CTA Buttons -->
+        <g transform="translate(0, 118)">
+          <rect width="150" height="34" rx="17" fill="url(#goldAccent)" />
+          <text x="75" y="22" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="#141E15" text-anchor="middle">
+            Explore Collections &rarr;
+          </text>
+
+          <rect x="164" y="0" width="168" height="34" rx="17" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+          <text x="248" y="22" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">
+            Book Tailoring Slot ✂️
+          </text>
+        </g>
+      </g>
+
+      <!-- Right Visual Feature Badges Stack -->
+      <g transform="translate(580, 24)">
+        <rect width="240" height="142" rx="14" fill="#121E14" stroke="rgba(212,175,55,0.25)" stroke-width="1" />
+        
+        <text x="20" y="30" font-family="'Cinzel', serif" font-size="13" font-weight="700" fill="#D4AF37">BOUTIQUE SPECIALTIES</text>
+        
+        <!-- Feature 1 -->
+        <circle cx="28" cy="55" r="5" fill="#D4AF37" />
+        <text x="42" y="59" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="600" fill="#FFFFFF">Pure Silk &amp; Festive Fabrics</text>
+        
+        <!-- Feature 2 -->
+        <circle cx="28" cy="85" r="5" fill="#D4AF37" />
+        <text x="42" y="89" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="600" fill="#FFFFFF">Bridal Lehengas &amp; Kurtis</text>
+        
+        <!-- Feature 3 -->
+        <circle cx="28" cy="115" r="5" fill="#D4AF37" />
+        <text x="42" y="119" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="600" fill="#FFFFFF">Master In-Store Tailoring</text>
+      </g>
+    </g>
+
+    <!-- 3 Service & Catalog Cards Grid -->
+    <g transform="translate(36, 342)">
+      <!-- Card 1: Ready-Made Designer Kurtis -->
+      <g transform="translate(0, 0)">
+        <rect width="268" height="172" rx="14" fill="url(#cardBg)" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
+        <!-- Top color pill -->
+        <rect x="20" y="20" width="40" height="40" rx="10" fill="rgba(212,175,55,0.15)" stroke="rgba(212,175,55,0.3)" stroke-width="1" />
+        <text x="40" y="46" font-size="20" text-anchor="middle">👗</text>
+        
+        <text x="20" y="86" font-family="'Cinzel', serif" font-size="15" font-weight="700" fill="#FFFFFF">Designer Kurtis</text>
+        <text x="20" y="106" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="400" fill="#A8BAA2">
+          Handcrafted ethnic silhouettes, ready-to-wear seasonal drops, and modern cuts.
+        </text>
+        <text x="20" y="146" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#D4AF37">
+          EXPLORE CATALOG &rarr;
+        </text>
+      </g>
+
+      <!-- Card 2: Bridal Lehengas & Pure Silk -->
+      <g transform="translate(294, 0)">
+        <rect width="268" height="172" rx="14" fill="url(#cardBg)" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
+        <rect x="20" y="20" width="40" height="40" rx="10" fill="rgba(232,155,147,0.15)" stroke="rgba(232,155,147,0.3)" stroke-width="1" />
+        <text x="40" y="46" font-size="20" text-anchor="middle">✨</text>
+        
+        <text x="20" y="86" font-family="'Cinzel', serif" font-size="15" font-weight="700" fill="#FFFFFF">Bridal &amp; Pure Silk</text>
+        <text x="20" y="106" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="400" fill="#A8BAA2">
+          Intricate zardozi embroidery, ceremonial silks, and custom bridal styling.
+        </text>
+        <text x="20" y="146" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#E89B93">
+          VIEW BRIDAL SUITE &rarr;
+        </text>
+      </g>
+
+      <!-- Card 3: Bespoke In-Store Tailoring -->
+      <g transform="translate(588, 0)">
+        <rect width="268" height="172" rx="14" fill="url(#cardBg)" stroke="rgba(212,175,55,0.2)" stroke-width="1" />
+        <rect x="20" y="20" width="40" height="40" rx="10" fill="rgba(37,211,102,0.15)" stroke="rgba(37,211,102,0.3)" stroke-width="1" />
+        <text x="40" y="46" font-size="20" text-anchor="middle">✂️</text>
+        
+        <text x="20" y="86" font-family="'Cinzel', serif" font-size="15" font-weight="700" fill="#FFFFFF">Bespoke In-Store Tailoring</text>
+        <text x="20" y="106" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="400" fill="#A8BAA2">
+          Personalized measurements, blouse pattern design, custom piping &amp; perfect fits.
+        </text>
+        <text x="20" y="146" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#4ADE80">
+          BOOK MEASUREMENTS &rarr;
+        </text>
+      </g>
+    </g>
+
+    <!-- Bottom Status Bar -->
+    <g transform="translate(0, 538)">
+      <rect width="928" height="48" rx="0" fill="#0E160F" />
+      <line x1="0" y1="0" x2="928" y2="0" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+      
+      <circle cx="36" cy="24" r="4" fill="#22C55E" />
+      <text x="48" y="28" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="#99B896">
+        Render Cloud Deployment &bull; SSL Secured &bull; 100% Responsive React + Vite App
+      </text>
+
+      <text x="892" y="28" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#D4AF37" text-anchor="end">
+        Client: Jashvi Boutique &bull; Engineered by Shravan
+      </text>
+    </g>
+  </g>
+</svg>

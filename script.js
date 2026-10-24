@@ -827,6 +827,21 @@
           'Secure digital asset organization repository linking final deliverables to client profiles.'
         ],
         learned: 'Deepened practical expertise in full-stack architecture, relational database management (SQL), business process automation, and operational software reliability.'
+      },
+      jashvi: {
+        category: 'COMMERCIAL CLIENT & FREELANCE CASE STUDY',
+        title: 'Jashvi Boutique — Premier Ladies\' Fashion & Bespoke Tailoring',
+        coverImage: 'assets/jashvi-cover.png',
+        tagline: '“An editorial digital presence and responsive web application engineered for an Attavara, Mangalore boutique.”',
+        overview: 'Commissioned as a freelance developer to architect, build, and deploy an elegant web platform for Jashvi Boutique located in Attavara, Mangalore. The boutique specializes in handcrafted Indian ethnic wear, ready-made designer kurtis, bridal lehengas, pure silk fabrics, and custom in-store tailoring.',
+        workedOn: 'Engineered the responsive frontend with React and Vite, structured high-converting catalog layouts with luxury typography (Playfair Display, Plus Jakarta Sans, Cinzel), integrated direct WhatsApp inquiry links, and deployed the production build to Render cloud.',
+        features: [
+          'Handcrafted Ethnic & Bridal Showcase: Curated collections of ready-made kurtis, bridal lehengas, and pure silk fabrics with editorial styling.',
+          'Bespoke Tailoring & Service Suite: Interactive section detailing custom measurement appointments, blouse patterns, necklines, and alterations.',
+          'Frictionless Client Conversion Pipelines: One-tap WhatsApp chat triggers, direct phone dialer, and Attavara boutique map routing directly converting web visitors into store visits.',
+          'High-Performance Production Deployment: Bundled with Vite and deployed on Render with fast asset delivery and mobile-first responsiveness.'
+        ],
+        learned: 'Strengthened client communication, end-to-end freelance project delivery, translating brand aesthetics into intuitive UX, and optimizing conversion pathways for local retail businesses.'
       }
     };
 
@@ -843,6 +858,18 @@
         csOverview.textContent = data.overview;
         csWorkedOn.textContent = data.workedOn;
         csLearned.textContent = data.learned;
+
+        const csImageContainer = document.getElementById('csImageContainer');
+        const csCoverImg = document.getElementById('csCoverImg');
+        if (csImageContainer && csCoverImg) {
+          if (data.coverImage) {
+            csCoverImg.src = data.coverImage;
+            csCoverImg.alt = `${data.title} Live Cover Page`;
+            csImageContainer.style.display = 'block';
+          } else {
+            csImageContainer.style.display = 'none';
+          }
+        }
 
         csFeatures.innerHTML = '';
         data.features.forEach((f) => {
@@ -1220,6 +1247,15 @@
     // Interactive Speech Bubble Guide Prompts
     const guideQuotes = [
       {
+        badge: "🛍️ CLIENT / FREELANCE",
+        text: "Jashvi Boutique Live Web App (Attavara, Mangalore)",
+        cta: "Click text to view client work ↗",
+        actionType: "nav",
+        targetUrl: "projects.html",
+        targetId: "#clientProjects",
+        query: "Tell me about freelance client projects"
+      },
+      {
         badge: "💻 FULL-STACK SOFTWARE",
         text: "Photo Studio Management System (PSMS) & MERN Stack",
         cta: "Click text to view software ↗",
@@ -1423,6 +1459,7 @@
         actionTitle: "Popular Quick Actions",
         actionDesc: "Tap any topic below to navigate directly:",
         actions: [
+          { label: "🛍️ Jashvi Boutique (Client)", targetUrl: "projects.html", targetId: "#clientProjects" },
           { label: "📷 Photo Studio Management (PSMS)", targetUrl: "projects.html", targetId: ".foodiq-showcase-card" },
           { label: "🏆 Awards & Honors Museum", targetUrl: "journey.html", targetId: "#achievementMuseumGrid" },
           { label: "📸 Award-Winning Photography", targetUrl: "journey.html", targetId: "#editorialGallery" },
@@ -1606,6 +1643,18 @@
     };
 
     const generateBotResponse = (q) => {
+      // Intent 0: Client & Freelance Work / Jashvi Boutique
+      if (q.includes('client') || q.includes('freelance') || q.includes('jashvi') || q.includes('boutique') || q.includes('tailor') || q.includes('fashion') || q.includes('render')) {
+        return {
+          text: "🛍️ **Jashvi Boutique — Commercial Client & Freelance Work:**\n• Engineered and launched a live, responsive web platform for **Jashvi Boutique** in Attavara, Mangalore.\n• Built with **React** & **Vite**, deployed on **Render** cloud.\n• Features handcrafted Indian ethnic wear, ready-made designer kurtis, bridal lehengas, pure silk dress materials, bespoke in-store tailoring, and one-tap WhatsApp inquiry routing.\n\n👉 Click [Visit Live Boutique Site (jashvi-boutique.onrender.com)](https://jashvi-boutique.onrender.com/) or [Explore Client Section in Projects](projects.html#clientProjects)!",
+          actionTitle: "Client Work Actions",
+          actions: [
+            { label: "🛍️ View Jashvi Boutique in Projects", targetUrl: "projects.html", targetId: "#clientProjects" },
+            { label: "🌐 Visit Live Site (jashvi-boutique.onrender.com)", targetUrl: "https://jashvi-boutique.onrender.com/" }
+          ]
+        };
+      }
+
       // Intent 1: Projects / PSMS / FoodIQ / MERN Stack
       if (q.includes('project') || q.includes('foodiq') || q.includes('food') || q.includes('psms') || q.includes('studio') || q.includes('app') || q.includes('system') || q.includes('build')) {
         if (q.includes('foodiq') || q.includes('nutrition') || q.includes('diet') || q.includes('health') || q.includes('usda') || q.includes('scanner')) {
@@ -1631,9 +1680,10 @@
         }
 
         return {
-          text: "🚀 **Shravan's Featured Software & Systems:**\n1. [Photo Studio Management System (PSMS)](projects.html#.foodiq-showcase-card): Conflict-free scheduling, client CRM, automated invoicing.\n2. [Media Operations & Campaign Automation](projects.html#.projects-editorial-grid): Coordination workflows for 180+ student volunteers.\n3. [FoodIQ Prototype (In Development)](projects.html#.projects-editorial-grid): Computer vision & USDA nutrition exploratory prototype.\n\n👉 Click any highlighted link to navigate straight there!",
+          text: "🚀 **Shravan's Featured Software, Systems & Client Works:**\n1. [Jashvi Boutique](projects.html#clientProjects): Commercial client freelance web application & catalog for a Mangalore fashion boutique.\n2. [Photo Studio Management System (PSMS)](projects.html#.foodiq-showcase-card): Conflict-free scheduling, client CRM, automated invoicing.\n3. [Media Operations & Campaign Automation](projects.html#.projects-editorial-grid): Coordination workflows for 180+ student volunteers.\n4. [FoodIQ Prototype (In Development)](projects.html#.projects-editorial-grid): Computer vision & USDA nutrition exploratory prototype.\n\n👉 Click any highlighted link to navigate straight there!",
           actionTitle: "Explore Projects",
           actions: [
+            { label: "🛍️ View Jashvi Boutique Client Work", targetUrl: "projects.html", targetId: "#clientProjects" },
             { label: "📷 Open PSMS Platform Lead Showcase", targetUrl: "projects.html", targetId: ".foodiq-showcase-card" },
             { label: "🚀 Open Projects Room", targetUrl: "projects.html", targetId: ".section-editorial-header" }
           ]

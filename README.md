@@ -28,7 +28,7 @@
 | :--- | :--- | :--- |
 | **Studio Hub** | `index.html` | Hero grid, featured bento metrics, 180+ volunteer sparkline telemetry, and portal links |
 | **Journey &amp; Story** | `journey.html` | Formative story, leadership pathway, interactive timeline, creative photography gallery &amp; achievement museum |
-| **Projects &amp; Systems** | `projects.html` | Photo Studio Management System (PSMS lead showcase), FoodIQ (In-development prototype), and Media Operations |
+| **Projects &amp; Systems** | `projects.html` | Client Freelance Works (Jashvi Boutique live on Render), Photo Studio Management System (PSMS lead showcase), FoodIQ (In-development prototype), and Media Operations |
 | **About &amp; Contact** | `about.html` | Academic manifesto, 4 pillars, verified Azure AI/Cybersecurity certifications, and direct inquiry message form |
 
 ---
